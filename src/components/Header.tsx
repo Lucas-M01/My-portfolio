@@ -5,7 +5,7 @@ export function Header() {
   const [openNav, setOpenNav] = useState(false)
 
   return (
-    <header className="w-full py-5 lg:py-8 px-[9%] bg-clip-padding backdrop-filter relative backdrop-blur-md bg-opacity-10 text-gray-200 shadow-xl shadow-gray-900">
+    <header className="w-full py-5 lg:py-8 px-[9%] bg-clip-padding backdrop-filter relative backdrop-blur-md bg-opacity-10 text-gray-200 shadow-xl">
       <div className="lg:max-w-[90em] lg:w-11/12 lg:my-0 lg:mx-auto">
         <nav className="text-xl lg:text-2xl w-full lg:flex lg:justify-between lg:items-center">
           <div className="text-center px-[1em] py-0">
@@ -36,6 +36,14 @@ export function Header() {
                 href="#about"
               >
                 About
+              </a>
+            </li>
+            <li className="lg:ml-[2em]">
+              <a
+                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                href="#skills"
+              >
+                Skills
               </a>
             </li>
             <li className="lg:ml-[2em]">
