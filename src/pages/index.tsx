@@ -1,20 +1,16 @@
 import { Header } from '@/components/Header'
 import { Home } from '@/components/Home'
-import { Head } from 'next/document'
+import Head from 'next/head'
 
 export default function PageHome() {
   return (
-    <>
+    <div className="bg-gray-800 h-screen ">
       <Head>
         <title>Portfólio</title>
       </Head>
+      <Header />
 
-      <div className="bg-gray-800 h-screen">
-        <Header />
-        <div className="w-[90%] mx-auto">
-          <Home />
-        </div>
-      </div>
-    </>
+      <Home />
+    </div>
   )
 }
