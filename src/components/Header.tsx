@@ -5,20 +5,20 @@ export function Header() {
   const [openNav, setOpenNav] = useState(false)
 
   return (
-    <header className="w-full py-5 lg:py-8 px-[9%] bg-clip-padding backdrop-filter relative backdrop-blur-md bg-opacity-10 text-gray-200 shadow-xl">
-      <div className="lg:max-w-[90em] lg:w-11/12 lg:my-0 lg:mx-auto">
+    <header className="w-full py-5 lg:py-8 bg-clip-padding backdrop-filter fixed backdrop-blur-md bg-opacity-10 z-10 text-gray-200 shadow-xl">
+      <div className="w-[85%] mx-auto">
         <nav className="text-xl lg:text-2xl w-full lg:flex lg:justify-between lg:items-center">
-          <div className="text-center px-[1em] py-0">
+          <div className="text-center">
             <a
               className="cursor-default font-semibold text-2xl md:text-[2rem]"
               href="#"
             >
-              Portfolio
+              Portfólio
             </a>
           </div>
 
           <ul
-            className={`text-gray-200 bg-gray-700 text-center transition lg:h-full w-full h-screen flex flex-col justify-evenly lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
+            className={`text-white bg-gray-700 text-center transition lg:h-full w-full h-screen flex flex-col justify-evenly lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
               openNav === false ? 'left-[-5000px]' : 'left-0'
             }`}
           >

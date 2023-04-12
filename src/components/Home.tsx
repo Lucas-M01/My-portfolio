@@ -4,9 +4,9 @@ import { DownloadSimple } from 'phosphor-react'
 
 export function Home() {
   return (
-    <section className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center mt-[5rem]">
-      <div className="flex  flex-col-reverse w-[90%] mx-auto sm:my-28 sm:flex-row sm:justify-between">
-        <div className="flex flex-col gap-2 lg:w-1/2 lg:gap-1">
+    <section className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center pt-20">
+      <div className="flex  flex-col-reverse w-[85%] mx-auto sm:mt-28 sm:mb-32 sm:flex-row sm:justify-between">
+        <div className="flex flex-col gap-2 mb-14 sm:mb-0 lg:w-1/2 lg:gap-1">
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
             Olá, me chamo
           </h3>
@@ -45,7 +45,7 @@ export function Home() {
         <h4 className="font-semibold text-2xl mb-4 md:text-3xl lg:text-4xl">
           Sobre min
         </h4>
-        <p className="text-zinc-300 w-[90%] mx-auto">
+        <p className="text-zinc-300 w-[85%] mx-auto pb-5">
           Sou um desenvolvedor apaixonado por tecnologia, com experiência em
           desenvolvimento web e conhecimentos em diversas linguagens, como HTML,
           CSS, JavaScript, React, PHP, MySQL, C#, Java, Next, Node, PostgreSQL,

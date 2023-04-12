@@ -1,5 +1,6 @@
 import { Header } from '@/components/Header'
 import { Home } from '@/components/Home'
+import { Skills } from '@/components/Skills'
 import Head from 'next/head'
 
 export default function PageHome() {
@@ -11,6 +12,7 @@ export default function PageHome() {
       <Header />
 
       <Home />
+      <Skills />
     </div>
   )
 }
