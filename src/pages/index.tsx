@@ -1,7 +1,9 @@
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+
 import { Header } from '@/components/Header'
 import { Home } from '@/components/Home'
 import { Skills } from '@/components/Skills'
-import Head from 'next/head'
 
 export default function PageHome() {
   return (
@@ -15,4 +17,10 @@ export default function PageHome() {
       <Skills />
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
 }
