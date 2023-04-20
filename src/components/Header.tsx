@@ -5,7 +5,7 @@ export function Header() {
   const [openNav, setOpenNav] = useState(false)
 
   return (
-    <header className="w-full py-5 lg:py-8 bg-clip-padding backdrop-filter fixed backdrop-blur-md bg-opacity-10 z-10 text-gray-200 shadow-xl">
+    <header className="w-full py-5 lg:py-8 bg-clip-padding backdrop-filter fixed backdrop-blur-md bg-opacity-10 z-10 text-gray-300 shadow-xl">
       <div className="w-[85%] mx-auto">
         <nav className="text-xl lg:text-2xl w-full lg:flex lg:justify-between lg:items-center">
           <div className="text-center">
@@ -18,7 +18,7 @@ export function Header() {
           </div>
 
           <ul
-            className={`text-white bg-gray-700 text-center transition lg:h-full w-full h-screen flex flex-col justify-evenly lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
+            className={`text-gray-300 bg-gray-700 text-center transition lg:h-full w-full h-screen flex flex-col justify-evenly lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
               openNav === false ? 'left-[-5000px]' : 'left-0'
             }`}
           >
