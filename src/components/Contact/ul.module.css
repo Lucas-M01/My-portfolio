@@ -1,0 +1,8 @@
+.sci li a {
+    transform-style: preserve-3d;
+    perpective: 500px;
+}
+
+.fa:hover svg {
+    transform: scale(1.75) translateZ(50px);
+}

@@ -12,8 +12,8 @@ export function Skills() {
           {languages.map((language) => {
             return (
               <Skill
-                key={language.src}
-                src={language.src}
+                key={language.text}
+                svg={language.svg}
                 text={language.text}
               />
             )
