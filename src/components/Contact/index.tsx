@@ -7,7 +7,7 @@ import Tilt from 'react-parallax-tilt'
 import styles from './ul.module.css'
 
 export function Contact() {
-  const [bgColor, setBgColor] = useState<string>('')
+  const [bgColor, setBgColor] = useState<string>('#fff')
 
   useEffect(() => {
     const list = document.querySelectorAll('.sci li')
@@ -15,7 +15,6 @@ export function Contact() {
     list.forEach((elements) => {
       elements.addEventListener('mouseenter', function (event: any) {
         const color = event.target.getAttribute('data-color')
-        console.log(color)
         if (bg) {
           bg.style.backgroundColor = color
           setBgColor(color)
@@ -33,11 +32,17 @@ export function Contact() {
 
   return (
     <section
-      className={`flex justify-center items-center min-h-screen duration-500 socialMedia`}
+      className={`  duration-500 socialMedia`}
       style={{ backgroundColor: bgColor }}
+      id="contact"
     >
-      <div>
-        <ul className={`flex relative ${styles.sci} sci`}>
+      <div className="w-[85%] mx-auto flex justify-center flex-col items-center min-h-screen">
+        <h4 className="text-center font-semibold text-2xl md:text-3xl lg:text-4xl absolute h-[60%]">
+          Contatos
+        </h4>
+        <ul
+          className={`flex gap-2 sm:gap-3 md:gap-5 lg:gap-8 flex-wrap relative ${styles.sci} sci`}
+        >
           <li
             data-text="Github"
             data-color="#181717"
@@ -51,7 +56,7 @@ export function Contact() {
               glareColor="#ffffff"
               glarePosition="all"
               glareBorderRadius="0.5rem"
-              className={`${styles.tilt} w-28 h-28 m-5`}
+              className={`${styles.tilt} w-28 h-28 `}
             >
               <Link
                 href="https://github.com/Lucas-M01"
@@ -75,7 +80,7 @@ export function Contact() {
               glareColor="#ffffff"
               glarePosition="all"
               glareBorderRadius="10px"
-              className={`${styles.tilt} w-28 h-28 m-5 `}
+              className={`${styles.tilt} w-28 h-28  `}
             >
               <Link
                 href="https://linkedin.com/in/lucas-m01"
@@ -99,7 +104,7 @@ export function Contact() {
               glareColor="#ffffff"
               glarePosition="all"
               glareBorderRadius="0.5rem"
-              className={`${styles.tilt} w-28 h-28 m-5 `}
+              className={`${styles.tilt} w-28 h-28  `}
             >
               <Link
                 href="mailto:lucas.montenegro.n@outlook.com"
@@ -123,7 +128,7 @@ export function Contact() {
               glareColor="#ffffff"
               glarePosition="all"
               glareBorderRadius="0.5rem"
-              className={`${styles.tilt} w-28 h-28 m-5`}
+              className={`${styles.tilt} w-28 h-28 `}
             >
               <Link
                 href="mailto:lucas.montenegro.n@gmail.com"

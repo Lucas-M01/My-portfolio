@@ -4,7 +4,10 @@ import { DownloadSimple } from 'phosphor-react'
 
 export function Home() {
   return (
-    <section className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center pt-20">
+    <section
+      className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center pt-20"
+      id="home"
+    >
       <div className="flex  flex-col-reverse w-[85%] mx-auto sm:mt-28 sm:mb-32 sm:flex-row sm:justify-between">
         <div className="flex flex-col gap-2 mb-14 sm:mb-0 lg:w-1/2 lg:gap-1">
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
@@ -41,7 +44,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="bg-zinc-800 py-8 w-screen text-center">
+      <section className="bg-zinc-800 py-8 w-screen text-center" id="about">
         <h4 className="font-semibold text-2xl mb-4 md:text-3xl lg:text-4xl">
           Sobre min
         </h4>
@@ -57,7 +60,7 @@ export function Home() {
           inglês e estou sempre em busca de novas oportunidades para me
           desenvolver como profissional.
         </p>
-      </div>
+      </section>
     </section>
 
     // <section className="flex justify-center text-center sm:text-left">
