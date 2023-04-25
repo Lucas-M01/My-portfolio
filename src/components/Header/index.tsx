@@ -1,8 +1,55 @@
 import Hamburger from 'hamburger-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import styles from './header.module.css'
 
 export function Header() {
   const [openNav, setOpenNav] = useState(false)
+
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('section')
+    const navLinks = document.querySelectorAll('header nav ul li  a')
+
+    const handleScroll = () => {
+      sections.forEach((sec) => {
+        const top: number = window.scrollY
+        const offset: number = sec.offsetTop - 150
+        const height: number = sec.offsetHeight
+        const id: string | null = sec.getAttribute('id')
+        if (top >= offset && top < offset + height) {
+          navLinks.forEach((link) => {
+            link.classList.remove(`${styles.active}`)
+            document
+              .querySelector(`header div nav ul li a[href*=${id}]`)
+              ?.classList.add(`${styles.active}`)
+          })
+        }
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // let sections = document.querySelectorAll('section')
+  // let navLinks = document.querySelectorAll('header nav a')
+
+  // window.onscroll = () => {
+  //   sections.forEach((sec) => {
+  //     let top = window.scrollY
+  //     let offset = sec.offsetTop - 150
+  //     let height = sec.offsetHeight
+  //     let id = sec.getAttribute('id')
+
+  //     if (top >= offset && top < offset + height) {
+  //       navLinks.forEach((links) => {
+  //         links.classList.remove('active')
+  //         document.querySelector('header nav a[href*=' + id + ']').classList.add('active')
+  //       })
+  //     }
+  //   })
+  // }
 
   return (
     <header className="w-full py-5 lg:py-8 bg-clip-padding backdrop-filter fixed backdrop-blur-md bg-opacity-10 z-10 text-gray-300 shadow-xl">
@@ -24,7 +71,7 @@ export function Header() {
           >
             <li className="lg:ml-[2em]">
               <a
-                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
                 href="#home"
               >
                 Home
@@ -32,7 +79,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
                 href="#about"
               >
                 About
@@ -40,7 +87,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
                 href="#skills"
               >
                 Skills
@@ -48,7 +95,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
                 href="#portfolio"
               >
                 Portfolio
@@ -56,7 +103,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className="lg:relative before:content-[''] before:w-0 before:absolute before:h-[3px] before:bg-yellow-500 before:bottom-[-2px] before:duration-300 before:ease-linear hover:before:w-full"
+                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
                 href="#contact"
               >
                 Contact

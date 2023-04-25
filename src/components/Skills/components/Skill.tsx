@@ -31,14 +31,14 @@ export function Skill({ svg, text, link }: SkillProps) {
               href={link}
               className="w-full h-full flex justify-center align-center"
             >
-              <div className="text-center flex flex-col gap-5 justify-between items-center pointer-events-none p-6">
+              <div className="text-center flex flex-col gap-2 md:gap-5 justify-between items-center pointer-events-none p-6">
                 {typeof svg === 'string' ? (
                   <Image
                     src={svg}
                     width={20}
                     height={20}
                     alt={text}
-                    className="w-3/5"
+                    className=" md:w-3/5"
                   />
                 ) : (
                   svg

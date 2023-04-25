@@ -1,8 +1,31 @@
 import Image from 'next/image'
-import TestImg from '../../public/testPer.jpg'
+import TestImg from '../../../public/testPer.jpg'
 import { DownloadSimple } from 'phosphor-react'
+import { useEffect, useRef } from 'react'
 
 export function Home() {
+  const textRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const text = textRef.current
+
+    const textLoad = () => {
+      setTimeout(() => {
+        if (text) {
+          text.textContent = 'Web'
+        }
+      }, 0)
+      setTimeout(() => {
+        if (text) {
+          text.textContent = 'Front-end'
+        }
+      }, 4000)
+    }
+
+    textLoad()
+    setInterval(textLoad, 7800)
+  }, [])
+
   return (
     <section
       className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center pt-20"
@@ -16,11 +39,15 @@ export function Home() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Lucas Montenegro
           </h1>
-          <h4 className="text-2xl md:text-3xl lg:text-4xl font-bold lg:whitespace-nowrap">
-            E eu sou um{' '}
-            <span className="text-blue-500 ">
-              Desenvolvedor <span className="">Web</span>
-            </span>
+          <h4 className="text-2xl flex gap-2 md:text-3xl lg:text-4xl font-bold lg:whitespace-nowrap">
+            E eu sou um
+            <span className="text-blue-500">Desenvolvedor</span>
+            <div className="relative text-blue-500 overflow-hidden">
+              <span
+                className="before:content-[''] before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-gray-800 before:border-l-2 before:border-solid before:border-blue-500 before:animate-typing"
+                ref={textRef}
+              ></span>
+            </div>
           </h4>
           <div className="flex justify-center sm:justify-start mt-5 lg:w-full">
             <a

@@ -18,9 +18,18 @@ module.exports = {
             backgroundPosition: '0% 50%',
           },
         },
+        typing: {
+          '40%, 60%': {
+            left: 'calc(100% + 4px)',
+          },
+          '100%': {
+            left: '0%',
+          },
+        },
       },
       animation: {
         Gradient: 'Gradient 15s ease infinite',
+        typing: 'typing 4s steps(12) infinite',
       },
     },
   },
