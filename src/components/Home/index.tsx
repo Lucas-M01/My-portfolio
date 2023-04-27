@@ -23,7 +23,7 @@ export function Home() {
     }
 
     textLoad()
-    setInterval(textLoad, 7800)
+    setInterval(textLoad, 8000)
   }, [])
 
   return (
@@ -52,7 +52,7 @@ export function Home() {
           <div className="flex justify-center sm:justify-start mt-5 lg:w-full">
             <a
               href=""
-              className="py-3 px-7 bg-pink-500 flex gap-2 justify-center items-center rounded-[4rem] hover:rounded-none duration-150 font-semibold text-lg md:text-xl hover:tracking-[.1rem] shadow-[0_0_1rem_rgba(0,0,0,0.3)] cursor-pointer hover:bg-pink-400"
+              className={`relative py-3 px-7 border-solid border-2 border-blue-500 flex gap-2 justify-center items-center rounded-[4rem] duration-200 text-blue-500 hover:drop-shadow-[0_0_1rem_rgb(59,130,246)] hover:text-white hover:bg-blue-500 font-semibold text-lg md:text-xl shadow-[0_0_1rem_rgba(0,0,0,0.3)] cursor-pointer `}
             >
               Download CV
               <DownloadSimple weight="bold" className="text-xl md:text-2xl" />
@@ -89,36 +89,5 @@ export function Home() {
         </p>
       </section>
     </section>
-
-    // <section className="flex justify-center text-center sm:text-left">
-    //   <div className="flex flex-col-reverse justify-center gap-5 sm:w-full sm:flex-row sm:justify-between">
-    //     <div className="">
-    //       <h3 className="font-bold">Olá, me chamo</h3>
-    //       <h1 className="font-bold">Lucas Montenegro</h1>
-    //       <h4 className="font-bold">
-    //         E eu sou um{' '}
-    //         <span className="">
-    //           Desenvolvedor <span className="">Web</span>
-    //         </span>
-    //       </h4>
-    //       <div className="">
-    //         <a href="" className="font-semibold flex items-center gap-2">
-    //           Download CV
-    //           <DownloadSimple weight="bold" className="" />
-    //         </a>
-    //       </div>
-    //     </div>
-
-    //     <div className="">
-    //       <Image
-    //         src={TestImg}
-    //         width={220}
-    //         height={220}
-    //         className="rounded-full "
-    //         alt=""
-    //       />
-    //     </div>
-    //   </div>
-    // </section>
   )
 }

@@ -1,4 +1,5 @@
 import {
+  SiAxios,
   SiCsharp,
   SiCss3,
   SiCssmodules,
@@ -17,6 +18,7 @@ import {
   SiPostcss,
   SiPostgresql,
   SiPostman,
+  SiPrisma,
   SiPython,
   SiReact,
   SiStorybook,
@@ -75,6 +77,16 @@ export const languages = [
     svg: <SiNextdotjs className="w-10 h-auto text-[#000000]" />,
     text: 'NextJs',
     link: 'https://nextjs.org/',
+  },
+  {
+    svg: <SiPrisma className="w-10 h-auto text-[rgb(32,40,51)]" />,
+    text: 'Prisma',
+    link: 'https://www.prisma.io/',
+  },
+  {
+    svg: <SiAxios className="w-10 h-auto text-[#5A29E4]" />,
+    text: 'Axios',
+    link: 'https://axios-http.com/docs/intro',
   },
   {
     svg: <SiStyledcomponents className="w-10 h-auto text-[#DB7093]" />,

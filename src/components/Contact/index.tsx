@@ -37,7 +37,9 @@ export function Contact() {
       id="contact"
     >
       <div className="w-[85%] mx-auto flex justify-center flex-col items-center min-h-screen">
-        <h4 className="text-center font-semibold text-2xl md:text-3xl lg:text-4xl absolute h-[60%]">
+        <h4
+          className={`text-center font-semibold text-2xl md:text-3xl lg:text-4xl absolute h-[60%] ${styles.title}`}
+        >
           Contatos
         </h4>
         <ul

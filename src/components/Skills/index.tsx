@@ -4,7 +4,7 @@ import { languages } from './components/languages'
 export function Skills() {
   return (
     <section
-      className="bg-gradient-to-r  from-[#141E30] to-[#243B55] h-[100vh] relative w-full overflow-hidden p-0 m-0 animate-Gradient bg-[length:400%_400%] "
+      className="bg-gray-800 h-[100vh] relative w-full overflow-hidden p-0 m-0 "
       id="skills"
     >
       <div className="w-[85%] mx-auto">

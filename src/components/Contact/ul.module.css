@@ -10,3 +10,10 @@
 .tilt {
     transform-style: preserve-3d;
 }
+
+.title {
+    font-size: 4em;
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+}

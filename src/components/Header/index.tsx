@@ -71,7 +71,7 @@ export function Header() {
           >
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative  hover:text-blue-500 transition-[color] duration-200`}
                 href="#home"
               >
                 Home

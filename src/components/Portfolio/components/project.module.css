@@ -1,0 +1,18 @@
+@media (min-width: 1024px) {
+    .portfolioBox img {
+        width: 100%;
+        transition: .5s ease;
+    }
+
+    .portfolioBox:hover img{
+        transform: scale(1.1);
+    }
+
+    .portfolioBox div {
+        transition: .5s ease;
+    }
+
+    .portfolioBox:hover div {
+        transform: translateY(0);
+    }
+}
