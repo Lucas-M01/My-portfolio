@@ -2,8 +2,13 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { CardProject } from './components/CardProject'
 import { projetos } from './components/projetos'
 import { ProjectModal } from './components/ProjectModal'
+import { useState } from 'react'
 
 export function Portfolio() {
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
+    null,
+  )
+
   return (
     <section className="bg-gray-700 w-full min-h-screen" id="portfolio">
       <div className="w-[85%] mx-auto pb-16">
@@ -19,10 +24,13 @@ export function Portfolio() {
                   name={projeto.name}
                   images={projeto.images}
                   tagsIcons={projeto.tagsIcons}
+                  handleClick={() => setSelectedProjectId(projeto.id)}
                 />
               )
             })}
-            {/* <ProjectModal /> */}
+            <ProjectModal
+              {...projetos.find((projeto) => projeto.id === selectedProjectId)}
+            />
           </Dialog.Root>
         </div>
       </div>

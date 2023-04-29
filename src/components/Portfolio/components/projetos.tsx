@@ -18,7 +18,7 @@ import {
 
 export const projetos = [
   {
-    id: 1,
+    id: 0,
     name: '🎮 NLW eSports',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
@@ -67,15 +67,12 @@ export const projetos = [
     images: [
       'https://user-images.githubusercontent.com/82176047/234623889-1c8de3f4-fe29-4ee1-aabf-13239a713e96.png',
       'https://user-images.githubusercontent.com/82176047/194787007-b5c5a35f-4276-4a97-ac77-0e9eb4909090.png',
-      // 'https://user-images.githubusercontent.com/82176047/194798596-03158018-8e30-4475-a64d-0ee0acdbea37.gif',
-      // 'https://user-images.githubusercontent.com/82176047/194801343-404c1fb8-5986-4de6-8b32-b5be36c186b9.png',
-      // 'https://user-images.githubusercontent.com/82176047/194801385-b0855af1-65a8-47ed-89ab-f020f963d4fc.png',
-      // 'https://user-images.githubusercontent.com/82176047/194801421-71df5f8d-5982-4e9d-8d91-68c6c8347b88.png',
+      'https://user-images.githubusercontent.com/82176047/194798596-03158018-8e30-4475-a64d-0ee0acdbea37.gif',
     ],
     linkGithub: 'https://github.com/Lucas-M01/nlw-eSport',
   },
   {
-    id: 2,
+    id: 1,
     name: '💻 Github Blog',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
@@ -112,14 +109,13 @@ export const projetos = [
     data: '30 de outubro de 2022',
     figma: 'https://www.figma.com/community/file/1138814951106121051',
     images: [
-      // 'https://unsplash.com/photos/4hbJ-eymZ1o',
       'https://user-images.githubusercontent.com/82176047/198910377-057c5c35-5d00-45d2-bda3-dbcfbc587211.png',
     ],
     linkGithub: 'https://github.com/Lucas-M01/github-blog',
   },
   {
-    id: 3,
-    name: 'Ignite Shop',
+    id: 2,
+    name: '🛒 Ignite Shop',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
       <SiNextdotjs key={2} className="w-6 h-auto" />,
@@ -155,13 +151,12 @@ export const projetos = [
     figma:
       'https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate',
     images: [
-      // 'https://unsplash.com/photos/4hbJ-eymZ1o',
       'https://user-images.githubusercontent.com/82176047/223178716-32d3a2c2-3abf-4f1b-9334-6e41366d758d.png',
     ],
     linkGithub: 'https://github.com/Lucas-M01/Ignite-shop',
   },
   {
-    id: 4,
+    id: 3,
     name: 'Ignite lab design system',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
@@ -198,13 +193,12 @@ export const projetos = [
     figma:
       'https://www.figma.com/file/6cOvlXOf9kX9QWQ6DTYFvh/Ignite-Lab-Desing-System?t=X8ZCpydwX80sdRnI-0',
     images: [
-      // 'https://unsplash.com/photos/4hbJ-eymZ1o',
       'https://user-images.githubusercontent.com/82176047/234429555-af61896b-68c0-43d9-ab12-f873a990ab17.png',
     ],
     linkGithub: 'https://github.com/Lucas-M01/ignite-lab-design-system',
   },
   {
-    id: 5,
+    id: 4,
     name: '☕ Coffee Delivery',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
@@ -236,14 +230,13 @@ export const projetos = [
     figma:
       'https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate',
     images: [
-      // 'https://unsplash.com/photos/4hbJ-eymZ1o',
       'https://user-images.githubusercontent.com/82176047/196312189-df51aa94-fb81-44fc-a375-01ad629c1549.png',
     ],
     linkGithub: 'https://github.com/Lucas-M01/CoffeDelivery-Ignite',
   },
   {
-    id: 6,
-    name: 'To Do List - Ignite',
+    id: 5,
+    name: '📝 To Do List - Ignite',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
       <SiStyledcomponents key={2} className="w-6 h-auto" />,
@@ -285,7 +278,6 @@ export const projetos = [
     figma:
       'https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List/duplicate?node-id=0%3A1',
     images: [
-      // 'https://unsplash.com/photos/4hbJ-eymZ1o',
       'https://user-images.githubusercontent.com/82176047/234431743-4caf9a4c-8360-4990-8f6a-16697fe32c9f.png',
     ],
     linkGithub: 'https://github.com/Lucas-M01/to-do-Ignite',
