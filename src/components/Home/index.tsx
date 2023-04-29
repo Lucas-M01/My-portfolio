@@ -39,7 +39,7 @@ export function Home() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Lucas Montenegro
           </h1>
-          <h4 className="text-2xl flex gap-2 md:text-3xl lg:text-4xl font-bold lg:whitespace-nowrap">
+          <h4 className="text-xl sm:text-2xl flex gap-2 md:text-3xl lg:text-4xl font-bold items-center w-full whitespace-nowrap tracking-tight md:tracking-normal">
             E eu sou um
             <span className="text-blue-500">Desenvolvedor</span>
             <div className="relative text-blue-500 overflow-hidden">
@@ -72,8 +72,8 @@ export function Home() {
       </div>
 
       <section className="bg-zinc-800 py-8 w-screen text-center" id="about">
-        <h4 className="font-semibold text-2xl mb-4 md:text-3xl lg:text-4xl">
-          Sobre min
+        <h4 className="font-semibold text-2xl mb-4 md:text-3xl pt-10 lg:pt-[6.5rem] lg:text-4xl">
+          Sobre mim
         </h4>
         <p className="text-zinc-300 w-[85%] mx-auto pb-5">
           Sou um desenvolvedor apaixonado por tecnologia, com experiência em

@@ -7,7 +7,7 @@ export function Skills() {
       className="bg-gray-800 min-h-screen relative w-full overflow-hidden p-0 m-0 "
       id="skills"
     >
-      <div className="w-[85%] mx-auto pt-[6.5rem] pb-20">
+      <div className="w-[85%] mx-auto pt-20 lg:pt-[6.5rem] pb-20">
         <h4 className="text-white  font-semibold text-2xl mb-8 md:mb-14 lg:mb-16 md:text-3xl lg:text-4xl text-center">
           Habilidades
         </h4>

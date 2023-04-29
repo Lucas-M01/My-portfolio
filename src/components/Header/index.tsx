@@ -32,6 +32,9 @@ export function Header() {
     }
   }, [])
 
+  function handleCloseHamburger() {
+    setOpenNav(false)
+  }
   // let sections = document.querySelectorAll('section')
   // let navLinks = document.querySelectorAll('header nav a')
 
@@ -65,13 +68,14 @@ export function Header() {
           </div>
 
           <ul
-            className={`text-gray-300 bg-gray-700 text-center transition lg:h-full w-full h-screen flex flex-col justify-evenly lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
+            className={`text-gray-300 bg-gray-700 text-center transition lg:h-full w-full h-[100vh] flex flex-col gap-28 pt-10 lg:pt-0 lg:gap-0 lg:static lg:flex-row lg:bg-transparent lg:justify-end fixed top-0 ${
               openNav === false ? 'left-[-5000px]' : 'left-0'
             }`}
+            onClick={handleCloseHamburger}
           >
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative  hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative lg: hover:text-blue-500 transition-[color] duration-200`}
                 href="#home"
               >
                 Home
@@ -79,7 +83,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#about"
               >
                 About
@@ -87,7 +91,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#skills"
               >
                 Skills
@@ -95,7 +99,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#portfolio"
               >
                 Portfolio
@@ -103,7 +107,7 @@ export function Header() {
             </li>
             <li className="lg:ml-[2em]">
               <a
-                className={`lg:relative hover:text-blue-500 transition-[color] duration-200`}
+                className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#contact"
               >
                 Contact

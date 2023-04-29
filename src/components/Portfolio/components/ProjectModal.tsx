@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import * as ScrollArea from '@radix-ui/react-scroll-area'
 import Image from 'next/image'
 import { X } from 'phosphor-react'
 import { MutableRefObject, ReactNode } from 'react'
@@ -73,7 +74,7 @@ export function ProjectModal(props: ProjectProps) {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 opacity-50 z-10 inset-0 fixed" />
-      <Dialog.Content className="fixed bg-[#2A2634] grid grid-cols-2 w-3/4 z-20 py-6 md:py-8 px-4 md:px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg max-h-[700px] shadow-lg shadow-black/25">
+      <Dialog.Content className="fixed bg-[#2A2634] grid grid-cols-2 w-[98%] md:w-3/4 z-20 py-6 md:py-8 px-4 md:px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg max-h-[700px] shadow-lg shadow-black/25">
         <div className="flex flex-col justify-between h-full w-[90%]">
           <div>
             <div ref={sliderRef} className="keen-slider h-[200px] max-h-full">
@@ -122,7 +123,7 @@ export function ProjectModal(props: ProjectProps) {
           </div>
         </div>
         <div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mb-2">
             <Dialog.Title className="text-3xl font-black text-blue-500">
               {props.name}
             </Dialog.Title>
@@ -130,20 +131,39 @@ export function ProjectModal(props: ProjectProps) {
               <X size={22} />
             </Dialog.Close>
           </div>
-          <div className="">
-            <div className="">
-              {props.description}
-              <p className="mt-5">
-                Nele foi utilizado as seguintes ferramentas:
-              </p>
-              <ul className="list-disc ml-4">
-                {props.languages?.map((language) => (
-                  <li key={language}>{language}</li>
-                ))}
-              </ul>
-            </div>
-            <span className="text-blue-500 font-semibold">{props.data}</span>
-          </div>
+          <ScrollArea.Root className="overflow-hidden bg-transparent h-full w-full">
+            <ScrollArea.Viewport className="h-full w-full">
+              <div className="">
+                <div className="">
+                  {props.description}
+                  <p className="mt-5">
+                    Nele foi utilizado as seguintes ferramentas:
+                  </p>
+                  <ul className="list-disc ml-4">
+                    {props.languages?.map((language) => (
+                      <li key={language}>{language}</li>
+                    ))}
+                  </ul>
+                </div>
+                <span className="text-blue-500 font-semibold">
+                  {props.data}
+                </span>
+              </div>
+            </ScrollArea.Viewport>
+            <ScrollArea.Scrollbar
+              className="flex select-none touch-none p-0.5 bg-black transition-colors duration-[160ms] ease-out hover:bg-gray-800 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2.5"
+              orientation="vertical"
+            >
+              <ScrollArea.Thumb className="flex-1 bg-pink-500 rounded-[10px] relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]" />
+            </ScrollArea.Scrollbar>
+            <ScrollArea.Scrollbar
+              className="flex select-none touch-none p-0.5 bg-black transition-colors duration-[160ms] ease-out hover:bg-gray-800 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2.5"
+              orientation="horizontal"
+            >
+              <ScrollArea.Thumb className="flex-1 bg-pink-500 rounded-[10px] relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]" />
+            </ScrollArea.Scrollbar>
+            <ScrollArea.Corner className="bg-black" />
+          </ScrollArea.Root>
         </div>
       </Dialog.Content>
     </Dialog.Portal>

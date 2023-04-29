@@ -32,7 +32,7 @@ export function Contact() {
 
   return (
     <section
-      className={`  duration-500 socialMedia`}
+      className={`duration-500 socialMedia`}
       style={{ backgroundColor: bgColor }}
       id="contact"
     >
