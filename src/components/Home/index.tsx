@@ -71,22 +71,27 @@ export function Home() {
         </div>
       </div>
 
-      <section className="bg-zinc-800 py-8 w-screen text-center" id="about">
-        <h4 className="font-semibold text-2xl mb-4 md:text-3xl pt-10 lg:pt-[6.5rem] lg:text-4xl">
-          Sobre mim
-        </h4>
-        <p className="text-zinc-300 w-[85%] mx-auto pb-5">
-          Sou um desenvolvedor apaixonado por tecnologia, com experiência em
-          desenvolvimento web e conhecimentos em diversas linguagens, como HTML,
-          CSS, JavaScript, React, PHP, MySQL, C#, Java, Next, Node, PostgreSQL,
-          MongoDB, Python e Django. Comunicativo e pró-ativo, já trabalhei em
-          projetos desafiadores que me permitiram aprimorar minhas habilidades
-          técnicas e de trabalho em equipe. Atualmente estou cursando o 5º
-          período de Ciência da Computação na Cruzeiro do Sul EAD, e estou mais
-          focado em React, TypeScript e Next. Falo português e um pouco de
-          inglês e estou sempre em busca de novas oportunidades para me
-          desenvolver como profissional.
-        </p>
+      <section
+        className="bg-gray-800 py-16 w-screen min-h-[35vh] text-center flex items-center"
+        id="about"
+      >
+        <div className="bg-zinc-800 h-full flex flex-col ">
+          <h4 className="font-semibold text-2xl mb-4 md:text-3xl pt-10 lg:text-4xl">
+            Sobre mim
+          </h4>
+          <p className="text-zinc-300 w-[85%] mx-auto pb-5">
+            Sou um desenvolvedor apaixonado por tecnologia, com experiência em
+            desenvolvimento web e conhecimentos em diversas linguagens, como
+            HTML, CSS, JavaScript, React, PHP, MySQL, C#, Java, Next, Node,
+            PostgreSQL, MongoDB, Python e Django. Comunicativo e pró-ativo, já
+            trabalhei em projetos desafiadores que me permitiram aprimorar
+            minhas habilidades técnicas e de trabalho em equipe. Atualmente
+            estou cursando o 5º período de Ciência da Computação na Cruzeiro do
+            Sul EAD, e estou mais focado em React, TypeScript e Next. Falo
+            português e um pouco de inglês e estou sempre em busca de novas
+            oportunidades para me desenvolver como profissional.
+          </p>
+        </div>
       </section>
     </section>
   )

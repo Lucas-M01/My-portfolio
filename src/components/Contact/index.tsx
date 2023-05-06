@@ -43,7 +43,7 @@ export function Contact() {
           Contatos
         </h4>
         <ul
-          className={`flex gap-2 sm:gap-3 md:gap-5 lg:gap-8 flex-wrap relative ${styles.sci} sci`}
+          className={`flex justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-8 flex-wrap relative ${styles.sci} sci`}
         >
           <li
             data-text="Github"
