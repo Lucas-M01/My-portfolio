@@ -45,9 +45,13 @@ function ThumbnailPlugin(
 
     slider.on('created', () => {
       if (!mainRef.current) return
-      addActive(slider.track.details.rel)
+      if (!slider.track.details) return
+
+      addActive(slider.track.details.rel ?? 0)
       addClickEvents()
       mainRef.current.on('animationStarted', (main) => {
+        if (!slider.track.details) return
+
         removeActive()
         const next = main.animator.targetIdx || 0
         addActive(main.track.absToRel(next))
