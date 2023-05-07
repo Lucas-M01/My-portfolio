@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import { Header } from '@/components/Header'
@@ -11,7 +10,7 @@ export default function PageHome() {
   return (
     <div className="bg-gray-800 h-screen ">
       <Head>
-        <title>Portfólio</title>
+        <title>Portfólio | Lucas Montenegro</title>
       </Head>
       <Header />
 
@@ -21,10 +20,4 @@ export default function PageHome() {
       <Contact />
     </div>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {},
-  }
 }
