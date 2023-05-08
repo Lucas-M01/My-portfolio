@@ -43,6 +43,8 @@
         letter-spacing: 4px;
         padding: 4px 10px;
         background: rgb(219 234 254);
+
+        border-radius: 1.5rem;
     }
 
     header .navigationNav li {

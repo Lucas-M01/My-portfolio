@@ -30,6 +30,7 @@ export function Skill({ svg, text, link }: SkillProps) {
             <Link
               href={link}
               className="w-full h-full flex justify-center align-center"
+              target="_blank"
             >
               <div className="text-center flex flex-col gap-2 md:gap-5 justify-between items-center pointer-events-none p-6">
                 {typeof svg === 'string' ? (
