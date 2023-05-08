@@ -2,6 +2,7 @@ import Image from 'next/image'
 import TestImg from '../../../public/testPer.jpg'
 import { DownloadSimple } from 'phosphor-react'
 import { useEffect, useRef } from 'react'
+import styles from './section.module.css'
 
 export function Home() {
   const textRef = useRef<HTMLSpanElement>(null)
@@ -28,11 +29,13 @@ export function Home() {
 
   return (
     <section
-      className="text-center sm:text-left text-white sm:flex sm:flex-wrap  sm:items-center pt-20"
+      className={`text-center sm:text-left text-white sm:flex sm:flex-wrap sm:items-center pt-20 ${styles.section}`}
       id="home"
     >
-      <div className="flex  flex-col-reverse w-[85%] mx-auto sm:mt-28 sm:mb-32 sm:flex-row sm:justify-between">
-        <div className="flex flex-col gap-2 mb-14 sm:mb-0 lg:w-1/2 lg:gap-1">
+      <div className="flex  flex-col-reverse w-[85%] mx-auto sm:pt-28 sm:pb-32 sm:flex-row sm:justify-between">
+        <div
+          className={`flex flex-col bg-gray-800 gap-2 pb-14 sm:pb-0 lg:w-1/2 lg:gap-1 ${styles.home}`}
+        >
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
             Olá, me chamo
           </h3>
@@ -60,7 +63,7 @@ export function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center mb-10 sm:mb-0">
+        <div className="flex justify-center pb-10 sm:pb-0">
           <Image
             src={TestImg}
             width={220}

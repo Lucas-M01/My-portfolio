@@ -107,6 +107,42 @@
     }
 }
 
+@media (max-height: 400px) {
+    .images {
+        grid-area: images;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .title {
+        grid-area: title; 
+        justify-content: stretch
+    }
+
+    .links {
+        grid-area: links;
+        align-self: end;
+    }
+
+    .content {
+        grid-area: content;
+        grid-row: 1/4;
+        align-self: end;
+    }
+
+    .project {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 1rem;
+        grid-template-rows: repeat(3,  100px auto);
+        grid-template-areas: 
+            "images title"
+            ".      content"
+            "links  content"
+        ;
+    }
+}
+
 .activeThimbnail {
     border: 2px solid #fff;
 }

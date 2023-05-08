@@ -94,9 +94,9 @@ export function ProjectModal(props: ProjectProps) {
                     key={image}
                     src={image}
                     alt=""
-                    width={500}
+                    width={800}
                     height={500}
-                    className="keen-slider__slide w-full "
+                    className={`keen-slider__slide w-full `}
                   />
                 )
               })}
@@ -111,7 +111,7 @@ export function ProjectModal(props: ProjectProps) {
                       alt=""
                       width={500}
                       height={500}
-                      className="keen-slider__slide lg:mt-4 mb-4"
+                      className={`keen-slider__slide lg:mt-4 mb-4`}
                     />
                   )
                 })}

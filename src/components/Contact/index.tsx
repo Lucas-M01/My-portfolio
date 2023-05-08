@@ -32,7 +32,7 @@ export function Contact() {
 
   return (
     <section
-      className={`duration-500 socialMedia`}
+      className={`duration-500 socialMedia ${styles.contact}`}
       style={{ backgroundColor: bgColor }}
       id="contact"
     >
@@ -43,7 +43,7 @@ export function Contact() {
           Contatos
         </h4>
         <ul
-          className={`flex justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-8 flex-wrap relative ${styles.sci} sci`}
+          className={`flex justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-8 flex-wrap relative ${styles.sci}`}
         >
           <li
             data-text="Github"

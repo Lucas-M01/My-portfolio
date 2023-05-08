@@ -1,0 +1,20 @@
+@media (max-height: 400px) {
+    .section {
+        min-height: 100vh;
+        padding-top: 1.5rem;
+    }
+
+    .section div h4,
+    .section div h4 span {
+        font-size: 1.5rem
+    }
+
+    .section div {
+        padding-bottom: 0;
+    }
+
+    .home {
+        height: 100%;
+        margin: 0;
+    }
+}
