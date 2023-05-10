@@ -17,4 +17,12 @@
         height: 100%;
         margin: 0;
     }
+
+    .perfil {
+        width: 9.5rem;
+        height: 9.25rem;
+
+        margin-top: -1rem;
+    }
 }
+

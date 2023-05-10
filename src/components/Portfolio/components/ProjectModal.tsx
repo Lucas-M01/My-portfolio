@@ -101,7 +101,10 @@ export function ProjectModal(props: ProjectProps) {
                 )
               })}
             </div>
-            <div ref={thumbnailRef} className="keen-slider thumbnail">
+            <div
+              ref={thumbnailRef}
+              className={`keen-slider thumbnail ${styles.thumbnailSlides}`}
+            >
               {props.images?.length! > 1 &&
                 props.images?.map((image) => {
                   return (
@@ -111,7 +114,7 @@ export function ProjectModal(props: ProjectProps) {
                       alt=""
                       width={500}
                       height={500}
-                      className={`keen-slider__slide lg:mt-4 mb-4`}
+                      className={`keen-slider__slide lg:mt-4 mb-4 `}
                     />
                   )
                 })}

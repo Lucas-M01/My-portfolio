@@ -15,7 +15,7 @@ export function Portfolio() {
         <h4 className="text-center text-zinc-200 pt-20 lg:pt-[6.5rem] font-semibold text-2xl md:text-3xl lg:text-4xl">
           Projetos
         </h4>
-        <div className="w-full grid grid-cols-1 lg:grid-cols-[repeat(3,1fr)] md:grid-cols-[repeat(2,1fr)] items-center gap-10 mt-10">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-[repeat(3,1fr)] sm:grid-cols-[repeat(2,1fr)] items-center gap-10 mt-10">
           <Dialog.Root>
             {projetos.map((projeto) => {
               return (
