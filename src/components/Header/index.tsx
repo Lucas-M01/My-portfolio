@@ -70,7 +70,7 @@ export function Header() {
                 className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#about"
               >
-                About
+                Sobre
               </a>
             </li>
             <li className="lg:ml-[2em]">
@@ -86,7 +86,7 @@ export function Header() {
                 className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#portfolio"
               >
-                Portfolio
+                Projetos
               </a>
             </li>
             <li className="lg:ml-[2em]">
@@ -94,7 +94,7 @@ export function Header() {
                 className={`lg:relative lg:hover:text-blue-500 transition-[color] duration-200`}
                 href="#contact"
               >
-                Contact
+                Contatos
               </a>
             </li>
           </ul>

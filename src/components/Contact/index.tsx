@@ -10,7 +10,7 @@ export function Contact() {
   const [bgColor, setBgColor] = useState<string>('#fff')
 
   useEffect(() => {
-    const list = document.querySelectorAll('.sci li')
+    const list = document.querySelectorAll('div ul li')
     const bg = document.querySelector<HTMLDivElement>('.socialMedia')
     list.forEach((elements) => {
       elements.addEventListener('mouseenter', function (event: any) {
@@ -28,6 +28,7 @@ export function Contact() {
         }
       })
     })
+    console.log(list)
   }, [])
 
   return (
