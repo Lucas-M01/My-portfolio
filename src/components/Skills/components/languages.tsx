@@ -8,6 +8,7 @@ import {
   SiFigma,
   SiGit,
   SiGithub,
+  SiHibernate,
   SiHtml5,
   SiJavascript,
   SiMongodb,
@@ -21,11 +22,14 @@ import {
   SiPrisma,
   SiPython,
   SiReact,
+  SiSpring,
   SiStorybook,
   SiStyledcomponents,
   SiTailwindcss,
+  SiTrello,
   SiTypescript,
 } from 'react-icons/si'
+import { DiJava } from 'react-icons/di'
 
 export const languages = [
   {
@@ -127,6 +131,26 @@ export const languages = [
     svg: <SiCsharp className="w-10 h-auto text-[#239120]" />,
     text: 'C#',
     link: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+  },
+  {
+    svg: <SiTrello className="w-10 h-auto text-[#0052CC]" />,
+    text: 'Trello',
+    link: 'https://trello.com/',
+  },
+  {
+    svg: <DiJava className="w-10 h-auto text-[#744e3b]" />,
+    text: 'Java',
+    link: '',
+  },
+  {
+    svg: <SiHibernate className="w-10 h-auto text-[#59666C]" />,
+    text: 'Hibernate',
+    link: 'https://hibernate.org/',
+  },
+  {
+    svg: <SiSpring className="w-10 h-auto text-[#6DB33F]" />,
+    text: 'Spring',
+    link: 'https://spring.io/projects/spring-boot',
   },
   {
     svg: <SiPhp className="w-10 h-auto text-[#777BB4]" />,

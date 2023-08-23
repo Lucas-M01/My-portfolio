@@ -54,7 +54,7 @@ export function Home() {
           </h4>
           <div className="flex justify-center sm:justify-start bg-gray-800 mt-5 lg:w-full">
             <a
-              href="https://drive.google.com/u/0/uc?id=1uGjWi7_sxtU5vWIjMwu6kVn4juLm9oMs&export=download"
+              href="https://drive.google.com/u/0/uc?id=1xxCMlUmAmbJPAXh89SZCwn2T-0_xZp6l&export=download"
               className={`relative py-3 px-7 border-solid border-2 border-blue-500 flex gap-2 justify-center items-center rounded-[4rem] duration-200 text-blue-500 hover:drop-shadow-[0_0_1rem_rgb(59,130,246)] hover:text-white hover:bg-blue-500 font-semibold text-lg md:text-xl shadow-[0_0_1rem_rgba(0,0,0,0.3)] cursor-pointer `}
             >
               Download CV
