@@ -22,7 +22,7 @@ export function Skill({ svg, text, link }: SkillProps) {
       glareColor="#ffffff"
       glarePosition="bottom"
       glareBorderRadius="20px"
-      className="relative w-[5.75rem] h-[6.5rem] md:w-24 md:h-28 lg:w-28 lg:h-32 shadow-[20px_20px_50px_rgba(0,0,0,0.5)] rounded-[15px] bg-[rgba(255,255,255,0.1)] overflow-hidden border-solid border-[rgba(255,255,255,0.5)] border-t-[1px] border-l-[1px] backdrop-filter backdrop-blur-[5px]"
+      className="relative w-[5.75rem] h-[6.5rem] md:w-24 md:h-28 lg:w-28 lg:h-32 hover:shadow-[20px_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300  rounded-[15px] bg-[rgba(255,255,255,0.1)] overflow-hidden border-solid border-[rgba(255,255,255,0.5)] border-t-[1px] border-l-[1px] backdrop-filter backdrop-blur-[5px]"
     >
       <Tooltip.Provider>
         <Tooltip.Root>

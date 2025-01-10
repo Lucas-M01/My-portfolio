@@ -1,11 +1,9 @@
 import {
   SiAxios,
-  SiCsharp,
   SiCss3,
   SiCssmodules,
   SiDjango,
   SiExpress,
-  SiFigma,
   SiGit,
   SiGithub,
   SiHibernate,
@@ -15,18 +13,17 @@ import {
   SiMysql,
   SiNextdotjs,
   SiNodedotjs,
-  SiPhp,
   SiPostcss,
   SiPostgresql,
   SiPostman,
   SiPrisma,
   SiPython,
   SiReact,
+  SiShadcnui,
   SiSpring,
   SiStorybook,
   SiStyledcomponents,
   SiTailwindcss,
-  SiTrello,
   SiTypescript,
 } from 'react-icons/si'
 import { DiJava } from 'react-icons/di'
@@ -46,6 +43,11 @@ export const languages = [
     svg: <SiTailwindcss className="w-10 h-auto text-[#06B6D4]" />,
     text: 'Tailwindcss',
     link: 'https://tailwindcss.com/docs/installation',
+  },
+  {
+    svg: <SiShadcnui className="w-10 h-auto text-[#000000]" />,
+    text: 'Shadcnui',
+    link: 'https://ui.shadcn.com/',
   },
   {
     svg: <SiPostcss className="w-10 h-auto text-[#DD3A0A]" />,
@@ -128,16 +130,6 @@ export const languages = [
     link: 'https://www.djangoproject.com/',
   },
   {
-    svg: <SiCsharp className="w-10 h-auto text-[#239120]" />,
-    text: 'C#',
-    link: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
-  },
-  {
-    svg: <SiTrello className="w-10 h-auto text-[#0052CC]" />,
-    text: 'Trello',
-    link: 'https://trello.com/',
-  },
-  {
     svg: <DiJava className="w-10 h-auto text-[#744e3b]" />,
     text: 'Java',
     link: '',
@@ -151,11 +143,6 @@ export const languages = [
     svg: <SiSpring className="w-10 h-auto text-[#6DB33F]" />,
     text: 'Spring',
     link: 'https://spring.io/projects/spring-boot',
-  },
-  {
-    svg: <SiPhp className="w-10 h-auto text-[#777BB4]" />,
-    text: 'PHP',
-    link: 'https://www.php.net/',
   },
   {
     svg: <SiPostgresql className="w-10 h-auto text-[#4169E1]" />,
@@ -176,10 +163,5 @@ export const languages = [
     svg: <SiMysql className="w-10 h-auto text-[#4479A1]" />,
     text: 'MySQL',
     link: 'https://www.mysql.com/',
-  },
-  {
-    svg: <SiFigma className="w-10 h-auto text-[#F24E1E]" />,
-    text: 'Figma',
-    link: 'https://www.figma.com/',
   },
 ]

@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import {
   SiAxios,
-  SiFigma,
+  SiKotlin,
   SiNextdotjs,
   SiNodedotjs,
   SiPostcss,
@@ -8,12 +9,15 @@ import {
   SiPrisma,
   SiReact,
   SiReacthookform,
+  SiReactrouter,
+  SiShadcnui,
   SiStorybook,
   SiStripe,
   SiStyledcomponents,
   SiTailwindcss,
   SiTypescript,
   SiVite,
+  SiZod,
 } from 'react-icons/si'
 
 export const projetos = [
@@ -73,45 +77,177 @@ export const projetos = [
   },
   {
     id: 1,
-    name: '💻 Github Blog',
+    name: '🧁 UAI Cupcake',
     tagsIcons: [
       <SiReact key={1} className="w-6 h-auto" />,
-      <SiStyledcomponents key={2} className="w-6 h-auto" />,
+      <SiTailwindcss key={2} className="w-6 h-auto" />,
       <SiTypescript key={3} className="w-6 h-auto" />,
+      <SiReactrouter key={4} className="w-6 h-auto" />,
       <SiReacthookform key={4} className="w-6 h-auto" />,
       <SiVite key={5} className="w-6 h-auto" />,
-      <SiAxios key={6} className="w-6 h-auto" />,
-      <SiFigma key={7} className="w-6 h-auto" />,
+      <SiShadcnui key={6} className="w-6 h-auto" />,
+      <SiZod key={6} className="w-6 h-auto" />,
+      <SiKotlin key={7} className="w-6 h-auto" />,
     ],
     languages: [
       'React',
       'Typescript',
-      'Styled Components',
+      'Tailwindcss',
       'React Hook Form',
       'Vite',
       'Zod',
       'Date-fns',
       'React Router Dom',
-      'Axios',
+      'Shadcn/ui',
+      'Zustand',
+      'PostgreSQL',
+      'Kotlin',
+      'Docker',
     ],
     description: (
       <div>
         <p>
-          Uma aplicação que utilizou a API do GitHub para buscar issues de um
-          repositório (que no caso, desse repositório), dados do seu perfil e
-          exibir elas como um blog. Terceiro desafio do Ignite, bootcamp da
-          Rocketseat, especificamente, da Trilha de ReactJS. O projeto foi
-          desenvolvido a partir de um template previamente disponibilizado no
-          figma Github Blog.
+          {' '}
+          &nbsp;&nbsp;&nbsp;&nbsp; Um projeto desenvolvido como parte do Projeto
+          Integrador Transdisciplinar em Ciência da Computação 2 da Cruzeiro do
+          Sul Virtual. 🚀
+          <span className="block">
+            &nbsp;&nbsp;&nbsp;&nbsp; Este projeto consistiu na criação de um
+            site de e-commerce especializado na venda de cupcakes artesanais,
+            proporcionando uma experiência única tanto para compradores quanto
+            para administradores. O sistema foi desenvolvido utilizando
+            tecnologias modernas no frontend e backend, garantindo alta
+            performance, responsividade e usabilidade.
+          </span>
+          <br />
+          <span className="block">🛠 Principais Funcionalidades:</span>
+          <span className="block pt-2">
+            Para Compradores: Visualização de produtos, filtros intuitivos,
+            carrinho de compras e acompanhamento de pedidos.
+          </span>
+          <span className="block pt-2">
+            Para Administradores: Gestão de produtos, alterações de status de
+            pedidos e visualização de dados detalhados.
+          </span>
+          <br />
+          <span className="block pt-2">💡 Destaques Técnicos:</span>
+          <span className="block pt-2">
+            Frontend: ReactJS, TypeScript, Zustand, TailwindCSS e React Hook
+            Form.
+          </span>
+          <span className="block pt-2">
+            Backend: Kotlin, Spring Framework e PostgreSQL. Ferramentas
+            Adicionais: Docker, Shadcn-UI e Vite.
+          </span>
+          <br />
+          <span className="block pt-2">
+            🎯 Objetivo: Desenvolver uma solução que não apenas resolvesse os
+            desafios do e-commerce, mas também refletisse nosso aprendizado e
+            dedicação ao longo do curso.
+          </span>
+          <br />
+          <span className="block pt-2">📌 Confira o resultado:</span>
+          <span className="block pt-2">
+            🌐 Acesse o site:{' '}
+            <Link
+              href="https://uai-cupcake.netlify.app/"
+              target="_blank"
+              className="hover:underline text-blue-400 hover:text-blue-300"
+            >
+              Uai Cupcake
+            </Link>
+          </span>
+          <span className="block pt-2">
+            💻 Código fonte:{' '}
+            <Link
+              href="https://github.com/PIC-UNICSUL/uai-cupcake"
+              target="_blank"
+              className="hover:underline text-blue-400 hover:text-blue-300"
+            >
+              Frontend
+            </Link>{' '}
+            |{' '}
+            <Link
+              href="https://github.com/PIC-UNICSUL/uai-cupcake-api"
+              target="_blank"
+              className="hover:underline text-blue-400 hover:text-blue-300"
+            >
+              Backend
+            </Link>
+          </span>
+          <span className="pt-2">
+            📽 Demonstração no YouTube:{' '}
+            <Link
+              href="https://www.youtube.com/watch?v=Wok7SdVaVw0&ab_channel=LucasMontenegro"
+              target="_blank"
+              className="hover:underline text-blue-400 hover:text-blue-300"
+            >
+              Parte 1
+            </Link>{' '}
+            |{' '}
+            <Link
+              href="https://www.youtube.com/watch?v=mZxgTtU3mic&ab_channel=LucasMontenegro"
+              target="_blank"
+              className="hover:underline text-blue-400 hover:text-blue-300"
+            >
+              Parte 2
+            </Link>
+          </span>
+          <br />
+          <span className="block pt-2 font-semibold">Integrantes:</span>
+          <span className="block pt-2">
+            📌{' '}
+            <Link
+              href="https://www.linkedin.com/in/cairo-aparecido-campos-7465202b/"
+              target="_blank"
+              className="hover:underline"
+            >
+              Cairo Aparecido Campos
+            </Link>
+            ,{' '}
+            <Link
+              href="https://www.linkedin.com/in/thaynarasp/"
+              target="_blank"
+              className="hover:underline"
+            >
+              Thaynara Silva Pinto
+            </Link>
+            ,{' '}
+            <Link
+              href="https://www.linkedin.com/in/lucas-m01/"
+              target="_blank"
+              className="hover:underline"
+            >
+              Lucas Montenegro Nunes dos Santos
+            </Link>
+            ,{' '}
+            <Link
+              href="https://www.linkedin.com/in/kayle-/"
+              target="_blank"
+              className="hover:underline"
+            >
+              Mikaelle Coutinho de Jesus Barreto
+            </Link>
+            .
+          </span>
+          <span className="block pt-2">
+            👉 Se você é apaixonado por tecnologia, design ou e-commerce,
+            adoraremos ouvir seus comentários e feedback sobre o Uai Cupcake.
+            Vamos juntos transformar ideias em soluções!
+          </span>
         </p>
       </div>
     ),
-    data: '30 de outubro de 2022',
-    figma: 'https://www.figma.com/community/file/1138814951106121051',
+    data: '30 de dezembro de 2024',
+    figma:
+      'https://www.figma.com/design/KoOXRhI80ssATpRjinXURJ/Loja-Cupcake?node-id=15-15525&node-type=canvas&t=j1bKEdNdvkEeGsEK-0',
     images: [
-      'https://user-images.githubusercontent.com/82176047/198910377-057c5c35-5d00-45d2-bda3-dbcfbc587211.png',
+      '/cupcake/Home.png',
+      '/cupcake/Products.png',
+      '/cupcake/Checkout.png',
+      '/cupcake/Pedidos.png',
     ],
-    linkGithub: 'https://github.com/Lucas-M01/github-blog',
+    linkGithub: 'https://github.com/PIC-UNICSUL',
   },
   {
     id: 2,
