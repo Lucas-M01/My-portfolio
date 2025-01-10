@@ -71,7 +71,7 @@ export function Home() {
       </div>
 
       <div className="flex flex-col items-center -mt-12 sm:-mt-16 space-y-2">
-        <p className="text-sm text-gray-200">Scroll to learn more</p>
+        <p className="text-sm text-gray-200">Role para saber mais</p>
         <button onClick={scrollToNextSection}>
           <VscChevronDown className="h-6 w-6 text-gray-300 hover:text-white animate-bounce" />
         </button>
