@@ -26,10 +26,15 @@ module.exports = {
             left: '0%',
           },
         },
+        bounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
       animation: {
         Gradient: 'Gradient 15s ease infinite',
         typing: 'typing 4s steps(12) infinite',
+        bounce: 'bounce 1.5s infinite',
       },
     },
   },

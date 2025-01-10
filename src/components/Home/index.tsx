@@ -1,15 +1,22 @@
 import Image from 'next/image'
 import TestImg from '../../../public/testPer.jpg'
 import { BsLinkedin } from 'react-icons/bs'
-import { VscGithubInverted } from 'react-icons/vsc'
+import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
 import { DownloadSimple } from 'phosphor-react'
 import { ButtonLink } from './components/ButtonLink'
 import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 
 export function Home() {
+  const scrollToNextSection = () => {
+    const aboutSection = document.getElementById('about')
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section
-      className={`text-center sm:text-left text-white sm:flex sm:flex-wrap sm:items-center `}
+      className={`text-center sm:text-left bg-gray-800 text-white sm:flex sm:flex-col sm:items-center `}
       id="home"
     >
       <div className="flex min-h-screen flex-col-reverse w-[85%] mx-auto sm:pt-28 sm:pb-32 sm:flex-row sm:items-center sm:justify-between">
@@ -61,6 +68,13 @@ export function Home() {
             alt=""
           />
         </div>
+      </div>
+
+      <div className="flex flex-col items-center -mt-12 sm:-mt-16 space-y-2">
+        <p className="text-sm text-gray-200">Scroll to learn more</p>
+        <button onClick={scrollToNextSection}>
+          <VscChevronDown className="h-6 w-6 text-gray-300 hover:text-white animate-bounce" />
+        </button>
       </div>
 
       <section

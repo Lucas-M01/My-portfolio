@@ -3,6 +3,7 @@ import { CardProject } from './components/CardProject'
 import { projetos } from './components/projetos'
 import { ProjectModal } from './components/ProjectModal'
 import { useState } from 'react'
+// import { VscChevronUp } from 'react-icons/vsc'
 
 export function Portfolio() {
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
@@ -34,6 +35,12 @@ export function Portfolio() {
           </Dialog.Root>
         </div>
       </div>
+
+      {/* <div className="relative">
+        <button className="absolute right-12 bottom-14 z-10 p-3 hover:bg-blue-500/90 rounded-full bg-blue-500 ">
+          <VscChevronUp className="text-gray-200" />
+        </button>
+      </div> */}
     </section>
   )
 }
