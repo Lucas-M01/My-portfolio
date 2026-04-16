@@ -33,14 +33,14 @@ export function Home() {
           </h4>
           <div className="flex justify-center gap-2 flex-wrap sm:justify-start mt-5 lg:w-full">
             <ButtonLink
-              href="https://drive.google.com/u/0/uc?id=1xxCMlUmAmbJPAXh89SZCwn2T-0_xZp6l&export=download"
+              href="https://drive.google.com/uc?export=download&id=1Skw3F6fojSGo9pfjMKUNeONu9iHrE9Ct"
               text="Download CV"
               icon={
                 <DownloadSimple weight="bold" className="text-xl md:text-2xl" />
               }
             />
             <ButtonLink
-              href="https://drive.google.com/u/0/uc?id=1xxCMlUmAmbJPAXh89SZCwn2T-0_xZp6l&export=download"
+              href="https://github.com/Lucas-M01"
               text="GitHub"
               icon={<VscGithubInverted className="text-xl md:text-2xl" />}
             />
