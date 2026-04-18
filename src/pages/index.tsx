@@ -6,14 +6,16 @@ import { Portfolio } from '@/components/Portfolio'
 
 export default function PageHome() {
   return (
-    <div className="bg-gray-800 h-screen ">
+    <div className="min-h-screen">
       <Head>
         <title>Portfólio | Lucas Montenegro</title>
       </Head>
 
-      <Home />
-      <Skills />
-      <Portfolio />
+      <div className="">
+        <Home />
+        <Skills />
+        <Portfolio />
+      </div>
     </div>
   )
 }

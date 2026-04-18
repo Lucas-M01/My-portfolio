@@ -16,22 +16,33 @@ export function Home() {
 
   return (
     <section
-      className={`text-center sm:text-left bg-gray-800 text-white sm:flex sm:flex-col sm:items-center `}
+      className={`text-center sm:text-left bg-gray-800 w-full text-white sm:flex sm:flex-col sm:items-center `}
       id="home"
     >
-      <div className="flex min-h-screen flex-col-reverse w-[85%] mx-auto sm:pt-28 sm:pb-32 sm:flex-row sm:items-center sm:justify-between">
-        <div className={`flex flex-col gap-2 pb-14 sm:pb-0 lg:w-1/2 lg:gap-1 `}>
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+      <div className="flex flex-col pt-28 sm:mx-auto  sm:w-5/6 sm:pb-32 lg:flex-row lg:items-center  lg:justify-between">
+        <div className="flex justify-center pb-10 sm:pb-0">
+          <Image
+            src={TestImg}
+            width={220}
+            height={220}
+            className={`rounded-full  `}
+            alt=""
+          />
+        </div>
+        <div
+          className={`flex flex-col items-center lg:items-start gap-2 mt-8 pb-14 sm:pb-0 lg:w-1/2 lg:gap-1 `}
+        >
+          <p className="text-2xl md:text-3xl lg:text-4xl font-bold">
             Olá, me chamo
-          </h3>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+          </p>
+          <p className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Lucas Montenegro
-          </h1>
-          <h4 className="text-xl sm:text-2xl flex gap-2 md:text-3xl lg:text-4xl font-bold items-center whitespace-nowrap tracking-tight md:tracking-normal mx-auto sm:mx-0">
+          </p>
+          <p className="text-xl sm:text-2xl flex gap-2 md:text-3xl lg:text-4xl font-bold items-center whitespace-nowrap tracking-tight md:tracking-normal mx-auto sm:mx-0">
             E eu sou um
             <span className="text-blue-500">Desenvolvedor Web</span>
-          </h4>
-          <div className="flex justify-center gap-2 flex-wrap sm:justify-start mt-5 lg:w-full">
+          </p>
+          <div className="flex justify-center gap-2 flex-wrap md:justify-start mt-5 lg:w-full">
             <ButtonLink
               href="https://drive.google.com/uc?export=download&id=1Skw3F6fojSGo9pfjMKUNeONu9iHrE9Ct"
               text="Download CV"
@@ -58,19 +69,9 @@ export function Home() {
             />
           </div>
         </div>
-
-        <div className="flex justify-center pb-10 bg-gray-800 sm:pb-0">
-          <Image
-            src={TestImg}
-            width={220}
-            height={220}
-            className={`rounded-full  `}
-            alt=""
-          />
-        </div>
       </div>
 
-      <div className="flex flex-col items-center -mt-12 sm:-mt-16 space-y-2">
+      <div className="flex flex-col items-center sm:hidden -mt-4 space-y-2">
         <p className="text-sm text-gray-200">Role para saber mais</p>
         <button onClick={scrollToNextSection}>
           <VscChevronDown className="h-6 w-6 text-gray-300 hover:text-white animate-bounce" />
@@ -78,10 +79,10 @@ export function Home() {
       </div>
 
       <section
-        className="bg-gray-800 py-16 min-h-[35vh] text-left flex items-center"
+        className="py-16 mx-auto  w-5/6 min-h-[35vh] text-left flex items-center"
         id="about"
       >
-        <div className="h-full w-[85%] mx-auto flex flex-col ">
+        <div className="h-full flex flex-col ">
           <h4 className="font-semibold text-2xl mb-4 md:text-3xl pt-10 lg:text-4xl">
             Sobre mim
           </h4>

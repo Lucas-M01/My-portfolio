@@ -22,7 +22,7 @@ export function Skill({ svg, text, link }: SkillProps) {
       glareColor="#ffffff"
       glarePosition="bottom"
       glareBorderRadius="20px"
-      className="relative w-[5.75rem] h-[6.5rem] md:w-24 md:h-28 lg:w-28 lg:h-32 hover:shadow-[20px_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300  rounded-[15px] bg-[rgba(255,255,255,0.1)] overflow-hidden border-solid border-[rgba(255,255,255,0.5)] border-t-[1px] border-l-[1px] backdrop-filter backdrop-blur-[5px]"
+      className="w-full h-28 md:w-24 lg:w-[6.85rem] lg:h-32 hover:shadow-[20px_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300  rounded-[15px] bg-[rgba(255,255,255,0.1)] overflow-hidden border-solid border-[rgba(255,255,255,0.5)] border-t-[1px] border-l-[1px] backdrop-filter backdrop-blur-[5px]"
     >
       <Tooltip.Provider>
         <Tooltip.Root>
@@ -45,11 +45,10 @@ export function Skill({ svg, text, link }: SkillProps) {
                   svg
                 )}
                 <p
-                  className={`z-[1] text-zinc-300 sm:text-sm md:text-md font-semibold lg:text-lg ${
-                    text.length > 11
+                  className={`z-[1] text-zinc-300 sm:text-sm md:text-md font-semibold lg:text-lg ${text.length > 11
                       ? 'whitespace-nowrap text-ellipsis overflow-hidden max-w-[65%]'
                       : ''
-                  }`}
+                    }`}
                 >
                   {/* {text.length > 7 ? text.substring(0, 6).concat('...') : text} */}
                   {text}
