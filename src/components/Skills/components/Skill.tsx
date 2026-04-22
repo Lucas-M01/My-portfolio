@@ -45,10 +45,11 @@ export function Skill({ svg, text, link }: SkillProps) {
                   svg
                 )}
                 <p
-                  className={`z-[1] text-zinc-300 sm:text-sm md:text-md font-semibold lg:text-lg ${text.length > 11
+                  className={`z-[1] text-zinc-300 sm:text-sm md:text-md font-semibold lg:text-lg ${
+                    text.length > 11
                       ? 'whitespace-nowrap text-ellipsis overflow-hidden max-w-[65%]'
                       : ''
-                    }`}
+                  }`}
                 >
                   {/* {text.length > 7 ? text.substring(0, 6).concat('...') : text} */}
                   {text}
