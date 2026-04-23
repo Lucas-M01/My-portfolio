@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { X } from 'phosphor-react'
 import { MutableRefObject, ReactNode } from 'react'
 import {
@@ -17,7 +17,7 @@ export interface ProjectProps {
   description?: ReactNode
   languages?: string[]
   data?: string
-  images?: string[]
+  images?: string[] | StaticImageData[]
   figma?: string
   linkGithub?: string
 }
@@ -88,10 +88,10 @@ export function ProjectModal(props: ProjectProps) {
               ref={sliderRef}
               className="keen-slider h-36 md:h-[200px] max-h-full"
             >
-              {props.images?.map((image) => {
+              {props.images?.map((image, index) => {
                 return (
                   <Image
-                    key={image}
+                    key={index}
                     src={image}
                     alt=""
                     width={800}
@@ -106,10 +106,10 @@ export function ProjectModal(props: ProjectProps) {
               className={`keen-slider thumbnail ${styles.thumbnailSlides}`}
             >
               {props.images?.length! > 1 &&
-                props.images?.map((image) => {
+                props.images?.map((image, index) => {
                   return (
                     <Image
-                      key={image}
+                      key={index}
                       src={image}
                       alt=""
                       width={500}

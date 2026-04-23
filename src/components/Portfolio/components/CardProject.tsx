@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { ReactNode } from 'react'
 import styles from './project.module.css'
 
@@ -7,7 +7,7 @@ interface CardProjectProps {
   handleClick: () => void
   name: string
   tagsIcons: ReactNode[]
-  images: string[]
+  images: string[] | StaticImageData[]
 }
 
 export function CardProject({
