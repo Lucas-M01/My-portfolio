@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import NLWCapa from '../../../../public/assets/NLW/Capa.png'
+import NLWHome from '../../../../public/assets/NLW/Home.png'
+import NLWGame from '../../../../public/assets/NLW/Game.gif'
 import {
   SiAxios,
   SiKotlin,
@@ -68,11 +71,7 @@ export const projetos = [
     ),
     data: '18 de novembro de 2022',
     figma: 'https://www.figma.com/community/file/1150897317533332617',
-    images: [
-      'https://user-images.githubusercontent.com/82176047/234623889-1c8de3f4-fe29-4ee1-aabf-13239a713e96.png',
-      'https://user-images.githubusercontent.com/82176047/194787007-b5c5a35f-4276-4a97-ac77-0e9eb4909090.png',
-      'https://user-images.githubusercontent.com/82176047/194798596-03158018-8e30-4475-a64d-0ee0acdbea37.gif',
-    ],
+    images: [NLWCapa, NLWHome, NLWGame],
     linkGithub: 'https://github.com/Lucas-M01/nlw-eSport',
   },
   {

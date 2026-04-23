@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import TestImg from '../../../public/testPer.jpg'
+import TestImg from '../../../public/assets/testPer.jpg'
 import { BsLinkedin } from 'react-icons/bs'
 import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
 import { DownloadSimple } from 'phosphor-react'
@@ -56,7 +56,7 @@ export function Home() {
               icon={<VscGithubInverted className="text-xl md:text-2xl" />}
             />
             <ButtonLink
-              href="https://www.linkedin.com/in/lucas-m01/"
+              href="https://www.linkedin.com/in/lucasmontenegrons/"
               text="Linkedin"
               icon={<BsLinkedin className="text-xl md:text-2xl" />}
             />
