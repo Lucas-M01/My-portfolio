@@ -1,7 +1,22 @@
 import Link from 'next/link'
+
+import IgniteShop from '../../../../public/assets/igniteShop/Capa.png'
+
+import DesignSystem from '../../../../public/assets/designSystem/Home.png'
+
+import CoffeDelivery from '../../../../public/assets/coffeDelivery/Capa.png'
+
+import ToDoList from '../../../../public/assets/toDoList/ToDo List.png'
+
+import CupcakeHo from '../../../../public/assets/cupcake/Home.png'
+import CupcakeCh from '../../../../public/assets/cupcake/Checkout.png'
+import CupcakePr from '../../../../public/assets/cupcake/Products.png'
+import CupcakePe from '../../../../public/assets/cupcake/Pedidos.png'
+
 import NLWCapa from '../../../../public/assets/NLW/Capa.png'
 import NLWHome from '../../../../public/assets/NLW/Home.png'
 import NLWGame from '../../../../public/assets/NLW/Game.gif'
+
 import {
   SiAxios,
   SiKotlin,
@@ -240,12 +255,7 @@ export const projetos = [
     data: '30 de dezembro de 2024',
     figma:
       'https://www.figma.com/design/KoOXRhI80ssATpRjinXURJ/Loja-Cupcake?node-id=15-15525&node-type=canvas&t=j1bKEdNdvkEeGsEK-0',
-    images: [
-      '/cupcake/Home.png',
-      '/cupcake/Products.png',
-      '/cupcake/Checkout.png',
-      '/cupcake/Pedidos.png',
-    ],
+    images: [CupcakeHo, CupcakePr, CupcakeCh, CupcakePe],
     linkGithub: 'https://github.com/PIC-UNICSUL',
   },
   {
@@ -285,9 +295,7 @@ export const projetos = [
     data: '06 de março de 2023',
     figma:
       'https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate',
-    images: [
-      'https://user-images.githubusercontent.com/82176047/223178716-32d3a2c2-3abf-4f1b-9334-6e41366d758d.png',
-    ],
+    images: [IgniteShop],
     linkGithub: 'https://github.com/Lucas-M01/Ignite-shop',
   },
   {
@@ -327,9 +335,7 @@ export const projetos = [
     data: '06 de março de 2023',
     figma:
       'https://www.figma.com/file/6cOvlXOf9kX9QWQ6DTYFvh/Ignite-Lab-Desing-System?t=X8ZCpydwX80sdRnI-0',
-    images: [
-      'https://user-images.githubusercontent.com/82176047/234429555-af61896b-68c0-43d9-ab12-f873a990ab17.png',
-    ],
+    images: [DesignSystem],
     linkGithub: 'https://github.com/Lucas-M01/ignite-lab-design-system',
   },
   {
@@ -364,9 +370,7 @@ export const projetos = [
     data: '17 de outubro de 2022',
     figma:
       'https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate',
-    images: [
-      'https://user-images.githubusercontent.com/82176047/196312189-df51aa94-fb81-44fc-a375-01ad629c1549.png',
-    ],
+    images: [CoffeDelivery],
     linkGithub: 'https://github.com/Lucas-M01/CoffeDelivery-Ignite',
   },
   {
@@ -412,9 +416,7 @@ export const projetos = [
     data: '14 de novembro de 2022',
     figma:
       'https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List/duplicate?node-id=0%3A1',
-    images: [
-      'https://user-images.githubusercontent.com/82176047/234431743-4caf9a4c-8360-4990-8f6a-16697fe32c9f.png',
-    ],
+    images: [ToDoList],
     linkGithub: 'https://github.com/Lucas-M01/to-do-Ignite',
   },
 ]
