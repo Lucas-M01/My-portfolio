@@ -28,11 +28,12 @@ function ThumbnailPlugin(
   return (slider) => {
     function removeActive() {
       slider.slides.forEach((slide) => {
-        slide.classList.remove(`${styles.activeThimbnail}`)
+        slide.classList.remove(`${styles.activeThumbnail}`)
       })
     }
+
     function addActive(idx: number) {
-      slider.slides[idx].classList.add(`${styles.activeThimbnail}`)
+      slider.slides[idx].classList.add(`${styles.activeThumbnail}`)
     }
 
     function addClickEvents() {
@@ -49,9 +50,9 @@ function ThumbnailPlugin(
 
       addActive(slider.track.details.rel ?? 0)
       addClickEvents()
+
       mainRef.current.on('animationStarted', (main) => {
         if (!slider.track.details) return
-
         removeActive()
         const next = main.animator.targetIdx || 0
         addActive(main.track.absToRel(next))
@@ -68,10 +69,7 @@ export function ProjectModal(props: ProjectProps) {
   const [thumbnailRef] = useKeenSlider<HTMLDivElement>(
     {
       initial: 0,
-      slides: {
-        perView: 3,
-        spacing: 10,
-      },
+      slides: { perView: 3, spacing: 10 },
     },
     [ThumbnailPlugin(instanceRef)],
   )
@@ -79,113 +77,124 @@ export function ProjectModal(props: ProjectProps) {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 opacity-50 z-10 inset-0 fixed" />
+
       <Dialog.Content
-        className={`fixed bg-[#2A2634] w-[90%] lg:w-3/4 z-20 py-6 md:py-8 px-4 md:px-10 text-white top-[40%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg lg:max-h-[700px]  max-h-[90%] shadow-lg shadow-black/25 h-[calc(100vh-200px)] md:h-[calc(100vh-100px)] ${styles.div}`}
+        className={`
+          fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50
+          bg-[#2A2634] text-white rounded-lg shadow-lg shadow-black/25
+          p-5 md:p-8
+          w-[92vw] sm:w-[90%] lg:w-3/4
+          h-[90vh] lg:max-h-[700px]
+          overflow-hidden
+        `}
       >
         <div className={`${styles.project} h-full`}>
-          <div className={`${styles.images} h-full w-[95%] mb-2 lg:mb-0`}>
-            <div
-              ref={sliderRef}
-              className="keen-slider h-36 md:h-[200px] max-h-full"
-            >
-              {props.images?.map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    src={image}
-                    alt=""
-                    width={800}
-                    height={500}
-                    className={`keen-slider__slide w-full `}
-                  />
-                )
-              })}
-            </div>
-            <div
-              ref={thumbnailRef}
-              className={`keen-slider thumbnail ${styles.thumbnailSlides}`}
-            >
-              {props.images?.length! > 1 &&
-                props.images?.map((image, index) => {
-                  return (
-                    <Image
-                      key={index}
-                      src={image}
-                      alt=""
-                      width={500}
-                      height={500}
-                      className={`keen-slider__slide lg:mt-4 mb-4 `}
-                    />
-                  )
-                })}
-            </div>
-          </div>
-
-          <div className={`${styles.links}`}>
-            <div className="flex gap-4 w-full items-center ">
-              <Link
-                href={props.figma!}
-                target="_blank"
-                className="bg-blue-500 whitespace-nowrap hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)] "
-              >
-                Projeto figma
-              </Link>
-              <Link
-                href={props.linkGithub!}
-                target="_blank"
-                className="bg-blue-500 hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)] "
-              >
-                Repositório
-              </Link>
-            </div>
-          </div>
-
-          <div className={`${styles.title}`}>
-            <div className="flex justify-between items-center mb-2 ">
+          <div className={styles.title}>
+            <div className="flex justify-between items-center">
               <Dialog.Title className="text-xl lg:text-3xl font-black text-blue-500">
                 {props.name}
               </Dialog.Title>
-              <Dialog.Close>
+              <Dialog.Close aria-label="Fechar modal" className="ml-4 shrink-0">
                 <X size={22} />
               </Dialog.Close>
             </div>
           </div>
 
-          <ScrollArea.Root
-            className={`overflow-hidden bg-transparent h-[95%] md:h-[85%] w-full ${styles.content}`}
-          >
+          <div className={styles.images}>
+            <div
+              ref={sliderRef}
+              className="keen-slider h-36 sm:h-44 md:h-[250px] landscape:h-28"
+            >
+              {props.images?.map((image, index) => (
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`Screenshot ${index + 1} de ${props.name ?? 'projeto'}`}
+                  width={800}
+                  height={500}
+                  className="keen-slider__slide object-cover overflow-hidden"
+                />
+              ))}
+            </div>
+
+            {(props.images?.length ?? 0) > 1 && (
+              <div
+                ref={thumbnailRef}
+                className={`keen-slider thumbnail ${styles.thumbnailSlides}`}
+              >
+                {props.images?.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image}
+                    alt={`Miniatura ${index + 1} de ${props.name ?? 'projeto'}`}
+                    width={500}
+                    height={500}
+                    className="keen-slider__slide object-cover"
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <ScrollArea.Root className={`${styles.content} w-full h-full`}>
             <ScrollArea.Viewport className="h-full w-full">
-              <div className="">
-                <div className="">
-                  {props.description}
-                  <p className="mt-5">
-                    Nele foi utilizado as seguintes ferramentas:
-                  </p>
-                  <ul className="list-disc ml-4">
-                    {props.languages?.map((language) => (
-                      <li key={language}>{language}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="pr-2">
+                {props.description}
+                <p className="mt-4">
+                  Nele foi utilizado as seguintes ferramentas:
+                </p>
+                <ul className="list-disc ml-4 mb-4">
+                  {props.languages?.map((language) => (
+                    <li key={language}>{language}</li>
+                  ))}
+                </ul>
                 <span className="text-blue-500 font-semibold">
                   {props.data}
                 </span>
               </div>
             </ScrollArea.Viewport>
+
             <ScrollArea.Scrollbar
               className="flex select-none touch-none p-0.5 bg-zinc-700 transition-colors duration-[160ms] ease-out hover:bg-gray-800 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2.5"
               orientation="vertical"
             >
               <ScrollArea.Thumb className="flex-1 bg-blue-500 rounded-[10px] relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]" />
             </ScrollArea.Scrollbar>
+
             <ScrollArea.Scrollbar
               className="flex select-none touch-none p-0.5 bg-black transition-colors duration-[160ms] ease-out hover:bg-gray-800 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2.5"
               orientation="horizontal"
             >
               <ScrollArea.Thumb className="flex-1 bg-blue-500 rounded-[10px] relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]" />
             </ScrollArea.Scrollbar>
+
             <ScrollArea.Corner className="bg-black" />
           </ScrollArea.Root>
+
+          <div className={styles.links}>
+            <div className="flex gap-3 flex-wrap items-center">
+              {props.figma && (
+                <Link
+                  href={props.figma}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-500 whitespace-nowrap hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                >
+                  Projeto Figma
+                </Link>
+              )}
+              {props.linkGithub && (
+                <Link
+                  href={props.linkGithub}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-500 hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                >
+                  Repositório
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       </Dialog.Content>
     </Dialog.Portal>
