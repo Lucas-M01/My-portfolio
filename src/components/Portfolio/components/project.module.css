@@ -1,244 +1,235 @@
 @media (min-width: 1024px) {
-    .portfolioBox img {
-        width: 100%;
-        transition: .5s ease;
-    }
+  .portfolioBox img {
+    width: 100%;
+    transition: 0.5s ease;
+  }
 
-    .portfolioBox:hover img{
-        transform: scale(1.1);
-    }
+  .portfolioBox:hover img {
+    transform: scale(1.1);
+  }
 
-    .portfolioBox div {
-        transition: .5s ease;
-    }
+  .portfolioBox div {
+    transition: 0.5s ease;
+  }
 
-    .portfolioBox:hover div {
-        transform: translateY(0);
-    }
+  .portfolioBox:hover div {
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
-    .images {
-        display: grid;
-        grid-area: images;
-        margin-bottom: 1.5rem;
-    }
+  .images {
+    display: grid;
+    grid-area: images;
+    margin-bottom: 1.5rem;
+  }
 
-    .title {
-        display: grid;
-        grid-area: title;
-    }
+  .title {
+    display: grid;
+    grid-area: title;
+  }
 
-    .links {
-        display: grid;
-        grid-area: links;
-        
-    }
+  .links {
+    display: grid;
+    grid-area: links;
+  }
 
-    .content {
-        display: grid;
-        grid-area: content;
-    }
+  .content {
+    display: grid;
+    grid-area: content;
+  }
 
-    .project {
-        display: grid;
-        grid-template-areas: 
-            "title"
-            "images"
-            "content"
-            "links"
-        ;
-    }
-
+  .project {
+    display: grid;
+    grid-template-areas:
+      "title"
+      "images"
+      "content"
+      "links";
+  }
 }
 
 @media screen and (max-width: 361px) {
-    .div {
-        height: 85vh;
-        top: 50%;
-    }
+  .div {
+    height: 85vh;
+    top: 50%;
+  }
 }
 
 @media screen and (min-width: 362px) {
-    .div {
-        height: 75vh;
-        top: 40%;
-    }
+  .div {
+    height: 75vh;
+    top: 40%;
+  }
 }
 
 @media (min-width: 769px) {
-    .div {
-        height: 80vh;
-        top: 50%;
-    }
+  .div {
+    height: 80vh;
+    top: 50%;
+  }
 
-    .images {
-        grid-area: images;
-        width: 100%;
-        margin-bottom: 1.5rem;
-    }
+  .images {
+    grid-area: images;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
 
-    .title {
-        grid-area: title; 
-        justify-content: stretch
-    }
+  .title {
+    grid-area: title;
+    justify-content: stretch;
+  }
 
-    .links {
-        grid-area: links;
-        align-self: end;
-    }
+  .links {
+    grid-area: links;
+    align-self: end;
+  }
 
-    .content {
-        grid-area: content;
-        grid-row: 1/4;
-        align-self: center;
-    }
+  .content {
+    grid-area: content;
+    grid-row: 1/4;
+    align-self: center;
+  }
 
-    .project {
-        display: grid;
-        grid-template-columns: 500px 1fr;
-        gap: 1rem;
-        grid-template-rows: repeat(3,  auto);
-        grid-template-areas: 
-            "images title"
-            ".      content"
-            "links  content"
-        ;
-    }
+  .project {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 1rem;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "images title"
+      ".      content"
+      "links  content";
+  }
 }
 
 @media (max-height: 480px) {
+  .images {
+    grid-area: images;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    height: 10rem;
+  }
+
+  .title {
+    grid-area: title;
+    justify-content: stretch;
+  }
+
+  .links {
+    grid-area: links;
+    align-self: end;
+  }
+
+  .content {
+    grid-area: content;
+    grid-row: 1/4;
+    align-self: end;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 1rem;
+    grid-template-rows: repeat(3, 125px auto);
+    grid-template-areas:
+      "images title"
+      ".      content"
+      "links  content";
+  }
+
+  @media (max-height: 400px) {
     .images {
-        grid-area: images;
-        width: 100%;
-        margin-bottom: 1.5rem;
-        height: 10rem;
+      grid-area: images;
+      width: 100%;
+      margin-bottom: 1.5rem;
     }
 
     .title {
-        grid-area: title; 
-        justify-content: stretch
+      grid-area: title;
+      justify-content: stretch;
     }
 
     .links {
-        grid-area: links;
-        align-self: end;
+      grid-area: links;
+      align-self: end;
     }
 
     .content {
-        grid-area: content;
-        grid-row: 1/4;
-        align-self: end;
+      grid-area: content;
+      grid-row: 1/4;
+      align-self: end;
     }
 
     .project {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 1rem;
+      grid-template-rows: repeat(3, 100px auto);
+      grid-template-areas:
+        "images title"
+        ".      content"
+        "links  content";
+    }
+
+    @media (max-height: 325px) {
+      .div {
+        height: 90vh;
+        top: 50%;
+        padding: 1rem;
+      }
+
+      .images {
+        grid-area: images;
+        align-self: start;
+        grid-row: 1/3;
+      }
+
+      .images:first-child {
+        margin: 0;
+      }
+
+      .thumbnailSlides {
+        height: 3rem;
+      }
+
+      .thumbnailSlides img {
+        margin: 0;
+        height: 100%;
+      }
+
+      .title {
+        grid-area: title;
+        align-self: start;
+      }
+
+      .links {
+        grid-area: links;
+        align-self: end;
+      }
+
+      .content {
+        grid-area: content;
+        padding-top: 1rem;
+        grid-row: 1/4;
+        align-self: end;
+      }
+
+      .project {
         display: grid;
-        grid-template-columns: 330px 1fr;
+        height: 100%;
+        grid-template-columns: 300px 1fr;
         gap: 1rem;
-        grid-template-rows: repeat(3,  125px auto);
-        grid-template-areas: 
-            "images title"
-            ".      content"
-            "links  content"
-        ;
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+          "images title"
+          ".      content"
+          "links  content";
+      }
     }
-
-    @media (max-height: 400px) {
-        .images {
-            grid-area: images;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-    
-        .title {
-            grid-area: title; 
-            justify-content: stretch
-        }
-    
-        .links {
-            grid-area: links;
-            align-self: end;
-        }
-    
-        .content {
-            grid-area: content;
-            grid-row: 1/4;
-            align-self: end;
-        }
-    
-        .project {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 1rem;
-            grid-template-rows: repeat(3,  100px auto);
-            grid-template-areas: 
-                "images title"
-                ".      content"
-                "links  content"
-            ;
-        }
-    
-        @media (max-height: 325px) {
-            .div {
-                height: 90vh;
-                top: 50%;
-                padding: 1rem;
-            }
-    
-            .images {
-                grid-area: images;
-                align-self: start;
-                grid-row: 1/3;
-            }
-
-            .images:first-child {
-                margin:0
-            }
-
-            .thumbnailSlides {
-                height: 3rem;
-            }
-
-            .thumbnailSlides img {
-                margin: 0;
-                height: 100%;
-            }
-        
-            .title {
-                grid-area: title; 
-                align-self: start;
-            }
-        
-            .links {
-                grid-area: links;
-                align-self: end;
-            }
-        
-            .content {
-                grid-area: content;
-                padding-top: 1rem;
-                grid-row: 1/4;
-                align-self: end;
-            }
-        
-            .project {
-                display: grid;
-                height: 100%;
-                grid-template-columns: 300px 1fr;
-                gap: 1rem;
-                grid-template-rows: repeat(3, auto);
-                grid-template-areas: 
-                    "images title"
-                    ".      content"
-                    "links  content"
-                ;
-            }
-            
-        }
-    }
+  }
 }
 
-
 .activeThimbnail {
-    border: 2px solid #fff;
+  border: 2px solid #fff;
 }
