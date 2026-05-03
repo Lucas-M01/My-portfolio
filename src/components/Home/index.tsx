@@ -105,18 +105,14 @@ export function Home() {
           </h2>
           <div className="bg-gray-700/50 backdrop-blur-sm border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg">
             <p className="text-zinc-300 px-8 pb-8 leading-relaxed p-4 w-full">
-              Sou formado em Ciência da Computação pela Cruzeiro do Sul Virtual,
-              com sólida experiência em desenvolvimento web e participação em
-              projetos que fortaleceram minhas habilidades técnicas e minha
-              capacidade de trabalho em equipe. No front-end, meu foco principal
-              está em TypeScript, React e Next.js, enquanto no back-end destaco
-              meu domínio em Node.js e Java, com experiência em Hibernate, JPA e
-              Spring Boot. Também possuo amplo conhecimento em bancos de dados
-              relacionais, além de experiência no desenvolvimento de APIs REST
-              eficientes e escaláveis. Atualmente, estou aprimorando meu inglês
-              para ampliar minhas oportunidades no mercado global. Estou em
-              busca de novos desafios que me permitam evoluir profissionalmente
-              e contribuir com projetos de grande impacto e inovação.
+              Desenvolvedor web formado em Ciência da Computação pela Cruzeiro
+              do Sul Virtual, com foco em TypeScript, React e Next.js no
+              front-end e Node.js e Java com Spring Boot no back-end. Tenho
+              experiência prática através de projetos acadêmicos e pessoais,
+              desenvolvendo aplicações completas com boas práticas de código,
+              APIs REST e bancos de dados relacionais. Estou em busca da minha
+              primeira oportunidade profissional para evoluir em equipe e
+              contribuir com projetos de impacto.
             </p>
           </div>
         </div>
