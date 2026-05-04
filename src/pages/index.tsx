@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Home } from '@/components/Home'
 import { Skills } from '@/components/Skills'
 import { Portfolio } from '@/components/Portfolio'
+import { Footer } from '@/components/Footer'
 
 export default function PageHome() {
   return (
@@ -15,6 +16,7 @@ export default function PageHome() {
         <Home />
         <Skills />
         <Portfolio />
+        <Footer />
       </div>
     </div>
   )
