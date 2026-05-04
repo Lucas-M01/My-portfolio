@@ -26,7 +26,7 @@ export function Skill({ svg, text, shortText, link }: SkillProps) {
       transitionSpeed={500}
       perspective={500}
       glareEnable={true}
-      glareMaxOpacity={0.8}
+      glareMaxOpacity={0.15}
       glareColor="#ffffff"
       glarePosition="bottom"
       glareBorderRadius="20px"

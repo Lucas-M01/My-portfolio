@@ -3,12 +3,14 @@ import { projetos } from './components/projetos'
 
 export function Portfolio() {
   return (
-    <section className="bg-gray-700 w-full min-h-screen" id="portfolio">
-      <div className="w-[85%] mx-auto pb-16">
-        <h4 className="text-center text-zinc-200 pt-20 lg:pt-[6.5rem] font-semibold text-2xl md:text-3xl lg:text-4xl">
+    <section className="bg-gray-900 w-full min-h-screen" id="portfolio">
+      <div className="w-5/6 max-w-6xl mx-auto pt-20 lg:pt-[6.5rem] pb-16">
+        {/* Título consistente com as outras seções */}
+        <h2 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl mb-10 border-l-4 border-blue-500 pl-4">
           Projetos
-        </h4>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-10 mt-10">
+        </h2>
+
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-10">
           {projetos.map((projeto) => (
             <CardProject
               key={projeto.id}
