@@ -19,7 +19,7 @@ export function CardProject({
   return (
     <Dialog.Root>
       <Dialog.Trigger
-        className={`relative h-60 rounded-3xl shadow-[20px_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex ${styles.portfolioBox}`}
+        className={`relative h-60 w-full rounded-3xl shadow-[20px_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex ${styles.portfolioBox}`}
       >
         <div className="relative w-full h-full">
           <Image
