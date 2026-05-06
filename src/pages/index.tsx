@@ -7,7 +7,8 @@ import { Footer } from '@/components/Footer'
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lucasmontenegro-ns.vercel.app'
 
-const ogImage = process.env.NEXT_PUBLIC_OG_IMAGE ?? `${siteUrl}/og-image.png`
+const ogImage =
+  process.env.NEXT_PUBLIC_OG_IMAGE ?? `${siteUrl}/assets/og-image.png`
 
 const META = {
   title: 'Lucas Montenegro | Desenvolvedor Full Stack',
