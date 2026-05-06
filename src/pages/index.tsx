@@ -11,9 +11,9 @@ const ogImage =
   process.env.NEXT_PUBLIC_OG_IMAGE ?? `${siteUrl}/assets/og-image.png`
 
 const META = {
-  title: 'Lucas Montenegro | Desenvolvedor Full Stack',
+  title: 'Lucas Montenegro | Desenvolvedor Full Stack Web',
   description:
-    'Portfólio de Lucas Montenegro — Desenvolvedor Full Stack com foco em TypeScript, React, Next.js, Node.js, Java e Python. Disponível para trabalho remoto.',
+    'Portfólio de Lucas Montenegro — Desenvolvedor Full Stack com foco em TypeScript, React, Next.js, Node.js, Java e Python. Veja meus projetos e entre em contato!',
   url: siteUrl,
   image: ogImage,
 }
@@ -41,6 +41,12 @@ export default function PageHome() {
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:site_name" content="Lucas Montenegro" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={META.title} />
+        <meta name="twitter:description" content={META.description} />
+        <meta name="twitter:image" content={META.image} />
       </Head>
 
       <div className="min-h-screen">
