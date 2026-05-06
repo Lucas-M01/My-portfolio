@@ -36,7 +36,6 @@ import {
 import { StaticImageData } from 'next/image'
 import { ReactNode } from 'react'
 
-// Componente auxiliar para renderizar ícone de tag
 function TagIcon({ Icon }: { Icon: IconType }) {
   return <Icon className="w-6 h-auto" />
 }
@@ -45,7 +44,7 @@ export interface Projeto {
   id: number
   name: string
   tagIcons: IconType[]
-  tagsIcons: ReactNode[] // mantido para compatibilidade com CardProject
+  tagsIcons: ReactNode[]
   languages: string[]
   description: ReactNode
   data: string
@@ -54,7 +53,6 @@ export interface Projeto {
   linkGithub: string
 }
 
-// Mapeamento de ícones separado dos dados
 const nlwIcons: IconType[] = [
   SiReact,
   SiNodedotjs,
