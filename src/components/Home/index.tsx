@@ -1,7 +1,5 @@
-'use client'
-
 import Image from 'next/image'
-import TestImg from '../../../public/assets/testPer.jpg'
+import TestImg from '../../../public/assets/imgs/testPer.webp'
 import { BsLinkedin } from 'react-icons/bs'
 import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
 import { DownloadSimple, GraduationCap, MapPin, Globe } from 'phosphor-react'

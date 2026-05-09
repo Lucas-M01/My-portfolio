@@ -1,5 +1,3 @@
-'use client'
-
 import { Skill } from './components/Skill'
 import { skillGroups } from './components/languages'
 import { FadeIn } from '../FadeIn'
@@ -31,7 +29,7 @@ export function Skills() {
                   <FadeIn
                     key={language.text}
                     direction="up"
-                    delay={groupIndex * 0.1 + itemIndex * 0.05}
+                    delay={Math.min(groupIndex * 0.1 + itemIndex * 0.05, 0.4)}
                     duration={0.4}
                   >
                     <Skill

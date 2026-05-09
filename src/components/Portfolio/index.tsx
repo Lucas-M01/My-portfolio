@@ -1,5 +1,3 @@
-'use client'
-
 import { CardProject } from './components/CardProject'
 import { projetos } from './components/projetos'
 import { FadeIn } from '../FadeIn'
@@ -19,7 +17,7 @@ export function Portfolio() {
             <FadeIn
               key={projeto.id}
               direction="up"
-              delay={index * 0.1}
+              delay={Math.min(index * 0.1, 0.3)}
               duration={0.5}
             >
               <CardProject

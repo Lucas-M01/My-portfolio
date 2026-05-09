@@ -1,17 +1,16 @@
 import Link from 'next/link'
 import { IconType } from 'react-icons'
 
-import IgniteShop from '../../../../public/assets/igniteShop/Capa.png'
-import DesignSystem from '../../../../public/assets/designSystem/Home.png'
-import CoffeDelivery from '../../../../public/assets/coffeDelivery/Capa.png'
-import ToDoList from '../../../../public/assets/toDoList/ToDo List.png'
-import CupcakeHo from '../../../../public/assets/cupcake/Home.png'
-import CupcakeCh from '../../../../public/assets/cupcake/Checkout.png'
-import CupcakePr from '../../../../public/assets/cupcake/Products.png'
-import CupcakePe from '../../../../public/assets/cupcake/Pedidos.png'
-import NLWCapa from '../../../../public/assets/NLW/Capa.png'
-import NLWHome from '../../../../public/assets/NLW/Home.png'
-import NLWGame from '../../../../public/assets/NLW/Game.gif'
+import IgniteShop from '../../../../public/assets/imgs/igniteShop/CapaShop.webp'
+import DesignSystem from '../../../../public/assets/imgs/designSystem/HomeDS.webp'
+import CoffeDelivery from '../../../../public/assets/imgs/coffeDelivery/CapaCoffe.webp'
+import ToDoList from '../../../../public/assets/imgs/toDoList/ToDo List.webp'
+import CupcakeHo from '../../../../public/assets/imgs/cupcake/HomeCup.webp'
+import CupcakeCh from '../../../../public/assets/imgs/cupcake/Checkout.webp'
+import CupcakePr from '../../../../public/assets/imgs/cupcake/Products.webp'
+import CupcakePe from '../../../../public/assets/imgs/cupcake/Pedidos.webp'
+import NLWCapa from '../../../../public/assets/imgs/NLW/Capa.webp'
+import NLWHome from '../../../../public/assets/imgs/NLW/Home.webp'
 
 import {
   SiAxios,
@@ -146,7 +145,7 @@ export const projetos: Projeto[] = [
     ),
     data: '18 de novembro de 2022',
     figma: 'https://www.figma.com/community/file/1150897317533332617',
-    images: [NLWCapa, NLWHome, NLWGame],
+    images: [NLWCapa, NLWHome],
     linkGithub: 'https://github.com/Lucas-M01/nlw-eSport',
   },
   {
