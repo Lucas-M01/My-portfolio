@@ -1,67 +1,67 @@
-import Image from 'next/image'
-import TestImg from '../../../public/assets/imgs/testPer.webp'
-import { BsLinkedin } from 'react-icons/bs'
-import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
-import { DownloadSimple, GraduationCap, MapPin, Globe } from 'phosphor-react'
-import { ButtonLink } from './components/ButtonLink'
-import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
-import { motion } from 'framer-motion'
-import styles from './home.module.css'
-import { FadeIn } from '../FadeIn'
+import Image from "next/image";
+import TestImg from "../../../public/assets/imgs/profile/9.jpeg";
+import { BsLinkedin } from "react-icons/bs";
+import { VscChevronDown, VscGithubInverted } from "react-icons/vsc";
+import { DownloadSimple, GraduationCap, MapPin, Globe } from "phosphor-react";
+import { ButtonLink } from "./components/ButtonLink";
+import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
+import { motion } from "framer-motion";
+import styles from "./home.module.css";
+import { FadeIn } from "../FadeIn";
 
 const SOCIAL_LINKS = [
   {
-    href: 'https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86',
-    text: 'Download CV',
+    href: "https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86",
+    text: "Download CV",
     icon: <DownloadSimple weight="bold" className="text-lg" />,
   },
   {
-    href: 'https://github.com/Lucas-M01',
-    text: 'GitHub',
+    href: "https://github.com/Lucas-M01",
+    text: "GitHub",
     icon: <VscGithubInverted className="text-lg" />,
   },
   {
-    href: 'https://www.linkedin.com/in/lucasmontenegrons/',
-    text: 'LinkedIn',
+    href: "https://www.linkedin.com/in/lucasmontenegrons/",
+    text: "LinkedIn",
     icon: <BsLinkedin className="text-lg" />,
   },
   {
-    href: 'mailto:lucas.montenegro.n@outlook.com',
-    text: 'Outlook',
+    href: "mailto:lucas.montenegro.n@outlook.com",
+    text: "Outlook",
     icon: <PiMicrosoftOutlookLogoFill className="text-lg" />,
   },
-]
+];
 
 const INFO_CARDS = [
   {
     icon: <GraduationCap size={20} className="text-blue-400" />,
-    label: 'Formação',
-    value: 'Ciência da Computação',
+    label: "Formação",
+    value: "Ciência da Computação",
   },
   {
     icon: <MapPin size={20} className="text-blue-400" />,
-    label: 'Localização',
-    value: 'João Pessoa, PB',
+    label: "Localização",
+    value: "João Pessoa, PB",
   },
   {
     icon: <Globe size={20} className="text-blue-400" />,
-    label: 'Disponibilidade',
-    value: 'Remoto / Presencial',
+    label: "Disponibilidade",
+    value: "Remoto / Presencial",
   },
-]
+];
 
 const ANIMATION_CONFIG = {
   duration: 0.5,
   easing: [0.21, 0.47, 0.32, 0.98],
-}
+};
 
 export function Home() {
   const scrollToNextSection = () => {
-    const aboutSection = document.getElementById('about')
+    const aboutSection = document.getElementById("about");
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <>
@@ -168,7 +168,7 @@ export function Home() {
             className="flex flex-col items-center gap-1 group"
           >
             <span className="text-xs text-zinc-400 tracking-widest uppercase group-hover:text-zinc-300 transition-colors duration-200">
-              {'// veja mais abaixo'}
+              {"// veja mais abaixo"}
             </span>
             <VscChevronDown className="h-5 w-5 text-zinc-400 group-hover:text-white animate-bounce transition-colors duration-200" />
           </button>
@@ -233,5 +233,5 @@ export function Home() {
         </div>
       </section>
     </>
-  )
+  );
 }
