@@ -1,6 +1,3 @@
-/* eslint-disable prettier/prettier */
-'use client'
-
 import { BsLinkedin } from 'react-icons/bs'
 import { VscGithubInverted } from 'react-icons/vsc'
 import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'

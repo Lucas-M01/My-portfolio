@@ -53,7 +53,7 @@ const INFO_CARDS = [
 
 const ANIMATION_CONFIG = {
   duration: 0.5,
-  easing: [0.21, 0.47, 0.32, 0.98],
+  easing: [0.21, 0.47, 0.32, 0.98] satisfies [number, number, number, number],
 }
 
 export function Home() {

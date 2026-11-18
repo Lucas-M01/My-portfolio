@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import sharp from 'sharp'
 import { readdirSync } from 'fs'
 import { join } from 'path'
