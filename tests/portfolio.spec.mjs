@@ -111,6 +111,86 @@ test('página e modal cabem na tela de celular', async ({ page }) => {
   await expect(dialog).toBeHidden()
 })
 
+for (const viewport of [
+  { width: 320, height: 568, label: '320 px' },
+  { width: 640, height: 450, label: 'reflow equivalente a zoom de 200%' },
+]) {
+  test(`conteúdo e controles acessíveis em ${viewport.label}`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({
+      width: viewport.width,
+      height: viewport.height,
+    })
+    await page.goto('/')
+    await page.evaluate(() => document.fonts.ready)
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true)
+
+    for (const link of await page
+      .getByRole('contentinfo')
+      .getByRole('link', {
+        name: /^(GitHub|LinkedIn|Email)$/,
+      })
+      .all()) {
+      const bounds = await link.boundingBox()
+      expect(bounds.width).toBeGreaterThanOrEqual(24)
+      expect(bounds.height).toBeGreaterThanOrEqual(24)
+    }
+
+    await page
+      .getByRole('button', { name: 'Ver detalhes de 🧁 UAI Cupcake' })
+      .press('Enter')
+    const dialog = page.getByRole('dialog', { name: '🧁 UAI Cupcake' })
+    await expect(dialog).toBeVisible()
+    const bounds = await dialog.boundingBox()
+    expect(bounds.x).toBeGreaterThanOrEqual(0)
+    expect(bounds.y).toBeGreaterThanOrEqual(0)
+    expect(bounds.x + bounds.width).toBeLessThanOrEqual(viewport.width)
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(viewport.height)
+
+    const close = dialog.getByRole('button', { name: 'Fechar modal' })
+    const closeBounds = await close.boundingBox()
+    expect(closeBounds.width).toBeGreaterThanOrEqual(44)
+    expect(closeBounds.height).toBeGreaterThanOrEqual(44)
+    await expect(close).toBeFocused()
+    await page.keyboard.press('Shift+Tab')
+    await expect(
+      dialog.getByRole('link', { name: 'Repositório', exact: true }),
+    ).toBeFocused()
+    await page.keyboard.press('Tab')
+    await expect(close).toBeFocused()
+
+    const description = dialog.getByRole('region', {
+      name: 'Descrição de 🧁 UAI Cupcake',
+    })
+    expect((await description.boundingBox()).height).toBeGreaterThan(40)
+    await close.press('Tab')
+    const carousel = dialog.getByRole('group', { name: /^Imagens de/ })
+    await expect(carousel).toBeFocused()
+    for (const thumbnail of await dialog
+      .getByRole('button', { name: /^Ver imagem / })
+      .all()) {
+      await page.keyboard.press('Tab')
+      await expect(thumbnail).toBeFocused()
+    }
+    await page.keyboard.press('Tab')
+    await expect(description).toBeFocused()
+    await description.press('End')
+    await expect
+      .poll(() => description.evaluate((e) => e.scrollTop))
+      .toBeGreaterThan(0)
+    await expect(
+      description.getByRole('list', { name: 'Tecnologias utilizadas' }),
+    ).toBeInViewport()
+    await page.keyboard.press('Escape')
+    await expect(dialog).toBeHidden()
+  })
+}
+
 test.describe('export estático sem JavaScript', () => {
   test.use({ javaScriptEnabled: false })
 

@@ -72,8 +72,11 @@ export function ProjectModal({ project }: ProjectModalProps) {
               <Dialog.Title className="text-xl lg:text-3xl font-black text-blue-500">
                 {project.name}
               </Dialog.Title>
-              <Dialog.Close aria-label="Fechar modal" className="ml-4 shrink-0">
-                <X size={22} />
+              <Dialog.Close
+                aria-label="Fechar modal"
+                className="ml-[5px] -mr-[11px] -my-[11px] flex size-11 shrink-0 items-center justify-center"
+              >
+                <X size={22} aria-hidden="true" />
               </Dialog.Close>
             </div>
           </div>
@@ -140,7 +143,12 @@ export function ProjectModal({ project }: ProjectModalProps) {
           </div>
 
           <ScrollArea.Root className={`${styles.content} w-full h-full`}>
-            <ScrollArea.Viewport className="h-full w-full">
+            <ScrollArea.Viewport
+              tabIndex={0}
+              role="region"
+              aria-label={`Descrição de ${project.name}`}
+              className="h-full w-full focus-visible:outline-offset-[-3px]"
+            >
               <div className="pr-2">
                 {project.description}
                 <p className="mt-4">

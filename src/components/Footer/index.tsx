@@ -25,7 +25,7 @@ export function Footer() {
                 target={link.id === 'email' ? undefined : '_blank'}
                 rel={link.id === 'email' ? undefined : 'noopener noreferrer'}
                 aria-label={link.id === 'email' ? 'Email' : link.label}
-                className="text-zinc-400 hover:text-blue-400 transition-colors duration-200"
+                className="p-1.5 -m-1.5 text-zinc-400 hover:text-blue-400 transition-colors duration-200"
               >
                 <SocialIcon id={link.id} className="w-5 h-5" />
               </a>
