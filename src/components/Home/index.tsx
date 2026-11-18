@@ -5,7 +5,8 @@ import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
 import { DownloadSimple, GraduationCap, MapPin, Globe } from 'phosphor-react'
 import { ButtonLink } from './components/ButtonLink'
 import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
-import { motion } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { useRef } from 'react'
 import styles from './home.module.css'
 import { FadeIn } from '../FadeIn'
 
@@ -56,16 +57,23 @@ const ANIMATION_CONFIG = {
 }
 
 export function Home() {
+  const heroRef = useRef<HTMLElement>(null)
+  const heroInView = useInView(heroRef, { once: true })
+  const reduceMotion = useReducedMotion()
+  const animateHero = heroInView && !reduceMotion
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about')
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
+      aboutSection.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      })
     }
   }
 
   return (
     <>
       <section
+        ref={heroRef}
         className={`relative bg-gray-800 w-full text-white flex flex-col items-center min-h-screen justify-center ${styles.heroSection}`}
         id="home"
       >
@@ -80,10 +88,14 @@ export function Home() {
         >
           <motion.div
             className="flex justify-center pb-4 sm:pb-0 shrink-0"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={false}
+            animate={
+              animateHero
+                ? { opacity: [0, 1], x: [-40, 0] }
+                : { opacity: 1, x: 0 }
+            }
             transition={{
-              duration: ANIMATION_CONFIG.duration,
+              duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
               ease: ANIMATION_CONFIG.easing,
             }}
           >
@@ -113,36 +125,64 @@ export function Home() {
           >
             <motion.p
               className="text-base md:text-lg font-normal text-zinc-400 tracking-wide"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.2 }}
+              initial={false}
+              animate={
+                animateHero
+                  ? { opacity: [0, 1], y: [20, 0] }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.2,
+              }}
             >
               Olá, me chamo
             </motion.p>
 
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.35 }}
+              initial={false}
+              animate={
+                animateHero
+                  ? { opacity: [0, 1], y: [20, 0] }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.35,
+              }}
             >
               Lucas Montenegro
             </motion.h1>
 
             <motion.p
               className="text-lg md:text-xl lg:text-2xl font-semibold text-zinc-300 flex gap-2 items-center flex-wrap justify-center lg:justify-start mt-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.5 }}
+              initial={false}
+              animate={
+                animateHero
+                  ? { opacity: [0, 1], y: [20, 0] }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.5,
+              }}
             >
               Desenvolvedor <span className="text-blue-500">Full Stack</span>
             </motion.p>
 
             <motion.div
               className={`flex justify-center md:justify-start gap-3 flex-wrap mt-6 ${styles.buttonWrapper}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.65 }}
+              initial={false}
+              animate={
+                animateHero
+                  ? { opacity: [0, 1], y: [20, 0] }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.65,
+              }}
             >
               {SOCIAL_LINKS.map((link) => (
                 <ButtonLink
@@ -158,9 +198,12 @@ export function Home() {
 
         <motion.div
           className={`absolute bottom-10 sm:bottom-14 lg:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 pb-8 ${styles.scrollHint}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          initial={false}
+          animate={animateHero ? { opacity: [0, 1] } : { opacity: 1 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.8,
+            delay: reduceMotion ? 0 : 1,
+          }}
         >
           <button
             onClick={scrollToNextSection}

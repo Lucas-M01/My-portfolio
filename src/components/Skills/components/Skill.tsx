@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ReactNode } from 'react'
 
 import Tilt from 'react-parallax-tilt'
+import { useReducedMotion } from 'framer-motion'
 import * as Tooltip from '@radix-ui/react-tooltip'
 
 interface SkillProps {
@@ -17,15 +18,17 @@ const isSafeLink = (href: string): boolean =>
   href.startsWith('https://') || href.startsWith('http://')
 
 export function Skill({ svg, text, shortText, link }: SkillProps) {
+  const reduceMotion = useReducedMotion()
   const safeLink = isSafeLink(link) ? link : '#'
   const displayText = shortText ?? text
 
   return (
     <Tilt
-      scale={1.1}
+      scale={reduceMotion ? 1 : 1.1}
+      tiltEnable={!reduceMotion}
       transitionSpeed={500}
       perspective={500}
-      glareEnable={true}
+      glareEnable={!reduceMotion}
       glareMaxOpacity={0.15}
       glareColor="#ffffff"
       glarePosition="bottom"

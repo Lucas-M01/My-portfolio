@@ -49,12 +49,12 @@ export default function PageHome() {
         <meta name="twitter:image" content={META.image} />
       </Head>
 
-      <div className="min-h-screen">
+      <main className="min-h-screen" id="main-content">
         <Home />
         <Skills />
         <Portfolio />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </>
   )
 }
