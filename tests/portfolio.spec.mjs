@@ -1,5 +1,20 @@
 import { expect, test } from '@playwright/test'
 
+async function expectSafeExternalLinks(page) {
+  const unsafeLinks = await page
+    .locator('a[target="_blank"]')
+    .evaluateAll((links) =>
+      links
+        .filter(
+          (link) =>
+            !link.relList.contains('noopener') ||
+            !link.relList.contains('noreferrer'),
+        )
+        .map((link) => link.href),
+    )
+  expect(unsafeLinks).toEqual([])
+}
+
 test('modal pode ser usado por teclado e restaura o foco', async ({ page }) => {
   await page.goto('/')
   const card = page.getByRole('button', {
@@ -35,6 +50,7 @@ test('todos os projetos abrem com título, imagem, stack e repositório', async 
 }) => {
   test.setTimeout(60_000)
   await page.goto('/')
+  await expectSafeExternalLinks(page)
   const cards = page.locator('#portfolio').getByRole('button', {
     name: /^Ver detalhes de /,
   })
@@ -50,6 +66,7 @@ test('todos os projetos abrem com título, imagem, stack e repositório', async 
     await card.click()
     const dialog = page.getByRole('dialog', { name, exact: true })
     await expect(dialog).toBeVisible()
+    await expectSafeExternalLinks(page)
     await expect(
       dialog.getByRole('heading', { name, exact: true }),
     ).toBeVisible()

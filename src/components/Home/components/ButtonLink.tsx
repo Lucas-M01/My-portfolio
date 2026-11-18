@@ -14,12 +14,13 @@ const isSafeHref = (href: string): boolean =>
 
 export function ButtonLink({ text, href, icon }: ButtonLinkProps) {
   const safeHref = isSafeHref(href) ? href : '#'
+  const opensNewTab = /^https?:\/\//.test(safeHref)
 
   return (
     <a
       href={safeHref}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={opensNewTab ? '_blank' : undefined}
+      rel={opensNewTab ? 'noopener noreferrer' : undefined}
       aria-label={text}
       className={`
         py-3 px-7 md:py-2 md:px-5

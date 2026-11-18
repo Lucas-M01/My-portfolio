@@ -119,6 +119,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://uai-cupcake.netlify.app/"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:underline hover:text-blue-300"
           >
             Uai Cupcake
@@ -129,6 +130,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://github.com/PIC-UNICSUL/uai-cupcake"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:underline hover:text-blue-300"
           >
             Frontend
@@ -137,6 +139,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://github.com/PIC-UNICSUL/uai-cupcake-api"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:underline hover:text-blue-300"
           >
             Backend
@@ -147,6 +150,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.youtube.com/watch?v=Wok7SdVaVw0"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:underline hover:text-blue-300"
           >
             Parte 1
@@ -155,6 +159,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.youtube.com/watch?v=mZxgTtU3mic"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:underline hover:text-blue-300"
           >
             Parte 2
@@ -165,6 +170,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.linkedin.com/in/cairo-aparecido-campos-7465202b/"
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline"
           >
             Cairo Aparecido Campos
@@ -173,6 +179,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.linkedin.com/in/thaynarasp/"
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline"
           >
             Thaynara Silva Pinto
@@ -181,6 +188,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.linkedin.com/in/lucas-m01/"
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline"
           >
             Lucas Montenegro Nunes dos Santos
@@ -189,6 +197,7 @@ export const projects: readonly Project[] = [
           <Link
             href="https://www.linkedin.com/in/kayle-/"
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline"
           >
             Mikaelle Coutinho de Jesus Barreto
