@@ -2,11 +2,11 @@
 
 ## Resultado
 
-| Verificação | Resultado retornado pelo npm |
-| --- | --- |
-| Auditoria inicial | 25 ocorrências: 1 crítica, 23 altas e 1 moderada |
-| `npm audit --omit=dev` após a atualização | 0 vulnerabilidades conhecidas |
-| `npm audit` completo após a atualização | 18 ocorrências altas, todas derivadas de picomatch |
+| Verificação                               | Resultado retornado pelo npm                       |
+| ----------------------------------------- | -------------------------------------------------- |
+| Auditoria inicial                         | 25 ocorrências: 1 crítica, 23 altas e 1 moderada   |
+| `npm audit --omit=dev` após a atualização | 0 vulnerabilidades conhecidas                      |
+| `npm audit` completo após a atualização   | 18 ocorrências altas, todas derivadas de picomatch |
 
 As 18 ocorrências restantes propagam o mesmo aviso,
 [GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf),
