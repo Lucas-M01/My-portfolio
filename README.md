@@ -19,18 +19,19 @@ O modo de desenvolvimento fica disponível em [localhost:3000](http://localhost:
 
 ## Comandos
 
-| Comando                          | Uso                                                     |
-| -------------------------------- | ------------------------------------------------------- |
-| `npm run dev`                    | Desenvolvimento com recarga automática                  |
-| `npm run lint`                   | Regras de Next.js, React, TypeScript e acessibilidade   |
-| `npm run typecheck`              | Verificação de tipos sem emitir arquivos                |
-| `npm run format`                 | Formatação com Prettier                                 |
-| `npm run format:check`           | Conferência de formatação sem alterar arquivos          |
-| `npm run build`                  | Geração do site estático em `out/`                      |
-| `npm run preview` ou `npm start` | Prévia local do último build em `http://127.0.0.1:4173` |
-| `npm test`                       | Testes de navegador sobre o último build                |
-| `npm run audit:production`       | Auditoria das dependências de produção                  |
-| `npm run check`                  | Formatação, lint, tipos, build e testes, em sequência   |
+| Comando                           | Uso                                                           |
+| --------------------------------- | ------------------------------------------------------------- |
+| `npm run dev`                     | Desenvolvimento com recarga automática                        |
+| `npm run lint`                    | Regras de Next.js, React, TypeScript e acessibilidade         |
+| `npm run typecheck`               | Verificação de tipos sem emitir arquivos                      |
+| `npm run format`                  | Formatação com Prettier                                       |
+| `npm run format:check`            | Conferência de formatação sem alterar arquivos                |
+| `npm run build`                   | Geração do site estático em `out/`                            |
+| `npm run preview` ou `npm start`  | Prévia local do último build em `http://127.0.0.1:4173`       |
+| `npm test`                        | Testes de navegador sobre o último build                      |
+| `npm run audit:production`        | Auditoria das dependências de produção                        |
+| `npm run images:optimize-profile` | Gera a versão WebP da foto principal com o Sharp já instalado |
+| `npm run check`                   | Formatação, lint, tipos, build e testes, em sequência         |
 
 `preview` serve somente o export estático, em loopback, para revisão local e testes.
 Ele não é um servidor de produção. Na Vercel, publique os arquivos gerados pelo build.
@@ -88,6 +89,24 @@ o prefixo `NEXT_PUBLIC_`.
 O build usa `next/font/google` para obter e hospedar a Roboto. A primeira compilação
 pode precisar de acesso ao Google Fonts. Os endpoints de Vercel Analytics e Speed
 Insights pertencem à hospedagem e não estão disponíveis no servidor de prévia.
+
+## Imagens e carregamento
+
+A foto exibida no início da página usa uma versão WebP gerada a partir de
+`public/assets/imgs/profile/9.jpeg`, que permanece preservado. Para regenerá-la:
+
+```sh
+npm run images:optimize-profile
+```
+
+O script mantém a proporção, limita a largura a 780 px (até três vezes os 260 px
+exibidos no desktop) e não recorta a foto. O WebP gerado é versionado; não é preciso
+recriá-lo a cada build. O export estático continua usando imagens previamente
+otimizadas, sem depender de um servidor de otimização em produção.
+
+O código do modal dos projetos é carregado sob demanda. Foco ou aproximação do
+mouse antecipam o download para reduzir a espera na primeira abertura. As medidas
+e os testes estão documentados em `docs/performance.md`.
 
 ## Dependências
 

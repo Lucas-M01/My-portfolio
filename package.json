@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "images:optimize-profile": "node scripts/optimize-profile.mjs",
     "test": "playwright test",
     "audit:production": "npm audit --omit=dev --audit-level=high",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run build && npm test"

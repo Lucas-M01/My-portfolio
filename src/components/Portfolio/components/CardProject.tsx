@@ -1,19 +1,31 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import Image from 'next/image'
-import { ProjectModal } from './ProjectModal'
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import type { Project } from '@/types/project'
 import { technologyIcons } from '@/data/technology-icons'
 import styles from './project.module.css'
+
+const ProjectModal = dynamic(() =>
+  import('./ProjectModal').then((module) => module.ProjectModal),
+)
+
+function prefetchProjectModal() {
+  void import('./ProjectModal').catch(() => undefined)
+}
 
 interface CardProjectProps {
   project: Project
 }
 
 export function CardProject({ project }: CardProjectProps) {
+  const [open, setOpen] = useState(false)
   const { images, name, technologyIds } = project
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
+        onMouseEnter={prefetchProjectModal}
+        onFocus={prefetchProjectModal}
         aria-label={`Ver detalhes de ${name}`}
         className={`relative h-60 w-full rounded-3xl shadow-[20px_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex ${styles.portfolioBox}`}
       >
@@ -48,7 +60,7 @@ export function CardProject({ project }: CardProjectProps) {
         </div>
       </Dialog.Trigger>
 
-      <ProjectModal project={project} />
+      {open && <ProjectModal project={project} />}
     </Dialog.Root>
   )
 }

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import TestImg from '../../../public/assets/imgs/profile/9.jpeg'
+import ProfileImage from '../../../public/assets/imgs/profile/lucas-montenegro.webp'
 import { VscChevronDown } from 'react-icons/vsc'
 import { GraduationCap, MapPin, Globe } from 'phosphor-react'
 import { ButtonLink } from './components/ButtonLink'
@@ -78,10 +78,10 @@ export function Home() {
             }}
           >
             <Image
-              src={TestImg}
+              src={ProfileImage}
               width={260}
               height={260}
-              sizes="(max-width: 932px) and (orientation: landscape) 75px, 260px"
+              sizes="(max-width: 932px) and (max-height: 450px) and (orientation: landscape) 150px, (min-width: 1024px) 260px, (min-width: 768px) 208px, 176px"
               priority
               className={`
                 rounded-full object-cover
