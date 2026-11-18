@@ -1,28 +1,23 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { X } from 'phosphor-react'
-import { KeyboardEvent, ReactNode, useEffect, useState } from 'react'
+import { KeyboardEvent, useEffect, useState } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import { useReducedMotion } from 'framer-motion'
 import 'keen-slider/keen-slider.min.css'
 import Link from 'next/link'
 import styles from './project.module.css'
+import type { Project } from '@/types/project'
 
-export interface ProjectProps {
-  name?: string
-  description?: ReactNode
-  languages?: string[]
-  data?: string
-  images?: string[] | StaticImageData[]
-  figma?: string
-  linkGithub?: string
+interface ProjectModalProps {
+  project: Project
 }
 
-export function ProjectModal(props: ProjectProps) {
+export function ProjectModal({ project }: ProjectModalProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const reduceMotion = useReducedMotion()
-  const imageCount = props.images?.length ?? 0
+  const imageCount = project.images.length
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     defaultAnimation: { duration: reduceMotion ? 0 : 500 },
@@ -75,7 +70,7 @@ export function ProjectModal(props: ProjectProps) {
           <div className={styles.title}>
             <div className="flex justify-between items-center">
               <Dialog.Title className="text-xl lg:text-3xl font-black text-blue-500">
-                {props.name}
+                {project.name}
               </Dialog.Title>
               <Dialog.Close aria-label="Fechar modal" className="ml-4 shrink-0">
                 <X size={22} />
@@ -89,17 +84,17 @@ export function ProjectModal(props: ProjectProps) {
               className="keen-slider h-36 sm:h-44 md:h-[250px] landscape:h-28"
               role="group"
               aria-label={`Imagens de ${
-                props.name ?? 'projeto'
+                project.name
               }. Use as setas para navegar.`}
               aria-roledescription="carrossel"
               tabIndex={imageCount > 1 ? 0 : undefined}
               onKeyDown={handleImageNavigation}
             >
-              {props.images?.map((image, index) => (
+              {project.images.map((image, index) => (
                 <Image
                   key={index}
                   src={image}
-                  alt={`Screenshot ${index + 1} de ${props.name ?? 'projeto'}`}
+                  alt={`Screenshot ${index + 1} de ${project.name}`}
                   width={800}
                   height={500}
                   aria-hidden={index !== currentSlide}
@@ -112,21 +107,19 @@ export function ProjectModal(props: ProjectProps) {
               Imagem {currentSlide + 1} de {imageCount}
             </p>
 
-            {(props.images?.length ?? 0) > 1 && (
+            {project.images.length > 1 && (
               <div
                 ref={thumbnailRef}
                 className="keen-slider thumbnail"
                 role="group"
                 aria-label="Selecionar imagem do projeto"
               >
-                {props.images?.map((image, index) => (
+                {project.images.map((image, index) => (
                   <button
                     key={index}
                     type="button"
                     data-keen-slider-clickable="true"
-                    aria-label={`Ver imagem ${index + 1} de ${
-                      props.name ?? 'projeto'
-                    }`}
+                    aria-label={`Ver imagem ${index + 1} de ${project.name}`}
                     aria-pressed={index === currentSlide}
                     className={`keen-slider__slide ${
                       index === currentSlide ? styles.activeThumbnail : ''
@@ -149,17 +142,20 @@ export function ProjectModal(props: ProjectProps) {
           <ScrollArea.Root className={`${styles.content} w-full h-full`}>
             <ScrollArea.Viewport className="h-full w-full">
               <div className="pr-2">
-                {props.description}
+                {project.description}
                 <p className="mt-4">
                   Nele foi utilizado as seguintes ferramentas:
                 </p>
-                <ul className="list-disc ml-4 mb-4">
-                  {props.languages?.map((language) => (
+                <ul
+                  className="list-disc ml-4 mb-4"
+                  aria-label="Tecnologias utilizadas"
+                >
+                  {project.stack.map((language) => (
                     <li key={language}>{language}</li>
                   ))}
                 </ul>
                 <span className="text-blue-400 font-semibold">
-                  {props.data}
+                  {project.dateLabel}
                 </span>
               </div>
             </ScrollArea.Viewport>
@@ -183,9 +179,9 @@ export function ProjectModal(props: ProjectProps) {
 
           <div className={styles.links}>
             <div className="flex gap-3 flex-wrap items-center">
-              {props.figma && (
+              {project.figmaUrl && (
                 <Link
-                  href={props.figma}
+                  href={project.figmaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 whitespace-nowrap hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
@@ -193,9 +189,9 @@ export function ProjectModal(props: ProjectProps) {
                   Projeto Figma
                 </Link>
               )}
-              {props.linkGithub && (
+              {project.repositoryUrl && (
                 <Link
-                  href={props.linkGithub}
+                  href={project.repositoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"

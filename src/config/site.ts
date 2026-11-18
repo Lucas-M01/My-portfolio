@@ -27,4 +27,7 @@ export const siteConfig = {
   ),
   github: 'https://github.com/Lucas-M01',
   linkedin: 'https://www.linkedin.com/in/lucasmontenegrons/',
+  email: 'lucas.montenegro.n@outlook.com',
+  resumeUrl:
+    'https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86',
 }

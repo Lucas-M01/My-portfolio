@@ -1,119 +1,32 @@
 import Link from 'next/link'
-import { IconType } from 'react-icons'
 
-import IgniteShop from '../../../../public/assets/imgs/igniteShop/CapaShop.webp'
-import DesignSystem from '../../../../public/assets/imgs/designSystem/HomeDS.webp'
-import CoffeDelivery from '../../../../public/assets/imgs/coffeDelivery/CapaCoffe.webp'
-import ToDoList from '../../../../public/assets/imgs/toDoList/ToDo List.webp'
-import CupcakeHo from '../../../../public/assets/imgs/cupcake/HomeCup.webp'
-import CupcakeCh from '../../../../public/assets/imgs/cupcake/Checkout.webp'
-import CupcakePr from '../../../../public/assets/imgs/cupcake/Products.webp'
-import CupcakePe from '../../../../public/assets/imgs/cupcake/Pedidos.webp'
-import NLWCapa from '../../../../public/assets/imgs/NLW/Capa.webp'
-import NLWHome from '../../../../public/assets/imgs/NLW/Home.webp'
+import IgniteShop from '../../public/assets/imgs/igniteShop/CapaShop.webp'
+import DesignSystem from '../../public/assets/imgs/designSystem/HomeDS.webp'
+import CoffeDelivery from '../../public/assets/imgs/coffeDelivery/CapaCoffe.webp'
+import ToDoList from '../../public/assets/imgs/toDoList/ToDo List.webp'
+import CupcakeHo from '../../public/assets/imgs/cupcake/HomeCup.webp'
+import CupcakeCh from '../../public/assets/imgs/cupcake/Checkout.webp'
+import CupcakePr from '../../public/assets/imgs/cupcake/Products.webp'
+import CupcakePe from '../../public/assets/imgs/cupcake/Pedidos.webp'
+import NLWCapa from '../../public/assets/imgs/NLW/Capa.webp'
+import NLWHome from '../../public/assets/imgs/NLW/Home.webp'
 
-import {
-  SiAxios,
-  SiKotlin,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiPostcss,
-  SiPostgresql,
-  SiPrisma,
-  SiReact,
-  SiReacthookform,
-  SiReactrouter,
-  SiShadcnui,
-  SiStorybook,
-  SiStripe,
-  SiStyledcomponents,
-  SiTailwindcss,
-  SiTypescript,
-  SiVite,
-  SiZod,
-} from 'react-icons/si'
-import { StaticImageData } from 'next/image'
-import { ReactNode } from 'react'
+import type { Project } from '@/types/project'
 
-function TagIcon({ Icon }: { Icon: IconType }) {
-  return <Icon className="w-6 h-auto" />
-}
-
-export interface Projeto {
-  id: number
-  name: string
-  tagIcons: IconType[]
-  tagsIcons: ReactNode[]
-  languages: string[]
-  description: ReactNode
-  data: string
-  figma: string
-  images: StaticImageData[]
-  linkGithub: string
-}
-
-const nlwIcons: IconType[] = [
-  SiReact,
-  SiNodedotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiPrisma,
-  SiAxios,
-  SiPostgresql,
-]
-const cupcakeIcons: IconType[] = [
-  SiReact,
-  SiTailwindcss,
-  SiTypescript,
-  SiReactrouter,
-  SiReacthookform,
-  SiVite,
-  SiShadcnui,
-  SiZod,
-  SiKotlin,
-]
-const igniteShopIcons: IconType[] = [
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiAxios,
-  SiStripe,
-]
-const designSystemIcons: IconType[] = [
-  SiReact,
-  SiStorybook,
-  SiTypescript,
-  SiVite,
-  SiTailwindcss,
-  SiPostcss,
-]
-const coffeeIcons: IconType[] = [
-  SiReact,
-  SiStyledcomponents,
-  SiTypescript,
-  SiReacthookform,
-  SiVite,
-]
-const todoIcons: IconType[] = [
-  SiReact,
-  SiStyledcomponents,
-  SiTypescript,
-  SiReacthookform,
-  SiVite,
-  SiAxios,
-]
-
-function toTagsIcons(icons: IconType[]): ReactNode[] {
-  return icons.map((Icon, index) => <TagIcon key={index} Icon={Icon} />)
-}
-
-export const projetos: Projeto[] = [
+export const projects: readonly Project[] = [
   {
     id: 0,
     name: '🎮 NLW eSports',
-    tagIcons: nlwIcons,
-    tagsIcons: toTagsIcons(nlwIcons),
-    languages: [
+    technologyIds: [
+      'react',
+      'node',
+      'typescript',
+      'tailwind',
+      'prisma',
+      'axios',
+      'postgresql',
+    ],
+    stack: [
       'React',
       'Node',
       'Typescript',
@@ -143,17 +56,26 @@ export const projetos: Projeto[] = [
         </p>
       </div>
     ),
-    data: '18 de novembro de 2022',
-    figma: 'https://www.figma.com/community/file/1150897317533332617',
+    dateLabel: '18 de novembro de 2022',
+    figmaUrl: 'https://www.figma.com/community/file/1150897317533332617',
     images: [NLWCapa, NLWHome],
-    linkGithub: 'https://github.com/Lucas-M01/nlw-eSport',
+    repositoryUrl: 'https://github.com/Lucas-M01/nlw-eSport',
   },
   {
     id: 1,
     name: '🧁 UAI Cupcake',
-    tagIcons: cupcakeIcons,
-    tagsIcons: toTagsIcons(cupcakeIcons),
-    languages: [
+    technologyIds: [
+      'react',
+      'tailwind',
+      'typescript',
+      'reactRouter',
+      'reactHookForm',
+      'vite',
+      'shadcn',
+      'zod',
+      'kotlin',
+    ],
+    stack: [
       'React',
       'Typescript',
       'Tailwind CSS',
@@ -275,18 +197,17 @@ export const projetos: Projeto[] = [
         </p>
       </div>
     ),
-    data: '30 de dezembro de 2024',
-    figma:
+    dateLabel: '30 de dezembro de 2024',
+    figmaUrl:
       'https://www.figma.com/design/KoOXRhI80ssATpRjinXURJ/Loja-Cupcake?node-id=15-15525',
     images: [CupcakeHo, CupcakePr, CupcakeCh, CupcakePe],
-    linkGithub: 'https://github.com/PIC-UNICSUL',
+    repositoryUrl: 'https://github.com/PIC-UNICSUL',
   },
   {
     id: 2,
     name: '🛒 Ignite Shop',
-    tagIcons: igniteShopIcons,
-    tagsIcons: toTagsIcons(igniteShopIcons),
-    languages: [
+    technologyIds: ['react', 'next', 'typescript', 'axios', 'stripe'],
+    stack: [
       'React',
       'Typescript',
       'Next.js',
@@ -336,18 +257,24 @@ export const projetos: Projeto[] = [
         </ul>
       </div>
     ),
-    data: '06 de março de 2023',
-    figma:
+    dateLabel: '06 de março de 2023',
+    figmaUrl:
       'https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate',
     images: [IgniteShop],
-    linkGithub: 'https://github.com/Lucas-M01/Ignite-shop',
+    repositoryUrl: 'https://github.com/Lucas-M01/Ignite-shop',
   },
   {
     id: 3,
     name: 'Ignite Lab Design System',
-    tagIcons: designSystemIcons,
-    tagsIcons: toTagsIcons(designSystemIcons),
-    languages: [
+    technologyIds: [
+      'react',
+      'storybook',
+      'typescript',
+      'vite',
+      'tailwind',
+      'postcss',
+    ],
+    stack: [
       'React',
       'Typescript',
       'Storybook',
@@ -394,18 +321,23 @@ export const projetos: Projeto[] = [
         </ul>
       </div>
     ),
-    data: '06 de março de 2023',
-    figma:
+    dateLabel: '06 de março de 2023',
+    figmaUrl:
       'https://www.figma.com/file/6cOvlXOf9kX9QWQ6DTYFvh/Ignite-Lab-Desing-System?t=X8ZCpydwX80sdRnI-0',
     images: [DesignSystem],
-    linkGithub: 'https://github.com/Lucas-M01/ignite-lab-design-system',
+    repositoryUrl: 'https://github.com/Lucas-M01/ignite-lab-design-system',
   },
   {
     id: 4,
     name: '☕ Coffee Delivery',
-    tagIcons: coffeeIcons,
-    tagsIcons: toTagsIcons(coffeeIcons),
-    languages: [
+    technologyIds: [
+      'react',
+      'styledComponents',
+      'typescript',
+      'reactHookForm',
+      'vite',
+    ],
+    stack: [
       'React',
       'Typescript',
       'Styled Components',
@@ -450,18 +382,24 @@ export const projetos: Projeto[] = [
         </ul>
       </div>
     ),
-    data: '17 de outubro de 2022',
-    figma:
+    dateLabel: '17 de outubro de 2022',
+    figmaUrl:
       'https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate',
     images: [CoffeDelivery],
-    linkGithub: 'https://github.com/Lucas-M01/CoffeDelivery-Ignite',
+    repositoryUrl: 'https://github.com/Lucas-M01/CoffeDelivery-Ignite',
   },
   {
     id: 5,
     name: '📝 To Do List - Ignite',
-    tagIcons: todoIcons,
-    tagsIcons: toTagsIcons(todoIcons),
-    languages: [
+    technologyIds: [
+      'react',
+      'styledComponents',
+      'typescript',
+      'reactHookForm',
+      'vite',
+      'axios',
+    ],
+    stack: [
       'React',
       'Typescript',
       'Styled Components',
@@ -490,10 +428,10 @@ export const projetos: Projeto[] = [
         </p>
       </div>
     ),
-    data: '14 de novembro de 2022',
-    figma:
+    dateLabel: '14 de novembro de 2022',
+    figmaUrl:
       'https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List/duplicate?node-id=0%3A1',
     images: [ToDoList],
-    linkGithub: 'https://github.com/Lucas-M01/to-do-Ignite',
+    repositoryUrl: 'https://github.com/Lucas-M01/to-do-Ignite',
   },
 ]

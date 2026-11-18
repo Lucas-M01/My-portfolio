@@ -30,6 +30,46 @@ test('modal pode ser usado por teclado e restaura o foco', async ({ page }) => {
   ).toHaveAttribute('aria-pressed', 'true')
 })
 
+test('todos os projetos abrem com título, imagem, stack e repositório', async ({
+  page,
+}) => {
+  test.setTimeout(60_000)
+  await page.goto('/')
+  const cards = page.locator('#portfolio').getByRole('button', {
+    name: /^Ver detalhes de /,
+  })
+  const count = await cards.count()
+  expect(count).toBeGreaterThan(0)
+
+  for (let index = 0; index < count; index++) {
+    const card = cards.nth(index)
+    const name = (await card.getAttribute('aria-label')).replace(
+      'Ver detalhes de ',
+      '',
+    )
+    await card.click()
+    const dialog = page.getByRole('dialog', { name, exact: true })
+    await expect(dialog).toBeVisible()
+    await expect(
+      dialog.getByRole('heading', { name, exact: true }),
+    ).toBeVisible()
+    await expect(
+      dialog.getByRole('img', { name: /^Screenshot / }),
+    ).toBeVisible()
+    expect(
+      await dialog
+        .getByRole('list', { name: 'Tecnologias utilizadas' })
+        .getByRole('listitem')
+        .count(),
+    ).toBeGreaterThan(0)
+    await expect(
+      dialog.getByRole('link', { name: 'Repositório', exact: true }),
+    ).toHaveAttribute('href', /^https:\/\/github\.com\//)
+    await dialog.getByRole('button', { name: 'Fechar modal' }).click()
+    await expect(dialog).toBeHidden()
+  }
+})
+
 test('página e modal cabem na tela de celular', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')

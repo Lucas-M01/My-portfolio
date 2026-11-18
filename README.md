@@ -45,8 +45,9 @@ npm run build
 npm test
 ```
 
-Os testes verificam o modal e o carrossel por teclado, o retorno de foco, o layout no
-celular, o conteúdo sem JavaScript e os metadados de compartilhamento. O servidor
+Os testes verificam o modal e o carrossel por teclado, o retorno de foco, os dados
+de todos os projetos, o layout no celular, o conteúdo sem JavaScript e os metadados
+de compartilhamento. O servidor
 local é iniciado e encerrado pelo Playwright; deixe a porta 4173 livre.
 
 O workflow em `.github/workflows/ci.yml` executa essas validações e a auditoria de
@@ -59,9 +60,16 @@ produção em pushes e pull requests. Ele não publica o site.
 - `src/pages/`: página inicial, documento HTML e configuração global.
 - `src/components/`: apresentação, habilidades, projetos e rodapé.
 - `src/config/site.ts`: identidade e URLs usadas nos metadados.
+- `src/data/`: projetos, habilidades, contatos e catálogo de ícones.
+- `src/types/project.ts`: contrato compartilhado entre os dados, o card e o modal.
 - `public/`: imagens, ícones, robots e sitemap.
 - `tests/`: testes de navegador.
 - `scripts/serve-export.mjs`: servidor da prévia local e dos testes.
+
+Projetos recebem um único objeto tipado, com pelo menos uma imagem e um item de
+stack. Os ícones são referenciados por identificadores do catálogo compartilhado.
+As descrições dos projetos continuam em JSX em `src/data/projects.tsx` para manter
+a formatação rica existente, sem introduzir um formato de conteúdo próprio.
 
 ## Metadados e ambiente
 

@@ -1,37 +1,15 @@
 import Image from 'next/image'
 import TestImg from '../../../public/assets/imgs/profile/9.jpeg'
-import { BsLinkedin } from 'react-icons/bs'
-import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
-import { DownloadSimple, GraduationCap, MapPin, Globe } from 'phosphor-react'
+import { VscChevronDown } from 'react-icons/vsc'
+import { GraduationCap, MapPin, Globe } from 'phosphor-react'
 import { ButtonLink } from './components/ButtonLink'
-import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import styles from './home.module.css'
 import { FadeIn } from '../FadeIn'
-
-const SOCIAL_LINKS = [
-  {
-    href: 'https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86',
-    text: 'Download CV',
-    icon: <DownloadSimple weight="bold" className="text-lg" />,
-  },
-  {
-    href: 'https://github.com/Lucas-M01',
-    text: 'GitHub',
-    icon: <VscGithubInverted className="text-lg" />,
-  },
-  {
-    href: 'https://www.linkedin.com/in/lucasmontenegrons/',
-    text: 'LinkedIn',
-    icon: <BsLinkedin className="text-lg" />,
-  },
-  {
-    href: 'mailto:lucas.montenegro.n@outlook.com',
-    text: 'Outlook',
-    icon: <PiMicrosoftOutlookLogoFill className="text-lg" />,
-  },
-]
+import { siteConfig } from '@/config/site'
+import { socialLinks } from '@/data/social-links'
+import { SocialIcon } from '../SocialIcon'
 
 const INFO_CARDS = [
   {
@@ -111,7 +89,7 @@ export function Home() {
                 ring-2 ring-blue-500 ring-offset-4 ring-offset-gray-800
                 ${styles.profileImage}
               `}
-              alt="Foto de perfil de Lucas Montenegro"
+              alt={`Foto de perfil de ${siteConfig.name}`}
             />
           </motion.div>
 
@@ -152,7 +130,7 @@ export function Home() {
                 delay: reduceMotion ? 0 : 0.35,
               }}
             >
-              Lucas Montenegro
+              {siteConfig.name}
             </motion.h1>
 
             <motion.p
@@ -184,12 +162,12 @@ export function Home() {
                 delay: reduceMotion ? 0 : 0.65,
               }}
             >
-              {SOCIAL_LINKS.map((link) => (
+              {socialLinks.map((link) => (
                 <ButtonLink
-                  key={link.text}
+                  key={link.id}
                   href={link.href}
-                  text={link.text}
-                  icon={link.icon}
+                  text={link.label}
+                  icon={<SocialIcon id={link.id} className="text-lg" />}
                 />
               ))}
             </motion.div>

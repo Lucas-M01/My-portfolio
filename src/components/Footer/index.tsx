@@ -1,7 +1,9 @@
-import { BsLinkedin } from 'react-icons/bs'
-import { VscGithubInverted } from 'react-icons/vsc'
-import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 import { FadeIn } from '../FadeIn'
+import { SocialIcon } from '../SocialIcon'
+import { siteConfig } from '@/config/site'
+import { socialLinks } from '@/data/social-links'
+
+const footerLinks = socialLinks.filter((link) => link.id !== 'resume')
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -12,41 +14,28 @@ export function Footer() {
         <div className="w-5/6 max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-zinc-400 text-sm">
             © {year}{' '}
-            <span className="text-zinc-300 font-medium">Lucas Montenegro</span>
+            <span className="text-zinc-300 font-medium">{siteConfig.name}</span>
           </p>
 
           <div className="flex items-center gap-5">
-            <a
-              href="https://github.com/Lucas-M01"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="text-zinc-400 hover:text-blue-400 transition-colors duration-200"
-            >
-              <VscGithubInverted className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/lucasmontenegrons/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-zinc-400 hover:text-blue-400 transition-colors duration-200"
-            >
-              <BsLinkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:lucas.montenegro.n@outlook.com"
-              aria-label="Email"
-              className="text-zinc-400 hover:text-blue-400 transition-colors duration-200"
-            >
-              <PiMicrosoftOutlookLogoFill className="w-5 h-5" />
-            </a>
+            {footerLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target={link.id === 'email' ? undefined : '_blank'}
+                rel={link.id === 'email' ? undefined : 'noopener noreferrer'}
+                aria-label={link.id === 'email' ? 'Email' : link.label}
+                className="text-zinc-400 hover:text-blue-400 transition-colors duration-200"
+              >
+                <SocialIcon id={link.id} className="w-5 h-5" />
+              </a>
+            ))}
             <span className="text-zinc-700 hidden sm:block">|</span>
             <a
-              href="mailto:lucas.montenegro.n@outlook.com"
+              href={`mailto:${siteConfig.email}`}
               className="text-zinc-400 hover:text-zinc-300 transition-colors duration-200 text-sm hidden sm:block"
             >
-              lucas.montenegro.n@outlook.com
+              {siteConfig.email}
             </a>
           </div>
         </div>

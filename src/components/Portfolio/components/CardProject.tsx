@@ -1,21 +1,16 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import Image, { StaticImageData } from 'next/image'
-import { ReactNode } from 'react'
-import { ProjectModal, ProjectProps } from './ProjectModal'
+import Image from 'next/image'
+import { ProjectModal } from './ProjectModal'
+import type { Project } from '@/types/project'
+import { technologyIcons } from '@/data/technology-icons'
 import styles from './project.module.css'
 
-interface CardProjectProps extends ProjectProps {
-  name: string
-  tagsIcons: ReactNode[]
-  images: string[] | StaticImageData[]
+interface CardProjectProps {
+  project: Project
 }
 
-export function CardProject({
-  images,
-  name,
-  tagsIcons,
-  ...modalProps
-}: CardProjectProps) {
+export function CardProject({ project }: CardProjectProps) {
+  const { images, name, technologyIds } = project
   return (
     <Dialog.Root>
       <Dialog.Trigger
@@ -41,14 +36,19 @@ export function CardProject({
             {name}
           </h3>
           <ul className="flex gap-2 text-orange-400">
-            {tagsIcons.map((icon, index) => (
-              <li key={index}>{icon}</li>
-            ))}
+            {technologyIds.map((id) => {
+              const Icon = technologyIcons[id]
+              return (
+                <li key={id}>
+                  <Icon className="w-6 h-auto" />
+                </li>
+              )
+            })}
           </ul>
         </div>
       </Dialog.Trigger>
 
-      <ProjectModal name={name} images={images} {...modalProps} />
+      <ProjectModal project={project} />
     </Dialog.Root>
   )
 }
