@@ -238,15 +238,17 @@ export function Home() {
             >
               <div className="bg-gray-800 border border-gray-700 shadow-lg hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 rounded-xl h-full">
                 <p className="text-zinc-300 p-6 md:p-8 leading-relaxed text-base md:text-lg">
-                  Desenvolvedor web formado em Ciência da Computação pela
-                  Cruzeiro do Sul Virtual, com foco em TypeScript, React e
-                  Next.js no front-end e Node.js e Java com Spring Boot no
-                  back-end. Tenho experiência prática através de projetos
-                  acadêmicos e pessoais, desenvolvendo aplicações completas com
-                  boas práticas de código, APIs REST e bancos de dados
-                  relacionais. Estou em busca da minha primeira oportunidade
-                  profissional para evoluir em equipe e contribuir com projetos
-                  de impacto.
+                  Sou desenvolvedor Full Stack, formado em Ciência da Computação
+                  pela Cruzeiro do Sul Virtual. Meu foco é o desenvolvimento web
+                  com TypeScript, React e Next.js no front-end, e Node.js e Java
+                  com Spring Boot no back-end. Em projetos pessoais e
+                  acadêmicos, desenvolvo interfaces responsivas, APIs REST e
+                  integrações com bancos de dados relacionais para resolver
+                  necessidades como gestão de produtos, carrinhos de compras e
+                  organização de tarefas. Busco minha primeira oportunidade
+                  profissional em desenvolvimento web para contribuir com uma
+                  equipe, aprender com outras pessoas e evoluir na construção de
+                  aplicações úteis.
                 </p>
               </div>
             </FadeIn>
