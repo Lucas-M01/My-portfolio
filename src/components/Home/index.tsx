@@ -168,7 +168,7 @@ export function Home() {
                 delay: reduceMotion ? 0 : 0.5,
               }}
             >
-              Desenvolvedor <span className="text-blue-500">Full Stack</span>
+              Desenvolvedor <span className="text-blue-400">Full Stack</span>
             </motion.p>
 
             <motion.div
@@ -261,7 +261,7 @@ export function Home() {
                   <div className="bg-gray-800 border border-gray-700 hover:border-blue-500/40 transition-all duration-300 rounded-xl px-5 py-4 flex items-center gap-4">
                     <div className="shrink-0">{item.icon}</div>
                     <div>
-                      <p className="text-zinc-500 text-xs uppercase tracking-widest">
+                      <p className="text-zinc-400 text-xs uppercase tracking-widest">
                         {item.label}
                       </p>
                       <p className="text-zinc-200 text-sm font-semibold mt-0.5">

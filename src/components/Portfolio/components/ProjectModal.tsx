@@ -158,7 +158,7 @@ export function ProjectModal(props: ProjectProps) {
                     <li key={language}>{language}</li>
                   ))}
                 </ul>
-                <span className="text-blue-500 font-semibold">
+                <span className="text-blue-400 font-semibold">
                   {props.data}
                 </span>
               </div>
@@ -188,7 +188,7 @@ export function ProjectModal(props: ProjectProps) {
                   href={props.figma}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 whitespace-nowrap hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                  className="bg-blue-600 whitespace-nowrap hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
                 >
                   Projeto Figma
                 </Link>
@@ -198,7 +198,7 @@ export function ProjectModal(props: ProjectProps) {
                   href={props.linkGithub}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                  className="bg-blue-600 hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
                 >
                   Repositório
                 </Link>

@@ -26,7 +26,7 @@ export function ButtonLink({ text, href, icon }: ButtonLinkProps) {
         border-2 border-solid border-blue-500
         flex gap-2 justify-center items-center
         rounded-[4rem] duration-300 transition-all
-        text-blue-500 hover:text-white hover:bg-blue-500
+        text-blue-400 hover:text-white hover:bg-blue-600
         hover:drop-shadow-[0_0_0.85rem_rgb(59,130,246)]
         font-semibold text-base md:text-lg
         shadow-[0_0_1rem_rgba(0,0,0,0.3)]
