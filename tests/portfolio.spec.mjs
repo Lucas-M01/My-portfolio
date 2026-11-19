@@ -1,5 +1,41 @@
 import { expect, test } from '@playwright/test'
 
+test('entrada aguarda hidratação sem exibir o conteúdo antes da animação', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  let releaseScripts
+  const scriptsReady = new Promise((resolve) => {
+    releaseScripts = resolve
+  })
+  await page.route('**/_next/**/*.js', async (route) => {
+    await scriptsReady
+    await route.continue()
+  })
+  try {
+    await page.goto('/', { waitUntil: 'commit' })
+    const title = page.getByRole('heading', {
+      name: 'Lucas Montenegro',
+      exact: true,
+    })
+    await expect(title).toHaveCSS('opacity', '0')
+    const about = page
+      .getByRole('heading', { name: 'Sobre mim', exact: true })
+      .locator('..')
+    await expect(about).toHaveCSS('opacity', '0')
+    releaseScripts()
+    await expect(title).toHaveCSS('opacity', '1')
+    await about.scrollIntoViewIfNeeded()
+    await expect(about).toHaveCSS('opacity', '1')
+    await title.scrollIntoViewIfNeeded()
+    await expect(about).toHaveCSS('opacity', '1')
+    await about.scrollIntoViewIfNeeded()
+    await expect(about).toHaveCSS('opacity', '1')
+  } finally {
+    releaseScripts()
+  }
+})
+
 async function expectSafeExternalLinks(page) {
   const unsafeLinks = await page
     .locator('a[target="_blank"]')

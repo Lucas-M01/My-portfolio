@@ -27,20 +27,15 @@ export function FadeIn({
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.15 })
   const reduceMotion = useReducedMotion()
-  const animate =
-    inView && !reduceMotion
-      ? {
-          opacity: [0, 1],
-          y: [directionMap[direction].y, 0],
-          x: [directionMap[direction].x, 0],
-        }
-      : { opacity: 1, y: 0, x: 0 }
+  const hidden = { opacity: 0, ...directionMap[direction] }
+  const animate = inView || reduceMotion ? { opacity: 1, y: 0, x: 0 } : hidden
 
   return (
     <motion.div
       className={className}
       ref={ref}
-      initial={false}
+      data-reveal=""
+      initial={hidden}
       animate={animate}
       transition={{
         duration: reduceMotion ? 0 : duration,

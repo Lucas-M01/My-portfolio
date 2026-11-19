@@ -38,7 +38,7 @@ export function Home() {
   const heroRef = useRef<HTMLElement>(null)
   const heroInView = useInView(heroRef, { once: true })
   const reduceMotion = useReducedMotion()
-  const animateHero = heroInView && !reduceMotion
+  const animateHero = heroInView || reduceMotion
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about')
     if (aboutSection) {
@@ -66,11 +66,10 @@ export function Home() {
         >
           <motion.div
             className="flex justify-center pb-4 sm:pb-0 shrink-0"
-            initial={false}
+            data-reveal=""
+            initial={{ opacity: 0, x: -40 }}
             animate={
-              animateHero
-                ? { opacity: [0, 1], x: [-40, 0] }
-                : { opacity: 1, x: 0 }
+              animateHero ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }
             }
             transition={{
               duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
@@ -103,11 +102,10 @@ export function Home() {
           >
             <motion.p
               className="text-base md:text-lg font-normal text-zinc-400 tracking-wide"
-              initial={false}
+              data-reveal=""
+              initial={{ opacity: 0, y: 20 }}
               animate={
-                animateHero
-                  ? { opacity: [0, 1], y: [20, 0] }
-                  : { opacity: 1, y: 0 }
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
               }
               transition={{
                 duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
@@ -119,11 +117,10 @@ export function Home() {
 
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
-              initial={false}
+              data-reveal=""
+              initial={{ opacity: 0, y: 20 }}
               animate={
-                animateHero
-                  ? { opacity: [0, 1], y: [20, 0] }
-                  : { opacity: 1, y: 0 }
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
               }
               transition={{
                 duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
@@ -135,11 +132,10 @@ export function Home() {
 
             <motion.p
               className="text-lg md:text-xl lg:text-2xl font-semibold text-zinc-300 flex gap-2 items-center flex-wrap justify-center lg:justify-start mt-1"
-              initial={false}
+              data-reveal=""
+              initial={{ opacity: 0, y: 20 }}
               animate={
-                animateHero
-                  ? { opacity: [0, 1], y: [20, 0] }
-                  : { opacity: 1, y: 0 }
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
               }
               transition={{
                 duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
@@ -151,11 +147,10 @@ export function Home() {
 
             <motion.div
               className={`flex justify-center md:justify-start gap-3 flex-wrap mt-6 ${styles.buttonWrapper}`}
-              initial={false}
+              data-reveal=""
+              initial={{ opacity: 0, y: 20 }}
               animate={
-                animateHero
-                  ? { opacity: [0, 1], y: [20, 0] }
-                  : { opacity: 1, y: 0 }
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
               }
               transition={{
                 duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
@@ -176,8 +171,9 @@ export function Home() {
 
         <motion.div
           className={`absolute bottom-10 sm:bottom-14 lg:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 pb-8 ${styles.scrollHint}`}
-          initial={false}
-          animate={animateHero ? { opacity: [0, 1] } : { opacity: 1 }}
+          data-reveal=""
+          initial={{ opacity: 0 }}
+          animate={{ opacity: animateHero ? 1 : 0 }}
           transition={{
             duration: reduceMotion ? 0 : 0.8,
             delay: reduceMotion ? 0 : 1,
