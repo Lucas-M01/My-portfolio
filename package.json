@@ -8,7 +8,7 @@
     "start": "npm run preview",
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
     "preview": "node scripts/serve-export.mjs",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "images:optimize-profile": "node scripts/optimize-profile.mjs",
