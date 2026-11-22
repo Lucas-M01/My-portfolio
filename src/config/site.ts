@@ -29,5 +29,5 @@ export const siteConfig = {
   linkedin: 'https://www.linkedin.com/in/lucasmontenegrons/',
   email: 'lucas.montenegro.n@outlook.com',
   resumeUrl:
-    'https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86',
+    'https://drive.google.com/uc?export=download&id=13_Vxii6pNeA4YDTx1tgoxD0KBxYGzMzD',
 }
