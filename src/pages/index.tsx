@@ -3,19 +3,15 @@ import { Home } from '@/components/Home'
 import { Skills } from '@/components/Skills'
 import { Portfolio } from '@/components/Portfolio'
 import { Footer } from '@/components/Footer'
+import { siteConfig as META } from '@/config/site'
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lucasmontenegro-ns.vercel.app'
-
-const ogImage =
-  process.env.NEXT_PUBLIC_OG_IMAGE ?? `${siteUrl}/assets/og-image.png`
-
-const META = {
-  title: 'Lucas Montenegro | Desenvolvedor Full Stack Web',
-  description:
-    'Portfólio de Lucas Montenegro — Desenvolvedor Full Stack com foco em TypeScript, React, Next.js, Node.js, Java e Python. Veja meus projetos e entre em contato!',
-  url: siteUrl,
-  image: ogImage,
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: META.name,
+  url: META.url,
+  jobTitle: 'Desenvolvedor Full Stack Web',
+  sameAs: [META.github, META.linkedin],
 }
 
 export default function PageHome() {
@@ -24,7 +20,7 @@ export default function PageHome() {
       <Head>
         <title>{META.title}</title>
         <meta name="description" content={META.description} />
-        <meta name="author" content="Lucas Montenegro" />
+        <meta name="author" content={META.name} />
         <meta
           name="keywords"
           content="desenvolvedor web, full stack, react, next.js, typescript, node.js, java, python, spring boot, portfólio, joão pessoa"
@@ -39,22 +35,29 @@ export default function PageHome() {
         <meta property="og:image" content={META.image} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={META.title} />
         <meta property="og:locale" content="pt_BR" />
-        <meta property="og:site_name" content="Lucas Montenegro" />
+        <meta property="og:site_name" content={META.name} />
 
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={META.title} />
         <meta name="twitter:description" content={META.description} />
         <meta name="twitter:image" content={META.image} />
+        <meta name="twitter:image:alt" content={META.title} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
+          }}
+        />
       </Head>
 
-      <div className="min-h-screen">
+      <main className="min-h-screen" id="main-content">
         <Home />
         <Skills />
         <Portfolio />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </>
   )
 }

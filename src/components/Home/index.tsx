@@ -1,36 +1,15 @@
 import Image from 'next/image'
-import TestImg from '../../../public/assets/imgs/profile/9.jpeg'
-import { BsLinkedin } from 'react-icons/bs'
-import { VscChevronDown, VscGithubInverted } from 'react-icons/vsc'
-import { DownloadSimple, GraduationCap, MapPin, Globe } from 'phosphor-react'
+import ProfileImage from '../../../public/assets/imgs/profile/lucas-montenegro.webp'
+import { VscChevronDown } from 'react-icons/vsc'
+import { GraduationCap, MapPin, Globe } from 'phosphor-react'
 import { ButtonLink } from './components/ButtonLink'
-import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
-import { motion } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { useRef } from 'react'
 import styles from './home.module.css'
 import { FadeIn } from '../FadeIn'
-
-const SOCIAL_LINKS = [
-  {
-    href: 'https://drive.google.com/uc?export=download&id=1eg0ZqSkr3RA0lnnn-FF-pWT-LU9_c-86',
-    text: 'Download CV',
-    icon: <DownloadSimple weight="bold" className="text-lg" />,
-  },
-  {
-    href: 'https://github.com/Lucas-M01',
-    text: 'GitHub',
-    icon: <VscGithubInverted className="text-lg" />,
-  },
-  {
-    href: 'https://www.linkedin.com/in/lucasmontenegrons/',
-    text: 'LinkedIn',
-    icon: <BsLinkedin className="text-lg" />,
-  },
-  {
-    href: 'mailto:lucas.montenegro.n@outlook.com',
-    text: 'Outlook',
-    icon: <PiMicrosoftOutlookLogoFill className="text-lg" />,
-  },
-]
+import { siteConfig } from '@/config/site'
+import { socialLinks } from '@/data/social-links'
+import { SocialIcon } from '../SocialIcon'
 
 const INFO_CARDS = [
   {
@@ -52,20 +31,27 @@ const INFO_CARDS = [
 
 const ANIMATION_CONFIG = {
   duration: 0.5,
-  easing: [0.21, 0.47, 0.32, 0.98],
+  easing: [0.21, 0.47, 0.32, 0.98] satisfies [number, number, number, number],
 }
 
 export function Home() {
+  const heroRef = useRef<HTMLElement>(null)
+  const heroInView = useInView(heroRef, { once: true })
+  const reduceMotion = useReducedMotion()
+  const animateHero = heroInView || reduceMotion
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about')
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
+      aboutSection.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      })
     }
   }
 
   return (
     <>
       <section
+        ref={heroRef}
         className={`relative bg-gray-800 w-full text-white flex flex-col items-center min-h-screen justify-center ${styles.heroSection}`}
         id="home"
       >
@@ -80,18 +66,21 @@ export function Home() {
         >
           <motion.div
             className="flex justify-center pb-4 sm:pb-0 shrink-0"
+            data-reveal=""
             initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={
+              animateHero ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }
+            }
             transition={{
-              duration: ANIMATION_CONFIG.duration,
+              duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
               ease: ANIMATION_CONFIG.easing,
             }}
           >
             <Image
-              src={TestImg}
+              src={ProfileImage}
               width={260}
               height={260}
-              sizes="(max-width: 932px) and (orientation: landscape) 75px, 260px"
+              sizes="(max-width: 932px) and (max-height: 450px) and (orientation: landscape) 150px, (min-width: 1024px) 260px, (min-width: 768px) 208px, 176px"
               priority
               className={`
                 rounded-full object-cover
@@ -99,7 +88,7 @@ export function Home() {
                 ring-2 ring-blue-500 ring-offset-4 ring-offset-gray-800
                 ${styles.profileImage}
               `}
-              alt="Foto de perfil de Lucas Montenegro"
+              alt={`Foto de perfil de ${siteConfig.name}`}
             />
           </motion.div>
 
@@ -113,43 +102,67 @@ export function Home() {
           >
             <motion.p
               className="text-base md:text-lg font-normal text-zinc-400 tracking-wide"
+              data-reveal=""
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.2 }}
+              animate={
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.2,
+              }}
             >
               Olá, me chamo
             </motion.p>
 
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
+              data-reveal=""
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.35 }}
+              animate={
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.35,
+              }}
             >
-              Lucas Montenegro
+              {siteConfig.name}
             </motion.h1>
 
             <motion.p
               className="text-lg md:text-xl lg:text-2xl font-semibold text-zinc-300 flex gap-2 items-center flex-wrap justify-center lg:justify-start mt-1"
+              data-reveal=""
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.5 }}
+              animate={
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.5,
+              }}
             >
-              Desenvolvedor <span className="text-blue-500">Full Stack</span>
+              Desenvolvedor <span className="text-blue-400">Full Stack</span>
             </motion.p>
 
             <motion.div
               className={`flex justify-center md:justify-start gap-3 flex-wrap mt-6 ${styles.buttonWrapper}`}
+              data-reveal=""
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_CONFIG.duration, delay: 0.65 }}
+              animate={
+                animateHero ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+              }
+              transition={{
+                duration: reduceMotion ? 0 : ANIMATION_CONFIG.duration,
+                delay: reduceMotion ? 0 : 0.65,
+              }}
             >
-              {SOCIAL_LINKS.map((link) => (
+              {socialLinks.map((link) => (
                 <ButtonLink
-                  key={link.text}
+                  key={link.id}
                   href={link.href}
-                  text={link.text}
-                  icon={link.icon}
+                  text={link.label}
+                  icon={<SocialIcon id={link.id} className="text-lg" />}
                 />
               ))}
             </motion.div>
@@ -158,9 +171,13 @@ export function Home() {
 
         <motion.div
           className={`absolute bottom-10 sm:bottom-14 lg:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 pb-8 ${styles.scrollHint}`}
+          data-reveal=""
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          animate={{ opacity: animateHero ? 1 : 0 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.8,
+            delay: reduceMotion ? 0 : 1,
+          }}
         >
           <button
             onClick={scrollToNextSection}
@@ -195,15 +212,17 @@ export function Home() {
             >
               <div className="bg-gray-800 border border-gray-700 shadow-lg hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 rounded-xl h-full">
                 <p className="text-zinc-300 p-6 md:p-8 leading-relaxed text-base md:text-lg">
-                  Desenvolvedor web formado em Ciência da Computação pela
-                  Cruzeiro do Sul Virtual, com foco em TypeScript, React e
-                  Next.js no front-end e Node.js e Java com Spring Boot no
-                  back-end. Tenho experiência prática através de projetos
-                  acadêmicos e pessoais, desenvolvendo aplicações completas com
-                  boas práticas de código, APIs REST e bancos de dados
-                  relacionais. Estou em busca da minha primeira oportunidade
-                  profissional para evoluir em equipe e contribuir com projetos
-                  de impacto.
+                  Sou desenvolvedor Full Stack, formado em Ciência da Computação
+                  pela Cruzeiro do Sul Virtual. Meu foco é o desenvolvimento web
+                  com TypeScript, React e Next.js no front-end, e Node.js e Java
+                  com Spring Boot no back-end. Em projetos pessoais e
+                  acadêmicos, desenvolvo interfaces responsivas, APIs REST e
+                  integrações com bancos de dados relacionais para resolver
+                  necessidades como gestão de produtos, carrinhos de compras e
+                  organização de tarefas. Busco minha primeira oportunidade
+                  profissional em desenvolvimento web para contribuir com uma
+                  equipe, aprender com outras pessoas e evoluir na construção de
+                  aplicações úteis.
                 </p>
               </div>
             </FadeIn>
@@ -218,7 +237,7 @@ export function Home() {
                   <div className="bg-gray-800 border border-gray-700 hover:border-blue-500/40 transition-all duration-300 rounded-xl px-5 py-4 flex items-center gap-4">
                     <div className="shrink-0">{item.icon}</div>
                     <div>
-                      <p className="text-zinc-500 text-xs uppercase tracking-widest">
+                      <p className="text-zinc-400 text-xs uppercase tracking-widest">
                         {item.label}
                       </p>
                       <p className="text-zinc-200 text-sm font-semibold mt-0.5">

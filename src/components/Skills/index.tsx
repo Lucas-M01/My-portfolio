@@ -1,5 +1,5 @@
 import { Skill } from './components/Skill'
-import { skillGroups } from './components/languages'
+import { skillGroups } from '@/data/skills'
 import { FadeIn } from '../FadeIn'
 
 export function Skills() {
@@ -25,19 +25,14 @@ export function Skills() {
               </FadeIn>
 
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-10 gap-3 sm:gap-4">
-                {group.items.map((language, itemIndex) => (
+                {group.items.map((skill, itemIndex) => (
                   <FadeIn
-                    key={language.text}
+                    key={skill.id}
                     direction="up"
                     delay={Math.min(groupIndex * 0.1 + itemIndex * 0.05, 0.4)}
                     duration={0.4}
                   >
-                    <Skill
-                      svg={language.svg}
-                      text={language.text}
-                      shortText={language.shortText}
-                      link={language.link}
-                    />
+                    <Skill skill={skill} />
                   </FadeIn>
                 ))}
               </div>

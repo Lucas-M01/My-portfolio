@@ -1,31 +1,32 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import type { SkillDefinition } from '@/data/skills'
+import { technologyIcons } from '@/data/technology-icons'
 
 import Tilt from 'react-parallax-tilt'
+import { useReducedMotion } from 'framer-motion'
 import * as Tooltip from '@radix-ui/react-tooltip'
 
 interface SkillProps {
-  svg: ReactNode | string
-  text: string
-  /** Versão abreviada exibida no card quando o nome completo é muito longo */
-  shortText?: string
-  link: string
+  skill: SkillDefinition
 }
 
 const isSafeLink = (href: string): boolean =>
   href.startsWith('https://') || href.startsWith('http://')
 
-export function Skill({ svg, text, shortText, link }: SkillProps) {
+export function Skill({ skill }: SkillProps) {
+  const { id, text, shortText, link, colorClassName } = skill
+  const Icon = technologyIcons[id]
+  const reduceMotion = useReducedMotion()
   const safeLink = isSafeLink(link) ? link : '#'
   const displayText = shortText ?? text
 
   return (
     <Tilt
-      scale={1.1}
+      scale={reduceMotion ? 1 : 1.1}
+      tiltEnable={!reduceMotion}
       transitionSpeed={500}
       perspective={500}
-      glareEnable={true}
+      glareEnable={!reduceMotion}
       glareMaxOpacity={0.15}
       glareColor="#ffffff"
       glarePosition="bottom"
@@ -43,13 +44,9 @@ export function Skill({ svg, text, shortText, link }: SkillProps) {
               aria-label={`Ver documentação de ${text}`}
             >
               <div className="text-center flex flex-col gap-2 md:gap-3 lg:gap-4 justify-between items-center p-3 sm:p-4 lg:px-8 lg:py-5">
-                {typeof svg === 'string' ? (
-                  <Image src={svg} width={40} height={40} alt={text} />
-                ) : (
-                  <div className="[&>svg]:w-8 [&>svg]:h-auto sm:[&>svg]:w-10 lg:[&>svg]:w-12">
-                    {svg}
-                  </div>
-                )}
+                <div className="[&>svg]:w-8 [&>svg]:h-auto sm:[&>svg]:w-10 lg:[&>svg]:w-12">
+                  <Icon className={colorClassName} />
+                </div>
                 <p className="z-[1] text-zinc-300 text-xs sm:text-sm lg:text-base font-semibold w-full truncate text-center">
                   {displayText}
                 </p>

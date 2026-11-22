@@ -4,6 +4,9 @@ export default function Document() {
   return (
     <Html lang="pt-BR">
       <Head>
+        <noscript>
+          <style>{`[data-reveal] { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <link
           rel="apple-touch-icon"
           sizes="180x180"

@@ -1,84 +1,76 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { X } from 'phosphor-react'
-import { MutableRefObject, ReactNode } from 'react'
-import {
-  useKeenSlider,
-  KeenSliderPlugin,
-  KeenSliderInstance,
-} from 'keen-slider/react'
+import { KeyboardEvent, useEffect, useState } from 'react'
+import { useKeenSlider } from 'keen-slider/react'
+import { useReducedMotion } from 'framer-motion'
 import 'keen-slider/keen-slider.min.css'
 import Link from 'next/link'
 import styles from './project.module.css'
+import type { Project } from '@/types/project'
 
-export interface ProjectProps {
-  name?: string
-  description?: ReactNode
-  languages?: string[]
-  data?: string
-  images?: string[] | StaticImageData[]
-  figma?: string
-  linkGithub?: string
+interface ProjectModalProps {
+  project: Project
 }
 
-function ThumbnailPlugin(
-  mainRef: MutableRefObject<KeenSliderInstance | null>,
-): KeenSliderPlugin {
-  return (slider) => {
-    function removeActive() {
-      slider.slides.forEach((slide) => {
-        slide.classList.remove(`${styles.activeThumbnail}`)
-      })
-    }
-
-    function addActive(idx: number) {
-      slider.slides[idx].classList.add(`${styles.activeThumbnail}`)
-    }
-
-    function addClickEvents() {
-      slider.slides.forEach((slide, idx) => {
-        slide.addEventListener('click', () => {
-          if (mainRef.current) mainRef.current.moveToIdx(idx)
-        })
-      })
-    }
-
-    slider.on('created', () => {
-      if (!mainRef.current) return
-      if (!slider.track.details) return
-
-      addActive(slider.track.details.rel ?? 0)
-      addClickEvents()
-
-      mainRef.current.on('animationStarted', (main) => {
-        if (!slider.track.details) return
-        removeActive()
-        const next = main.animator.targetIdx || 0
-        addActive(main.track.absToRel(next))
-        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next))
-      })
-    })
-  }
-}
-
-export function ProjectModal(props: ProjectProps) {
+export function ProjectModal({ project }: ProjectModalProps) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const reduceMotion = useReducedMotion()
+  const imageCount = project.images.length
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
+    defaultAnimation: { duration: reduceMotion ? 0 : 500 },
+    created: () => setCurrentSlide(0),
+    slideChanged: (slider) => setCurrentSlide(slider.track.details.rel),
   })
-  const [thumbnailRef] = useKeenSlider<HTMLDivElement>(
-    {
-      initial: 0,
-      slides: { perView: 3, spacing: 10 },
-    },
-    [ThumbnailPlugin(instanceRef)],
-  )
+  const [thumbnailRef, thumbnailInstanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    slides: { perView: 3, spacing: 10 },
+    defaultAnimation: { duration: reduceMotion ? 0 : 500 },
+  })
+
+  useEffect(() => {
+    const slider = instanceRef.current
+    const thumbnails = thumbnailInstanceRef.current
+    if (!slider || !thumbnails) return
+    const observer = new ResizeObserver(() => {
+      slider.update()
+      thumbnails.update()
+    })
+    observer.observe(slider.container)
+    observer.observe(thumbnails.container)
+    return () => observer.disconnect()
+  }, [instanceRef, thumbnailInstanceRef])
+
+  useEffect(() => {
+    const thumbnails = thumbnailInstanceRef.current
+    if (!thumbnails?.track.details) return
+    thumbnails.container.scrollLeft = 0
+    thumbnails.moveToIdx(
+      Math.min(currentSlide, thumbnails.track.details.maxIdx),
+    )
+  }, [currentSlide, thumbnailInstanceRef])
+
+  function handleImageNavigation(event: KeyboardEvent<HTMLDivElement>) {
+    const nextIndex = {
+      ArrowLeft: Math.max(0, currentSlide - 1),
+      ArrowRight: Math.min(imageCount - 1, currentSlide + 1),
+      Home: 0,
+      End: imageCount - 1,
+    }[event.key]
+
+    if (nextIndex === undefined || imageCount < 2) return
+    event.preventDefault()
+    instanceRef.current?.moveToIdx(nextIndex)
+  }
 
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 opacity-50 z-10 inset-0 fixed" />
 
       <Dialog.Content
+        aria-describedby={undefined}
         className={`
           fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50
           bg-[#2A2634] text-white rounded-lg shadow-lg shadow-black/25
@@ -92,10 +84,13 @@ export function ProjectModal(props: ProjectProps) {
           <div className={styles.title}>
             <div className="flex justify-between items-center">
               <Dialog.Title className="text-xl lg:text-3xl font-black text-blue-500">
-                {props.name}
+                {project.name}
               </Dialog.Title>
-              <Dialog.Close aria-label="Fechar modal" className="ml-4 shrink-0">
-                <X size={22} />
+              <Dialog.Close
+                aria-label="Fechar modal"
+                className="ml-[5px] -mr-[11px] -my-[11px] flex size-11 shrink-0 items-center justify-center"
+              >
+                <X size={22} aria-hidden="true" />
               </Dialog.Close>
             </div>
           </div>
@@ -104,52 +99,94 @@ export function ProjectModal(props: ProjectProps) {
             <div
               ref={sliderRef}
               className="keen-slider h-36 sm:h-44 md:h-[250px] landscape:h-28"
+              role="group"
+              aria-label={`Imagens de ${
+                project.name
+              }. Use as setas para navegar.`}
+              aria-roledescription="carrossel"
+              tabIndex={imageCount > 1 ? 0 : undefined}
+              onKeyDown={handleImageNavigation}
             >
-              {props.images?.map((image, index) => (
+              {project.images.map((image, index) => (
                 <Image
                   key={index}
                   src={image}
-                  alt={`Screenshot ${index + 1} de ${props.name ?? 'projeto'}`}
+                  alt={`Screenshot ${index + 1} de ${project.name}`}
                   width={800}
                   height={500}
-                  className="keen-slider__slide object-cover overflow-hidden"
+                  loading={index === currentSlide ? 'eager' : 'lazy'}
+                  aria-hidden={index !== currentSlide}
+                  className="keen-slider__slide object-contain overflow-hidden"
                 />
               ))}
             </div>
 
-            {(props.images?.length ?? 0) > 1 && (
+            <p className="sr-only" aria-live="polite" aria-atomic="true">
+              Imagem {currentSlide + 1} de {imageCount}
+            </p>
+
+            {project.images.length > 1 && (
               <div
                 ref={thumbnailRef}
-                className={`keen-slider thumbnail ${styles.thumbnailSlides}`}
+                className="keen-slider thumbnail h-16 sm:h-20"
+                role="group"
+                aria-label="Selecionar imagem do projeto"
               >
-                {props.images?.map((image, index) => (
-                  <Image
+                {project.images.map((image, index) => (
+                  <button
                     key={index}
-                    src={image}
-                    alt={`Miniatura ${index + 1} de ${props.name ?? 'projeto'}`}
-                    width={500}
-                    height={500}
-                    className="keen-slider__slide object-cover"
-                  />
+                    type="button"
+                    data-keen-slider-clickable="true"
+                    aria-label={`Ver imagem ${index + 1} de ${project.name}`}
+                    aria-pressed={index === currentSlide}
+                    onFocus={() => {
+                      const thumbnails = thumbnailInstanceRef.current
+                      if (!thumbnails?.track.details) return
+                      thumbnails.container.scrollLeft = 0
+                      thumbnails.moveToIdx(
+                        Math.min(index, thumbnails.track.details.maxIdx),
+                      )
+                    }}
+                    className={`keen-slider__slide ${
+                      index === currentSlide ? styles.activeThumbnail : ''
+                    }`}
+                    onClick={() => instanceRef.current?.moveToIdx(index)}
+                  >
+                    <Image
+                      src={image}
+                      alt=""
+                      width={500}
+                      height={500}
+                      className="w-full h-full object-contain"
+                    />
+                  </button>
                 ))}
               </div>
             )}
           </div>
 
           <ScrollArea.Root className={`${styles.content} w-full h-full`}>
-            <ScrollArea.Viewport className="h-full w-full">
+            <ScrollArea.Viewport
+              tabIndex={0}
+              role="region"
+              aria-label={`Descrição de ${project.name}`}
+              className="h-full w-full focus-visible:outline-offset-[-3px]"
+            >
               <div className="pr-2">
-                {props.description}
+                {project.description}
                 <p className="mt-4">
                   Nele foi utilizado as seguintes ferramentas:
                 </p>
-                <ul className="list-disc ml-4 mb-4">
-                  {props.languages?.map((language) => (
+                <ul
+                  className="list-disc ml-4 mb-4"
+                  aria-label="Tecnologias utilizadas"
+                >
+                  {project.stack.map((language) => (
                     <li key={language}>{language}</li>
                   ))}
                 </ul>
-                <span className="text-blue-500 font-semibold">
-                  {props.data}
+                <span className="text-blue-400 font-semibold">
+                  {project.dateLabel}
                 </span>
               </div>
             </ScrollArea.Viewport>
@@ -173,22 +210,32 @@ export function ProjectModal(props: ProjectProps) {
 
           <div className={styles.links}>
             <div className="flex gap-3 flex-wrap items-center">
-              {props.figma && (
+              {project.demoUrl && (
                 <Link
-                  href={props.figma}
+                  href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 whitespace-nowrap hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                  className="bg-blue-600 whitespace-nowrap hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                >
+                  Ver demonstração
+                </Link>
+              )}
+              {project.figmaUrl && (
+                <Link
+                  href={project.figmaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 whitespace-nowrap hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
                 >
                   Projeto Figma
                 </Link>
               )}
-              {props.linkGithub && (
+              {project.repositoryUrl && (
                 <Link
-                  href={props.linkGithub}
+                  href={project.repositoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 hover:bg-blue-400 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                  className="bg-blue-600 hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
                 >
                   Repositório
                 </Link>

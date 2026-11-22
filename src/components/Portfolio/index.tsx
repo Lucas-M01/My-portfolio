@@ -1,5 +1,5 @@
 import { CardProject } from './components/CardProject'
-import { projetos } from './components/projetos'
+import { projects } from '@/data/projects'
 import { FadeIn } from '../FadeIn'
 
 export function Portfolio() {
@@ -13,23 +13,14 @@ export function Portfolio() {
         </FadeIn>
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-10">
-          {projetos.map((projeto, index) => (
+          {projects.map((project, index) => (
             <FadeIn
-              key={projeto.id}
+              key={project.id}
               direction="up"
               delay={Math.min(index * 0.1, 0.3)}
               duration={0.5}
             >
-              <CardProject
-                name={projeto.name}
-                images={projeto.images}
-                tagsIcons={projeto.tagsIcons}
-                description={projeto.description}
-                languages={projeto.languages}
-                data={projeto.data}
-                figma={projeto.figma}
-                linkGithub={projeto.linkGithub}
-              />
+              <CardProject project={project} />
             </FadeIn>
           ))}
         </div>
