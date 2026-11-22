@@ -1,5 +1,53 @@
 import { expect, test } from '@playwright/test'
 
+for (const [name, imageCount] of [
+  ['Catálogo Digital', 12],
+  ['VoxNovel', 6],
+]) {
+  test(`galeria completa de ${name}`, async ({ page }) => {
+    test.setTimeout(90_000)
+    await page.goto('/')
+    await expect(
+      page.getByRole('button', {
+        name: /^Ver detalhes de (Mural|🎮 NLW eSports|☕ Coffee Delivery|📝 To Do List)/,
+      }),
+    ).toHaveCount(0)
+    await page
+      .getByRole('button', { name: `Ver detalhes de ${name}`, exact: true })
+      .press('Enter')
+    const dialog = page.getByRole('dialog', { name, exact: true })
+    const thumbnails = dialog.getByRole('button', { name: /^Ver imagem / })
+    await expect(thumbnails).toHaveCount(imageCount)
+    for (let index = 0; index < imageCount; index++) {
+      const thumbnail = thumbnails.nth(index)
+      await thumbnail.press('Enter')
+      await expect(thumbnail).toHaveAttribute('aria-pressed', 'true')
+      const activeImage = dialog.getByRole('img', {
+        name: `Screenshot ${index + 1} de ${name}`,
+        exact: true,
+      })
+      await expect(activeImage).toBeVisible()
+      await expect
+        .poll(() =>
+          activeImage.evaluate(
+            (image) => image.complete && image.naturalWidth > 0,
+          ),
+        )
+        .toBe(true)
+      await expect(activeImage).toHaveCSS('object-fit', 'contain')
+      await expect
+        .poll(() =>
+          dialog
+            .getByRole('group', { name: 'Selecionar imagem do projeto' })
+            .evaluate((element) => element.scrollLeft),
+        )
+        .toBe(0)
+    }
+    await page.keyboard.press('Escape')
+    await expect(dialog).toBeHidden()
+  })
+}
+
 test('entrada aguarda hidratação sem exibir o conteúdo antes da animação', async ({
   page,
 }) => {

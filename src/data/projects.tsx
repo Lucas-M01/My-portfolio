@@ -1,65 +1,160 @@
 import Link from 'next/link'
-
-import IgniteShop from '../../public/assets/imgs/igniteShop/CapaShop.webp'
+import type { Project } from '@/types/project'
+import IgniteShop from '../../public/assets/imgs/igniteShop/home.webp'
+import IgniteDetails from '../../public/assets/imgs/igniteShop/details-product.webp'
+import IgniteCart from '../../public/assets/imgs/igniteShop/carrinho.webp'
+import IgniteCheckout from '../../public/assets/imgs/igniteShop/checkout.webp'
 import DesignSystem from '../../public/assets/imgs/designSystem/HomeDS.webp'
-import CoffeDelivery from '../../public/assets/imgs/coffeDelivery/CapaCoffe.webp'
-import ToDoList from '../../public/assets/imgs/toDoList/ToDo List.webp'
+import Storybook from '../../public/assets/imgs/designSystem/storybook.webp'
 import CupcakeHo from '../../public/assets/imgs/cupcake/HomeCup.webp'
 import CupcakeCh from '../../public/assets/imgs/cupcake/Checkout.webp'
 import CupcakePr from '../../public/assets/imgs/cupcake/Products.webp'
 import CupcakePe from '../../public/assets/imgs/cupcake/Pedidos.webp'
-import NLWCapa from '../../public/assets/imgs/NLW/Capa.webp'
-import NLWHome from '../../public/assets/imgs/NLW/Home.webp'
-
-import type { Project } from '@/types/project'
+import CatalogHome from '../../public/assets/imgs/catalogo-digital/vitrine.webp'
+import CatalogFilter from '../../public/assets/imgs/catalogo-digital/filtro.webp'
+import CatalogDetails from '../../public/assets/imgs/catalogo-digital/detalhe-produto.webp'
+import CatalogCart from '../../public/assets/imgs/catalogo-digital/carrinho.webp'
+import CatalogSearch from '../../public/assets/imgs/catalogo-digital/busca.webp'
+import CatalogMobile from '../../public/assets/imgs/catalogo-digital/vitrine-mobile.webp'
+import CatalogAdmin from '../../public/assets/imgs/catalogo-digital/admin-homepng.webp'
+import CatalogProducts from '../../public/assets/imgs/catalogo-digital/admin-products.webp'
+import CatalogNewProduct from '../../public/assets/imgs/catalogo-digital/new-product.webp'
+import CatalogAdminMobile from '../../public/assets/imgs/catalogo-digital/admin-home-cell.webp'
+import CatalogProductsMobile from '../../public/assets/imgs/catalogo-digital/admin-product-cell.webp'
+import CatalogNewProductMobile from '../../public/assets/imgs/catalogo-digital/new-product-cell.webp'
+import VoxHome from '../../public/assets/imgs/VoxNovel/home.webp'
+import VoxDetails from '../../public/assets/imgs/VoxNovel/details-obra.webp'
+import VoxAdd from '../../public/assets/imgs/VoxNovel/add-obra.webp'
+import VoxReader from '../../public/assets/imgs/VoxNovel/leitura.webp'
+import VoxSpeech from '../../public/assets/imgs/VoxNovel/ouvir.webp'
+import VoxSettings from '../../public/assets/imgs/VoxNovel/config.webp'
 
 export const projects: readonly Project[] = [
   {
-    id: 0,
-    name: '🎮 NLW eSports',
+    id: 6,
+    name: 'Catálogo Digital',
     technologyIds: [
+      'next',
       'react',
-      'node',
       'typescript',
       'tailwind',
-      'prisma',
-      'axios',
+      'shadcn',
       'postgresql',
+      'zod',
     ],
     stack: [
+      'Next.js (App Router)',
       'React',
-      'Node',
-      'Typescript',
-      'Radix UI',
-      'Tailwind',
-      'Keen-Slider',
-      'Prisma',
-      'Axios',
-      'PostgreSQL',
-      'React Native',
-      'Expo',
+      'TypeScript',
+      'Tailwind CSS',
+      'shadcn/ui',
+      'Supabase (Postgres, Auth e Storage)',
+      'Zod',
+      'Biome',
     ],
     description: (
       <div className="space-y-3">
-        <p className="indent-4">
-          A aplicação tem como finalidade conectar pessoas que desejam jogar um
-          mesmo jogo e se divertir juntas. Foi desenvolvido durante o NLW (Next
-          Level Week), evento que ocorre durante uma semana totalmente online,
-          gratuito e prático promovido pela Rocketseat — eSports Ignite,
-          especificamente do dia 11 ao dia 18 de setembro de 2022.
+        <p>
+          Catálogo digital para lojas, com busca, filtros, carrinho e envio do
+          pedido completo em uma única mensagem pelo WhatsApp.
         </p>
-        <p className="indent-4">
-          Nele foi desenvolvido o back end em Node e o front end em React (para
-          web) e React Native (para mobile). Com a aplicação rodando, o usuário
-          poderia acessar o site, fazer um anúncio e entrar em contato com
-          outros players interessados no mesmo jogo pelo Discord.
+        <p>
+          <strong>Para quem compra:</strong> navegação por categoria, promoções,
+          detalhes dos produtos e ajuste de quantidades no carrinho. O pedido é
+          combinado com a loja pelo WhatsApp, sem pagamento online ou API
+          oficial de mensagens.
+        </p>
+        <p>
+          <strong>Para quem administra:</strong> painel autenticado para
+          gerenciar produtos, categorias, promoções programadas e horários de
+          funcionamento, com upload de imagens e interface adaptada ao celular.
+        </p>
+        <p>
+          <strong>Decisões técnicas:</strong> validação dos formulários no
+          servidor, controle de acesso com sessão e políticas do banco,
+          conversão de imagens para WebP e bloqueio de pedidos fora do horário
+          de atendimento.
         </p>
       </div>
     ),
-    dateLabel: '18 de novembro de 2022',
-    figmaUrl: 'https://www.figma.com/community/file/1150897317533332617',
-    images: [NLWCapa, NLWHome],
-    repositoryUrl: 'https://github.com/Lucas-M01/nlw-eSport',
+    dateLabel: 'Projeto autoral · 2026',
+    images: [
+      CatalogHome,
+      CatalogDetails,
+      CatalogCart,
+      CatalogFilter,
+      CatalogSearch,
+      CatalogMobile,
+      CatalogAdmin,
+      CatalogProducts,
+      CatalogNewProduct,
+      CatalogAdminMobile,
+      CatalogProductsMobile,
+      CatalogNewProductMobile,
+    ],
+    repositoryUrl: 'https://github.com/Lucas-M01/catalogo-digital',
+  },
+  {
+    id: 7,
+    name: 'VoxNovel',
+    technologyIds: [
+      'react',
+      'typescript',
+      'python',
+      'postgresql',
+      'zod',
+      'jest',
+    ],
+    stack: [
+      'React Native',
+      'Expo',
+      'Expo Router',
+      'TypeScript',
+      'TanStack Query',
+      'Zod',
+      'expo-speech',
+      'Python',
+      'FastAPI',
+      'Pydantic',
+      'Supabase (Postgres e Storage)',
+      'CTranslate2',
+      'SentencePiece',
+      'pytest',
+      'Jest',
+    ],
+    description: (
+      <div className="space-y-3">
+        <p>
+          Aplicativo mobile para ler e ouvir webnovels, acompanhar o progresso
+          por fonte e salvar capítulos para leitura offline.
+        </p>
+        <p>
+          <strong>Funcionalidades:</strong> biblioteca, busca e cadastro de
+          obras, leitor personalizável, voz nativa do aparelho com controle de
+          velocidade e escolha entre texto original e português.
+        </p>
+        <p>
+          <strong>Integração:</strong> aplicativo em React Native/Expo conectado
+          a uma API Python/FastAPI. A tradução local de inglês para português
+          usa CTranslate2 e SentencePiece; os capítulos baixados e as
+          preferências ficam disponíveis no aparelho.
+        </p>
+        <p>
+          <strong>Desafios técnicos:</strong> cancelamento e retomada da voz,
+          proteção contra callbacks atrasados, downloads sem duplicação,
+          validação dos dados locais e limites de processamento no backend.
+        </p>
+        <p>
+          <strong>Validação:</strong> testes de backend e mobile e integração
+          contínua. A entrega foi validada pelo autor no Android; a
+          disponibilidade das fontes externas pode variar. O repositório
+          documenta a execução local e os limites de iOS e distribuição.
+        </p>
+      </div>
+    ),
+    dateLabel: 'Projeto autoral · 2026',
+    images: [VoxHome, VoxDetails, VoxAdd, VoxReader, VoxSpeech, VoxSettings],
+    repositoryUrl: 'https://github.com/Lucas-M01/VoxNovel',
   },
   {
     id: 1,
@@ -255,8 +350,8 @@ export const projects: readonly Project[] = [
           </li>
           <br />
           <li>
-            <strong>Pagamentos Reais:</strong> Integração completa com o
-            checkout do Stripe para processamento de vendas.
+            <strong>Checkout:</strong> Integração com o checkout hospedado do
+            Stripe para demonstrar o fluxo de pagamento.
           </li>
           <br />
           <li>
@@ -269,7 +364,7 @@ export const projects: readonly Project[] = [
     dateLabel: '06 de março de 2023',
     figmaUrl:
       'https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate',
-    images: [IgniteShop],
+    images: [IgniteShop, IgniteDetails, IgniteCart, IgniteCheckout],
     repositoryUrl: 'https://github.com/Lucas-M01/Ignite-shop',
   },
   {
@@ -333,114 +428,7 @@ export const projects: readonly Project[] = [
     dateLabel: '06 de março de 2023',
     figmaUrl:
       'https://www.figma.com/file/6cOvlXOf9kX9QWQ6DTYFvh/Ignite-Lab-Desing-System?t=X8ZCpydwX80sdRnI-0',
-    images: [DesignSystem],
+    images: [DesignSystem, Storybook],
     repositoryUrl: 'https://github.com/Lucas-M01/ignite-lab-design-system',
-  },
-  {
-    id: 4,
-    name: '☕ Coffee Delivery',
-    technologyIds: [
-      'react',
-      'styledComponents',
-      'typescript',
-      'reactHookForm',
-      'vite',
-    ],
-    stack: [
-      'React',
-      'Typescript',
-      'Styled Components',
-      'Zod',
-      'React Hook Form',
-      'Vite',
-    ],
-    description: (
-      <div>
-        <p className="indent-4">
-          O <strong>Coffee Delivery</strong> é uma aplicação completa de
-          e-commerce desenvolvida como desafio na trilha React do{' '}
-          <strong>Ignite</strong>. O projeto simula a experiência de compra de
-          uma cafeteria, desde a seleção de grãos especiais até a confirmação do
-          pedido com detalhes de entrega.
-        </p>
-        <p>
-          O foco principal deste desafio foi o domínio de estados complexos e a
-          integração de bibliotecas de ecossistema React:
-        </p>
-        <br />
-        <ul>
-          <li>
-            <strong>Gerenciamento de Carrinho:</strong> Controle total de
-            adição, remoção e alteração de quantidades de itens.
-          </li>
-          <br />
-          <li>
-            <strong>Persistência de Dados:</strong> Manutenção dos itens do
-            carrinho utilizando Local Storage.
-          </li>
-          <br />
-          <li>
-            <strong>Validação de Endereço:</strong> Fluxo completo de checkout
-            com validação de campos obrigatórios e tipos de pagamento.
-          </li>
-          <br />
-          <li>
-            <strong>Experiência do Usuário (UX):</strong> Interface responsiva e
-            feedback visual de itens no carrinho através de badges.
-          </li>
-        </ul>
-      </div>
-    ),
-    dateLabel: '17 de outubro de 2022',
-    figmaUrl:
-      'https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate',
-    images: [CoffeDelivery],
-    repositoryUrl: 'https://github.com/Lucas-M01/CoffeDelivery-Ignite',
-  },
-  {
-    id: 5,
-    name: '📝 To Do List - Ignite',
-    technologyIds: [
-      'react',
-      'styledComponents',
-      'typescript',
-      'reactHookForm',
-      'vite',
-      'axios',
-    ],
-    stack: [
-      'React',
-      'Typescript',
-      'Styled Components',
-      'Radix UI',
-      'React Hook Form',
-      'Vite',
-      'Zod',
-      'uuid',
-      'ESLint',
-      'Json-server',
-      'Phosphor Icons',
-      'Date-fns',
-      'Axios',
-    ],
-    description: (
-      <div className="space-y-3">
-        <p className="indent-4">
-          Aplicação de controle de tarefas desenvolvida durante o primeiro
-          desafio do Ignite — bootcamp da Rocketseat, Trilha de ReactJS. O
-          projeto foi desenvolvido a partir de um template disponibilizado no
-          Figma ToDo List.
-        </p>
-        <p className="indent-4">
-          O foco do projeto é aprofundar, na prática, os Conceitos Fundamentais
-          do ReactJS.
-        </p>
-      </div>
-    ),
-    dateLabel: '14 de novembro de 2022',
-    figmaUrl:
-      'https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List/duplicate?node-id=0%3A1',
-    images: [ToDoList],
-    repositoryUrl: 'https://github.com/Lucas-M01/to-do-Ignite',
   },
 ]

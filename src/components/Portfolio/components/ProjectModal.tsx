@@ -33,6 +33,7 @@ export function ProjectModal({ project }: ProjectModalProps) {
   useEffect(() => {
     const thumbnails = thumbnailInstanceRef.current
     if (!thumbnails?.track.details) return
+    thumbnails.container.scrollLeft = 0
     thumbnails.moveToIdx(
       Math.min(currentSlide, thumbnails.track.details.maxIdx),
     )
@@ -101,7 +102,7 @@ export function ProjectModal({ project }: ProjectModalProps) {
                   width={800}
                   height={500}
                   aria-hidden={index !== currentSlide}
-                  className="keen-slider__slide object-cover overflow-hidden"
+                  className="keen-slider__slide object-contain overflow-hidden"
                 />
               ))}
             </div>
@@ -113,7 +114,7 @@ export function ProjectModal({ project }: ProjectModalProps) {
             {project.images.length > 1 && (
               <div
                 ref={thumbnailRef}
-                className="keen-slider thumbnail"
+                className="keen-slider thumbnail h-16 sm:h-20"
                 role="group"
                 aria-label="Selecionar imagem do projeto"
               >
@@ -124,6 +125,14 @@ export function ProjectModal({ project }: ProjectModalProps) {
                     data-keen-slider-clickable="true"
                     aria-label={`Ver imagem ${index + 1} de ${project.name}`}
                     aria-pressed={index === currentSlide}
+                    onFocus={() => {
+                      const thumbnails = thumbnailInstanceRef.current
+                      if (!thumbnails?.track.details) return
+                      thumbnails.container.scrollLeft = 0
+                      thumbnails.moveToIdx(
+                        Math.min(index, thumbnails.track.details.maxIdx),
+                      )
+                    }}
                     className={`keen-slider__slide ${
                       index === currentSlide ? styles.activeThumbnail : ''
                     }`}
@@ -134,7 +143,7 @@ export function ProjectModal({ project }: ProjectModalProps) {
                       alt=""
                       width={500}
                       height={500}
-                      className="w-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </button>
                 ))}

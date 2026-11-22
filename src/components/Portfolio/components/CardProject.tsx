@@ -35,7 +35,12 @@ export function CardProject({ project }: CardProjectProps) {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             alt={name}
-            className="object-cover"
+            className={
+              typeof images[0] !== 'string' &&
+              images[0].height > images[0].width
+                ? 'object-contain'
+                : 'object-cover'
+            }
           />
         </div>
 
