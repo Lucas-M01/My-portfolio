@@ -31,6 +31,19 @@ export function ProjectModal({ project }: ProjectModalProps) {
   })
 
   useEffect(() => {
+    const slider = instanceRef.current
+    const thumbnails = thumbnailInstanceRef.current
+    if (!slider || !thumbnails) return
+    const observer = new ResizeObserver(() => {
+      slider.update()
+      thumbnails.update()
+    })
+    observer.observe(slider.container)
+    observer.observe(thumbnails.container)
+    return () => observer.disconnect()
+  }, [instanceRef, thumbnailInstanceRef])
+
+  useEffect(() => {
     const thumbnails = thumbnailInstanceRef.current
     if (!thumbnails?.track.details) return
     thumbnails.container.scrollLeft = 0
@@ -101,6 +114,7 @@ export function ProjectModal({ project }: ProjectModalProps) {
                   alt={`Screenshot ${index + 1} de ${project.name}`}
                   width={800}
                   height={500}
+                  loading={index === currentSlide ? 'eager' : 'lazy'}
                   aria-hidden={index !== currentSlide}
                   className="keen-slider__slide object-contain overflow-hidden"
                 />
@@ -196,6 +210,16 @@ export function ProjectModal({ project }: ProjectModalProps) {
 
           <div className={styles.links}>
             <div className="flex gap-3 flex-wrap items-center">
+              {project.demoUrl && (
+                <Link
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 whitespace-nowrap hover:bg-blue-700 duration-300 py-2 px-4 rounded-full font-bold shadow-[0_0_1rem_rgba(0,0,0,0.3)]"
+                >
+                  Ver demonstração
+                </Link>
+              )}
               {project.figmaUrl && (
                 <Link
                   href={project.figmaUrl}

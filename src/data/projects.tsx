@@ -22,6 +22,10 @@ import CatalogNewProduct from '../../public/assets/imgs/catalogo-digital/new-pro
 import CatalogAdminMobile from '../../public/assets/imgs/catalogo-digital/admin-home-cell.webp'
 import CatalogProductsMobile from '../../public/assets/imgs/catalogo-digital/admin-product-cell.webp'
 import CatalogNewProductMobile from '../../public/assets/imgs/catalogo-digital/new-product-cell.webp'
+import VoxInit from '../../public/assets/imgs/VoxNovel/init.webp'
+import VoxEmpty from '../../public/assets/imgs/VoxNovel/home-empty.webp'
+import NLWCapa from '../../public/assets/imgs/NLW/Capa.webp'
+import NLWHome from '../../public/assets/imgs/NLW/Home.webp'
 import VoxHome from '../../public/assets/imgs/VoxNovel/home.webp'
 import VoxDetails from '../../public/assets/imgs/VoxNovel/details-obra.webp'
 import VoxAdd from '../../public/assets/imgs/VoxNovel/add-obra.webp'
@@ -153,7 +157,16 @@ export const projects: readonly Project[] = [
       </div>
     ),
     dateLabel: 'Projeto autoral · 2026',
-    images: [VoxHome, VoxDetails, VoxAdd, VoxReader, VoxSpeech, VoxSettings],
+    images: [
+      VoxInit,
+      VoxEmpty,
+      VoxHome,
+      VoxDetails,
+      VoxAdd,
+      VoxReader,
+      VoxSpeech,
+      VoxSettings,
+    ],
     repositoryUrl: 'https://github.com/Lucas-M01/VoxNovel',
   },
   {
@@ -425,10 +438,58 @@ export const projects: readonly Project[] = [
         </ul>
       </div>
     ),
+    demoUrl: 'https://lucas-m01.github.io/ignite-lab-design-system/',
     dateLabel: '06 de março de 2023',
     figmaUrl:
       'https://www.figma.com/file/6cOvlXOf9kX9QWQ6DTYFvh/Ignite-Lab-Desing-System?t=X8ZCpydwX80sdRnI-0',
     images: [DesignSystem, Storybook],
     repositoryUrl: 'https://github.com/Lucas-M01/ignite-lab-design-system',
+  },
+  {
+    id: 0,
+    name: '🎮 NLW eSports',
+    technologyIds: [
+      'react',
+      'node',
+      'typescript',
+      'tailwind',
+      'prisma',
+      'axios',
+      'postgresql',
+    ],
+    stack: [
+      'React',
+      'Node',
+      'Typescript',
+      'Radix UI',
+      'Tailwind',
+      'Keen-Slider',
+      'Prisma',
+      'Axios',
+      'PostgreSQL',
+      'React Native',
+      'Expo',
+    ],
+    description: (
+      <div className="space-y-3">
+        <p className="indent-4">
+          A aplicação tem como finalidade conectar pessoas que desejam jogar um
+          mesmo jogo e se divertir juntas. Foi desenvolvido durante o NLW (Next
+          Level Week), evento que ocorre durante uma semana totalmente online,
+          gratuito e prático promovido pela Rocketseat — eSports Ignite,
+          especificamente do dia 11 ao dia 18 de setembro de 2022.
+        </p>
+        <p className="indent-4">
+          Nele foi desenvolvido o back end em Node e o front end em React (para
+          web) e React Native (para mobile). Com a aplicação rodando, o usuário
+          poderia acessar o site, fazer um anúncio e entrar em contato com
+          outros players interessados no mesmo jogo pelo Discord.
+        </p>
+      </div>
+    ),
+    dateLabel: '18 de novembro de 2022',
+    figmaUrl: 'https://www.figma.com/community/file/1150897317533332617',
+    images: [NLWCapa, NLWHome],
+    repositoryUrl: 'https://github.com/Lucas-M01/nlw-eSport',
   },
 ]

@@ -1,15 +1,93 @@
 import { expect, test } from '@playwright/test'
 
+test('galeria fica visível no desktop antes de selecionar miniaturas', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/')
+  await page
+    .getByRole('button', {
+      name: 'Ver detalhes de Catálogo Digital',
+      exact: true,
+    })
+    .evaluate((button) => button.click())
+  const image = page
+    .getByRole('dialog')
+    .getByRole('img', { name: 'Screenshot 1 de Catálogo Digital', exact: true })
+  await expect
+    .poll(() =>
+      image.evaluate((image) => {
+        const rect = image.getBoundingClientRect()
+        let left = rect.left,
+          right = rect.right,
+          top = rect.top,
+          bottom = rect.bottom
+        for (
+          let parent = image.parentElement;
+          parent;
+          parent = parent.parentElement
+        ) {
+          const style = getComputedStyle(parent)
+          const bounds = parent.getBoundingClientRect()
+          if (['hidden', 'clip', 'scroll', 'auto'].includes(style.overflowX)) {
+            left = Math.max(left, bounds.left)
+            right = Math.min(right, bounds.right)
+          }
+          if (['hidden', 'clip', 'scroll', 'auto'].includes(style.overflowY)) {
+            top = Math.max(top, bounds.top)
+            bottom = Math.min(bottom, bounds.bottom)
+          }
+        }
+        return (
+          image.complete &&
+          image.naturalWidth > 0 &&
+          right - left > 100 &&
+          bottom - top > 100
+        )
+      }),
+    )
+    .toBe(true)
+})
+
+test('seleção inclui NLW e demonstração do Design System', async ({ page }) => {
+  await page.goto('/')
+  await expect(
+    page
+      .locator('#portfolio')
+      .getByRole('button', { name: /^Ver detalhes de / }),
+  ).toHaveCount(6)
+  await expect(
+    page.getByRole('button', {
+      name: 'Ver detalhes de 🎮 NLW eSports',
+      exact: true,
+    }),
+  ).toHaveCount(1)
+  await page
+    .getByRole('button', {
+      name: 'Ver detalhes de Ignite Lab Design System',
+      exact: true,
+    })
+    .press('Enter')
+  await expect(
+    page
+      .getByRole('dialog')
+      .getByRole('link', { name: 'Ver demonstração', exact: true }),
+  ).toHaveAttribute(
+    'href',
+    'https://lucas-m01.github.io/ignite-lab-design-system/',
+  )
+})
+
 for (const [name, imageCount] of [
   ['Catálogo Digital', 12],
-  ['VoxNovel', 6],
+  ['VoxNovel', 8],
 ]) {
   test(`galeria completa de ${name}`, async ({ page }) => {
     test.setTimeout(90_000)
     await page.goto('/')
     await expect(
       page.getByRole('button', {
-        name: /^Ver detalhes de (Mural|🎮 NLW eSports|☕ Coffee Delivery|📝 To Do List)/,
+        name: /^Ver detalhes de (Mural|☕ Coffee Delivery|📝 To Do List)/,
       }),
     ).toHaveCount(0)
     await page
@@ -18,6 +96,14 @@ for (const [name, imageCount] of [
     const dialog = page.getByRole('dialog', { name, exact: true })
     const thumbnails = dialog.getByRole('button', { name: /^Ver imagem / })
     await expect(thumbnails).toHaveCount(imageCount)
+    if (name === 'VoxNovel') {
+      await expect(
+        dialog.getByRole('img', {
+          name: 'Screenshot 1 de VoxNovel',
+          exact: true,
+        }),
+      ).toHaveAttribute('src', /init.*\.webp/)
+    }
     for (let index = 0; index < imageCount; index++) {
       const thumbnail = thumbnails.nth(index)
       await thumbnail.press('Enter')

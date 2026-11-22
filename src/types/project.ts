@@ -13,5 +13,6 @@ export interface Project {
   readonly dateLabel: string
   readonly images: NonEmptyArray<string | StaticImageData>
   readonly figmaUrl?: string
+  readonly demoUrl?: string
   readonly repositoryUrl: string
 }
